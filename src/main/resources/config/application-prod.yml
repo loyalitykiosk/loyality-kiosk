@@ -18,7 +18,7 @@ spring:
         livereload:
             enabled: false
     datasource:
-        url: jdbc:mysql://localhost:3306/kiosk?useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://kiosk.cqwyiksntpfp.eu-west-1.rds.amazonaws.com:3306/kiosk?useUnicode=true&characterEncoding=utf8&useSSL=false
         name:
         username: root
         password:
