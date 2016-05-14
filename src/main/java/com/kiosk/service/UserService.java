@@ -117,6 +117,8 @@ public class UserService {
         user.setFirstName(managedUserDTO.getFirstName());
         user.setLastName(managedUserDTO.getLastName());
         user.setEmail(managedUserDTO.getEmail());
+        user.setCustomerName(managedUserDTO.getCustomerName());
+        user.setCustomerDetails(managedUserDTO.getCustomerDetails());
         if (managedUserDTO.getLangKey() == null) {
             user.setLangKey("en"); // default language
         } else {

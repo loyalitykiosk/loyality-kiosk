@@ -33,7 +33,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @JsonIgnore
     @NotNull
-    @Size(min = 60, max = 60) 
+    @Size(min = 60, max = 60)
     @Column(name = "password_hash",length = 60)
     private String password;
 
@@ -70,6 +70,13 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @Column(name = "reset_date", nullable = true)
     private ZonedDateTime resetDate = null;
+
+    @NotNull
+    @Column(name = "customer_name", nullable = false)
+    private String customerName;
+
+    @Column(name = "customer_details")
+    private String customerDetails;
 
     @JsonIgnore
     @ManyToMany
@@ -163,6 +170,22 @@ public class User extends AbstractAuditingEntity implements Serializable {
        this.resetDate = resetDate;
     }
 
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCustomerDetails() {
+        return customerDetails;
+    }
+
+    public void setCustomerDetails(String customerDetails) {
+        this.customerDetails = customerDetails;
+    }
+
     public String getLangKey() {
         return langKey;
     }
@@ -214,12 +237,13 @@ public class User extends AbstractAuditingEntity implements Serializable {
     public String toString() {
         return "User{" +
             "login='" + login + '\'' +
-            ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
+            ", firstName='" + firstName + '\'' +
             ", email='" + email + '\'' +
-            ", activated='" + activated + '\'' +
+            ", activated=" + activated +
             ", langKey='" + langKey + '\'' +
             ", activationKey='" + activationKey + '\'' +
-            "}";
+            ", customerName='" + customerName + '\'' +
+            '}';
     }
 }

@@ -17,6 +17,8 @@
         "login": "Login",
         "firstName": "First name",
         "lastName": "Last name",
+        "customerName":"Customer name",
+        "customerDetails":"Additional details",
         "email": "Email",
         "activated": "Activated",
         "deactivated": "Deactivated",

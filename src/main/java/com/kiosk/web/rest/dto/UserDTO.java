@@ -33,6 +33,12 @@ public class UserDTO {
     @Size(min = 2, max = 5)
     private String langKey;
 
+    @NotNull
+    private String customerName;
+
+
+    private String customerDetails;
+
     private Set<String> authorities;
 
     public UserDTO() {
@@ -41,20 +47,23 @@ public class UserDTO {
     public UserDTO(User user) {
         this(user.getLogin(), user.getFirstName(), user.getLastName(),
             user.getEmail(), user.getActivated(), user.getLangKey(),
+            user.getCustomerName(), user.getCustomerDetails(),
             user.getAuthorities().stream().map(Authority::getName)
                 .collect(Collectors.toSet()));
     }
 
     public UserDTO(String login, String firstName, String lastName,
-        String email, boolean activated, String langKey, Set<String> authorities) {
+        String email, boolean activated, String langKey,String customerName, String customerDetails, Set<String> authorities) {
 
-        this.login = login;        
+        this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.activated = activated;
         this.langKey = langKey;
         this.authorities = authorities;
+        this.customerName = customerName;
+        this.customerDetails = customerDetails;
     }
 
     public String getLogin() {
@@ -79,6 +88,14 @@ public class UserDTO {
 
     public String getLangKey() {
         return langKey;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public String getCustomerDetails() {
+        return customerDetails;
     }
 
     public Set<String> getAuthorities() {
