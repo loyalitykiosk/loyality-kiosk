@@ -3,8 +3,8 @@ package com.kiosk.web.rest.mapper;
 import com.kiosk.domain.Authority;
 import com.kiosk.domain.User;
 import com.kiosk.web.rest.dto.UserDTO;
-import org.mapstruct.*;
 
+import org.mapstruct.*;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -18,7 +18,7 @@ public interface UserMapper {
     UserDTO userToUserDTO(User user);
 
     List<UserDTO> usersToUserDTOs(List<User> users);
-    
+
     @Mapping(target = "createdBy", ignore = true)
     @Mapping(target = "createdDate", ignore = true)
     @Mapping(target = "lastModifiedBy", ignore = true)

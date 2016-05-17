@@ -14,6 +14,8 @@
             <tr>
                 <th translate="global.field.id">ID</th>
                 <th translate="userManagement.login">Login</th>
+                <th><span translate="userManagement.customerName">Customer Name</span></th>
+                <th><span translate="userManagement.customerDetails">Customer Details</span></th>
                 <th translate="userManagement.email">Email</th>
                 <th></th>
                 <th translate="userManagement.langKey">Lang Key</th>
@@ -28,6 +30,8 @@
             <tr ng-repeat="user in vm.users track by user.id">
                 <td><a ui-sref="user-management-detail({login:user.login})">{{user.id}}</a></td>
                 <td>{{user.login}}</td>
+                <td>{{user.customerName}}</td>
+                <td>{{user.customerDetails}}</td>
                 <td>{{user.email}}</td>
                 <td>
                     <span class="label label-danger" ng-click="vm.setActive(user, true)" ng-show="!user.activated"

@@ -1,0 +1,21 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "customerName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "customerDetails",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160514133211",
+    "dto": "mapstruct",
+    "service": "serviceClass",
+    "entityTableName": "user",
+    "pagination": "no"
+}

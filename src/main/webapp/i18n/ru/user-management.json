@@ -17,6 +17,8 @@
         "login": "Логин",
         "firstName": "Имя",
         "lastName": "Фамилия",
+        "customerName":"Название Компании",
+        "customerDetails":"Доп Сведения",
         "email": "Email",
         "activated": "Активен",
         "deactivated": "Неактивен",

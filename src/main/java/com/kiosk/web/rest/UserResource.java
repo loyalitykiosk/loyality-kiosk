@@ -150,6 +150,8 @@ public class UserResource {
                 user.setEmail(managedUserDTO.getEmail());
                 user.setActivated(managedUserDTO.isActivated());
                 user.setLangKey(managedUserDTO.getLangKey());
+                user.setCustomerName(managedUserDTO.getCustomerName());
+                user.setCustomerDetails(managedUserDTO.getCustomerDetails());
                 Set<Authority> authorities = user.getAuthorities();
                 authorities.clear();
                 managedUserDTO.getAuthorities().stream().forEach(
@@ -166,7 +168,7 @@ public class UserResource {
 
     /**
      * GET  /users : get all users.
-     * 
+     *
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and with body all users
      * @throws URISyntaxException if the pagination headers couldnt be generated
