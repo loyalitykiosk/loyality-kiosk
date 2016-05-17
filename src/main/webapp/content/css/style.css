@@ -1,0 +1,193 @@
+@font-face {
+  font-family: 'lato';
+  src: url('../fonts/latoLight/latoLight.ttf');
+}
+@font-face {
+  font-family: 'budmoJiggler';
+  src: url('../fonts/budmoJiggler.ttf');
+}
+@font-face {
+  font-family: 'mouserOutline';
+  src: url('../fonts/mouserOutline.ttf');
+}
+@font-face {
+  font-family: 'planetNs';
+  src: url('../fonts/planetNs.ttf');
+}
+@font-face {
+  font-family: 'bloggerSans';
+  src: url('../fonts/bloggerSans.otf');
+}
+@font-face {
+  font-family: "PTSansRegular";
+  src: url("../fonts/PTSans/PTSansRegular/PTSansRegular.eot");
+  src: url("../fonts/PTSans/PTSansRegular/PTSansRegular.eot?#iefix") format("embedded-opentype"), url("../fonts/PTSans/PTSansRegular/PTSansRegular.woff") format("woff"), url("../fonts/PTSans/PTSansRegular/PTSansRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Bebas";
+  src: url("../fonts/bebas/BebasNeue.eot");
+  src: url("../fonts/bebas/BebasNeue.eot?#iefix") format("embedded-opentype"), url("../fonts/bebas/BebasNeue.woff") format("woff"), url("../fonts/bebas/BebasNeue.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+/* font-family: "PTSansItalic"; */
+@font-face {
+  font-family: "PTSansItalic";
+  src: url("../fonts/PTSans/PTSansItalic/PTSansItalic.eot");
+  src: url("../fonts/PTSans/PTSansItalic/PTSansItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/PTSans/PTSansItalic/PTSansItalic.woff") format("woff"), url("../fonts/PTSans/PTSansItalic/PTSansItalic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+/* font-family: "PTSansBold"; */
+@font-face {
+  font-family: "PTSansBold";
+  src: url("../fonts/PTSans/PTSansBold/PTSansBold.eot");
+  src: url("../fonts/PTSans/PTSansBold/PTSansBold.eot?#iefix") format("embedded-opentype"), url("../fonts/PTSans/PTSansBold/PTSansBold.woff") format("woff"), url("../fonts/PTSans/PTSansBold/PTSansBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+/* font-family: "BeerRegular"; */
+@font-face {
+  font-family: "BeerRegular";
+  src: url("../fonts/Beer/BeerRegular/BeerRegular.eot");
+  src: url("../fonts/Beer/BeerRegular/BeerRegular.eot?#iefix") format("embedded-opentype"), url("../fonts/Beer/BeerRegular/BeerRegular.woff") format("woff"), url("../fonts/Beer/BeerRegular/BeerRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+/* font-family: "DitedRegular"; */
+@font-face {
+  font-family: "DitedRegular";
+  src: url("../fonts/Dited/DitedRegular/DitedRegular.eot");
+  src: url("../fonts/Dited/DitedRegular/DitedRegular.eot?#iefix") format("embedded-opentype"), url("../fonts/Dited/DitedRegular/DitedRegular.woff") format("woff"), url("../fonts/Dited/DitedRegular/DitedRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+/* font-family: "EngineRegular"; */
+@font-face {
+  font-family: "EngineRegular";
+  src: url("../fonts/Engine/EngineRegular/EngineRegular.eot");
+  src: url("../fonts/Engine/EngineRegular/EngineRegular.eot?#iefix") format("embedded-opentype"), url("../fonts/Engine/EngineRegular/EngineRegular.woff") format("woff"), url("../fonts/Engine/EngineRegular/EngineRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+/* font-family: "EngineItalic"; */
+@font-face {
+  font-family: "EngineItalic";
+  src: url("../fonts/Engine/EngineItalic/EngineItalic.eot");
+  src: url("../fonts/Engine/EngineItalic/EngineItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/Engine/EngineItalic/EngineItalic.woff") format("woff"), url("../fonts/Engine/EngineItalic/EngineItalic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+/* font-family: "GunnyRewrittenRegular"; */
+@font-face {
+  font-family: "GunnyRewrittenRegular";
+  src: url("../fonts/GunnyRewritten/GunnyRewrittenRegular/GunnyRewrittenRegular.eot");
+  src: url("../fonts/GunnyRewritten/GunnyRewrittenRegular/GunnyRewrittenRegular.eot?#iefix") format("embedded-opentype"), url("../fonts/GunnyRewritten/GunnyRewrittenRegular/GunnyRewrittenRegular.woff") format("woff"), url("../fonts/GunnyRewritten/GunnyRewrittenRegular/GunnyRewrittenRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+/* font-family: "PoiretOneNormal"; */
+@font-face {
+  font-family: "PoiretOneNormal";
+  src: url("../fonts/PoiretOne/PoiretOneNormal/PoiretOneNormal.eot");
+  src: url("../fonts/PoiretOne/PoiretOneNormal/PoiretOneNormal.eot?#iefix") format("embedded-opentype"), url("../fonts/PoiretOne/PoiretOneNormal/PoiretOneNormal.woff") format("woff"), url("../fonts/PoiretOne/PoiretOneNormal/PoiretOneNormal.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+/* font-family: "PTSansNarrowRegular"; */
+@font-face {
+  font-family: "PTSansNarrowRegular";
+  src: url("../fonts/PTSansNarrow/PTSansNarrowRegular/PTSansNarrow.eot");
+  src: url("../fonts/PTSansNarrow/PTSansNarrowRegular/PTSansNarrow.eot?#iefix") format("embedded-opentype"), url("../fonts/PTSansNarrow/PTSansNarrowRegular/PTSansNarrow.woff") format("woff"), url("../fonts/PTSansNarrow/PTSansNarrowRegular/PTSansNarrow.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+/* font-family: "PTSansNarrowBold"; */
+@font-face {
+  font-family: "PTSansNarrowBold";
+  src: url("../fonts/PTSansNarrow/PTSansNarrowBold/PTSansNarrowBold.eot");
+  src: url("../fonts/PTSansNarrow/PTSansNarrowBold/PTSansNarrowBold.eot?#iefix") format("embedded-opentype"), url("../fonts/PTSansNarrow/PTSansNarrowBold/PTSansNarrowBold.woff") format("woff"), url("../fonts/PTSansNarrow/PTSansNarrowBold/PTSansNarrowBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: url("../images/bckg_blured.jpg") no-repeat scroll;
+  background-size: cover;
+}
+body .glass {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 0;
+}
+.wow {
+  visibility: hidden;
+}
+.budmoJiggler {
+  font-family: budmoJiggler;
+}
+.font-bigger {
+  font-size: 2em;
+}
+.font-biggest {
+  font-size: 3em;
+}
+.verticalizr {
+  display: table-cell;
+}
+.verticalizr .verticalized {
+  display: inline-block;
+}
+.card {
+  display: block;
+  padding: 20px;
+  margin: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 15px -6px #000;
+  -moz-box-shadow: 1px 1px 15px -6px #000;
+  box-shadow: 1px 1px 15px -6px #000;
+  text-decoration: none !important;
+}
+.card.card-purple {
+  background-color: rgba(255, 190, 252, 0.37);
+  color: #000;
+}
+.card.card-green {
+  background-color: rgba(0, 128, 0, 0.37);
+  color: #000;
+}
+.card.card-orange {
+  background-color: rgba(255, 165, 0, 0.37);
+  color: #000;
+}
+.card.card-red {
+  background-color: rgba(255, 0, 0, 0.37);
+  color: #000;
+}
+.card.card-blue {
+  background-color: rgba(0, 0, 255, 0.37);
+  color: #000;
+}
+.card.card-greetings {
+  padding: 100px;
+}
+.card.card-greetings h1 {
+  font-size: 5em;
+  font-weight: 100;
+  margin: 0;
+}
+.card p {
+  margin: 0;
+}

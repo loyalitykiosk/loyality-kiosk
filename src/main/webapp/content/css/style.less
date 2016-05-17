@@ -1,0 +1,96 @@
+@import "fonts";
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: url("../images/bckg_blured.jpg") no-repeat scroll;
+  background-size: cover;
+  .glass {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 0;
+  }
+}
+
+.wow {
+  visibility: hidden;
+}
+
+.budmoJiggler {
+  font-family: budmoJiggler;
+}
+
+.font-bigger {
+  font-size: 2em;
+}
+
+.font-biggest {
+  font-size: 3em;
+}
+
+h1 {
+  //font-family: Bebas;
+}
+
+.verticalizr {
+  display: table-cell;
+  .verticalized {
+    display: inline-block;
+  }
+}
+
+.card {
+  display: block;
+  padding: 20px;
+  margin: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 15px -6px #000;
+  -moz-box-shadow: 1px 1px 15px -6px #000;
+  box-shadow: 1px 1px 15px -6px #000;
+  text-decoration: none !important;
+  &.card-purple {
+    background-color: rgba(255, 190, 252, 0.37);
+    //border: 10px solid rgba(67, 48, 64, 0.15);
+    color: #000;
+  }
+  &.card-green {
+    background-color: rgba(0, 128, 0, 0.37);
+    //border: 10px solid rgba(67, 48, 64, 0.15);
+    color: #000;
+  }
+  &.card-orange {
+    background-color: rgba(255, 165, 0, 0.37);
+    //border: 10px solid rgba(67, 48, 64, 0.15);
+    color: #000;
+  }
+  &.card-red {
+    background-color: rgba(255, 0, 0, 0.37);
+    //border: 10px solid rgba(67, 48, 64, 0.15);
+    color: #000;
+  }
+  &.card-blue {
+    background-color: rgba(0, 0, 255, 0.37);
+    //border: 10px solid rgba(67, 48, 64, 0.15);
+    color: #000;
+  }
+  &.card-greetings {
+    padding: 100px;
+    h1 {
+      font-size: 5em;
+      font-weight: 100;
+      margin: 0;
+    }
+  }
+  p {
+    margin: 0;
+  }
+}
