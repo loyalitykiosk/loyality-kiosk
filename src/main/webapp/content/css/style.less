@@ -1,7 +1,13 @@
 @import "fonts";
+@import "variables";
+
 html {
   height: 100%;
   width: 100%;
+}
+
+label {
+  font-weight: 200;
 }
 
 body {
@@ -15,7 +21,7 @@ body {
     height: 100%;
     position: fixed;
     background-color: rgba(255, 255, 255, 0.8);
-    z-index: 0;
+    z-index: -1;
   }
 }
 
@@ -32,7 +38,7 @@ body {
 }
 
 .font-biggest {
-  font-size: 3em;
+  font-size: 7em;
 }
 
 h1 {
@@ -40,16 +46,18 @@ h1 {
 }
 
 .verticalizr {
-  display: table-cell;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
   .verticalized {
-    display: inline-block;
+    display: table-cell;
+    vertical-align: middle;
   }
 }
 
 .card {
   display: block;
-  padding: 20px;
-  margin: 5px;
+  padding: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -84,13 +92,119 @@ h1 {
   }
   &.card-greetings {
     padding: 100px;
-    h1 {
-      font-size: 5em;
-      font-weight: 100;
-      margin: 0;
+    .logo-wrp {
+      display: table;
+      background-color: rgba(128, 0, 128, 0.61);
+      margin: 0 auto;
+      padding: 0 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px -5px #000;
+      h1 {
+        display: inline;
+        color: #fff;
+        font-size: 6.5em;
+        font-weight: 100;
+        margin: 0;
+      }
+      sup {
+        top: -3.39em;
+        font-size: 1em;
+        line-height: 1em;
+        color: #fff;
+      }
     }
   }
-  p {
-    margin: 0;
+  p.slogan {
+    margin: 20px 0 0 0;
+  }
+}
+
+.modal-backdrop.fade.in {
+  opacity: 0.8;
+  background-color: #fff;
+}
+
+.modal-dialog {
+  width: 500px;
+  background-color: #fff;
+  opacity: 0.8;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  .modal-content {
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 15px -6px #000;
+    -moz-box-shadow: 1px 1px 15px -6px #000;
+    box-shadow: 1px 1px 15px -6px #000;
+
+    background-color: rgba(0, 0, 255, 0.37);
+    border: 0;
+    color: #000;
+    .forgot-password {
+      color: #000;
+      &:before {
+        content:'\f05a';
+        font-family:FontAwesome;
+        display: inline-block;
+        margin-right: 4px;
+      }
+    }
+  }
+}
+
+.alert {
+  i.fa {
+    display: table-cell;
+  }
+  span, div {
+    vertical-align: middle;
+    padding-left: 5px;
+    display: table-cell;
+  }
+}
+
+.navbar {
+  &.navbar-kiosk {
+    background-color: rgba(255, 0, 0, 0.37);
+    /* border-color: rgba(255, 0, 0, 0.5); */
+    border: 0;
+    color: #fff;
+    -webkit-box-shadow: 0 1px 15px -6px #000;
+    -moz-box-shadow: 0 1px 15px -6px #000;
+    box-shadow: 0 1px 15px -6px #000;
+
+    .navbar-brand {
+      color: #fff;
+    }
+    .navbar-version {
+      color: #fff;
+    }
+
+    .navbar-nav {
+      li {
+        a {
+          color: #fff;
+          &:hover, &:focus {
+            background-color: rgba(255, 0, 0, 0.2);
+          }
+          .fa {
+            font-size: 15px;
+          }
+        }
+        &.active, &.open {
+          > a {
+            background-color: rgba(255, 0, 0, 0.2);
+            color: #fff;
+          }
+        }
+        .dropdown-menu {
+          background-color: rgba(255, 0, 0, 0.2);
+          border: 0;
+        }
+      }
+    }
   }
 }
