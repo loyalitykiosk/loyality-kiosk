@@ -5,9 +5,9 @@
         .module('kioskApp')
         .controller('CardDialogController', CardDialogController);
 
-    CardDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Card', 'User'];
+    CardDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Card', 'User','Principal'];
 
-    function CardDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Card, User) {
+    function CardDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Card, User, Principal) {
         var vm = this;
         vm.card = entity;
         vm.users = User.query();

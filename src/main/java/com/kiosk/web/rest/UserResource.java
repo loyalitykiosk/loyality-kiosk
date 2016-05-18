@@ -6,15 +6,16 @@ import com.kiosk.domain.User;
 import com.kiosk.repository.AuthorityRepository;
 import com.kiosk.repository.UserRepository;
 import com.kiosk.security.AuthoritiesConstants;
+import com.kiosk.security.SecurityUtils;
 import com.kiosk.service.MailService;
 import com.kiosk.service.UserService;
 import com.kiosk.web.rest.dto.ManagedUserDTO;
-import com.kiosk.web.rest.dto.UserDTO;
 import com.kiosk.web.rest.util.HeaderUtil;
 import com.kiosk.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -25,10 +26,13 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.net.URISyntaxException;
-import javax.servlet.http.HttpServletRequest;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -180,10 +184,17 @@ public class UserResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<ManagedUserDTO>> getAllUsers(Pageable pageable)
         throws URISyntaxException {
-        Page<User> page = userRepository.findAll(pageable);
-        List<ManagedUserDTO> managedUserDTOs = page.getContent().stream()
-            .map(ManagedUserDTO::new)
-            .collect(Collectors.toList());
+        List<ManagedUserDTO> managedUserDTOs;
+        Page<User> page;
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)){
+            page = userRepository.findAll(pageable);
+
+        }else{
+            page = new PageImpl<User>(Arrays.asList(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get()));
+        }
+        managedUserDTOs = page.getContent().stream()
+                .map(ManagedUserDTO::new)
+                .collect(Collectors.toList());
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users");
         return new ResponseEntity<>(managedUserDTOs, headers, HttpStatus.OK);
     }
