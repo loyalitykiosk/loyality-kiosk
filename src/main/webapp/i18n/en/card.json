@@ -1,0 +1,28 @@
+{
+    "kioskApp": {
+        "card" : {
+            "home": {
+                "title": "Card Management",
+                "createLabel": "Create a new Loyality  Card",
+                "createOrEditLabel": "Create or edit a Loyalty Card",
+                "search": "Search for Card"
+            },
+            "created": "A new Loyalty Card is created with identifier {{ param }}",
+            "updated": "A Loyalty Card is updated with identifier {{ param }}",
+            "deleted": "A Loyalty Card is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Loyalty Card {{ id }}?"
+            },
+            "detail": {
+                "title": "Loyalty Card"
+            },
+            "number": "Number",
+            "ownerName": "Owner Name",
+            "ownerSurname": "Owner Surname",
+            "ownerBirthDate": "Owner Birth Date",
+            "status": "Status",
+            "type": "Type",
+            "user": "Issued By"
+        }
+    }
+}

@@ -6,7 +6,8 @@
             "home": "Home",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
-                "main": "Entities",
+                "main": "Management",
+                "card": "Card Management",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -20,7 +21,7 @@
             },
             "admin": {
                 "main": "Administration",
-                "userManagement": "User management",
+                "userManagement": "Customer management",
                 "tracker": "User tracker",
                 "metrics": "Metrics",
                 "health": "Health",
@@ -112,6 +113,7 @@
         "Size": "Field {{ fieldName }} does not meet min/max size requirements!",
         "userexists": "Login name already used!",
         "emailexists": "E-mail is already in use!",
+        "numberexists": "A Card with such number already exists",
         "idexists": "A new {{ entityName }} cannot already have an ID"
     },
     "footer": "This is your footer"

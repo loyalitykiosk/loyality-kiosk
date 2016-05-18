@@ -1,0 +1,28 @@
+{
+    "kioskApp": {
+        "card" : {
+            "home": {
+                "title": "Cards",
+                "createLabel": "Создать новый Card",
+                "createOrEditLabel": "Создать или отредактировать Card",
+                "search": "Найти Card"
+            },
+            "created": "Новый Card создан с идентификатором {{ param }}",
+            "updated": "Card обновлен с идентификатором {{ param }}",
+            "deleted": "Card удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Card {{ id }}?"
+            },
+            "detail": {
+                "title": "Card"
+            },
+            "number": "Number",
+            "ownerName": "Owner Name",
+            "ownerSurname": "Owner Surname",
+            "ownerBirthDate": "Owner Birth Date",
+            "status": "Status",
+            "type": "Type",
+            "user": "User"
+        }
+    }
+}

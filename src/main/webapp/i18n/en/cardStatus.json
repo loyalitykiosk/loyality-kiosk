@@ -1,0 +1,9 @@
+{
+    "kioskApp": {
+        "CardStatus" : {
+            "null": "",
+            "active": "active",
+            "blocked": "blocked"
+        }
+    }
+}

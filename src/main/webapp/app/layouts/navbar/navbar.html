@@ -24,12 +24,18 @@
                         <span>
 								<i class="fa fa-cogs"></i>&nbsp;
                             <span class="hidden-sm" translate="global.menu.entities.main">
-                                Entities
+                                Management
                             </span>
                             <b class="caret"></b>
                         </span>
 					</a>
 					<ul class="dropdown-menu" uib-dropdown-menu>
+						 <li ui-sref-active="active" >
+							 <a ui-sref="card" ng-click="vm.collapseNavbar()">
+								 <i class="fa fa-wrench"></i>&nbsp;
+								 <span translate="global.menu.entities.card">Card Management</span>
+							 </a>
+						 </li>
 						<!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
 					</ul>
 				</li>
@@ -94,7 +100,7 @@
 						<li ui-sref-active="active">
 							<a ui-sref="user-management" ng-click="vm.collapseNavbar()">
 								<i class="fa fa-users"></i>&nbsp;
-								<span translate="global.menu.admin.userManagement">User management</span>
+								<span translate="global.menu.admin.userManagement">Customer management</span>
 							</a>
 						</li>
 						<li ng-hide="vm.inProduction" ui-sref-active="active">
