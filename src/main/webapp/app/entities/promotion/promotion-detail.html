@@ -1,0 +1,38 @@
+
+<div>
+    <h2><span translate="kioskApp.promotion.detail.title">Promotion</span> {{vm.promotion.id}}</h2>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt><span translate="kioskApp.promotion.name">Name</span></dt>
+        <dd>
+            <span>{{vm.promotion.name}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="kioskApp.promotion.description">Description</span></dt>
+        <dd>
+            <span>{{vm.promotion.description}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="kioskApp.promotion.dateStart">Date Start</span></dt>
+        <dd>
+            <span>{{vm.promotion.dateStart | date:'mediumDate'}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="kioskApp.promotion.dateEnd">Date End</span></dt>
+        <dd>
+            <span>{{vm.promotion.dateEnd | date:'mediumDate'}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="kioskApp.promotion.user">User</span></dt>
+        <dd>
+            {{vm.promotion.userCustomerName}}
+        </dd>
+        <hr>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

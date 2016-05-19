@@ -1,0 +1,26 @@
+{
+    "kioskApp": {
+        "promotion" : {
+            "home": {
+                "title": "Promotions",
+                "createLabel": "Создать новый Promotion",
+                "createOrEditLabel": "Создать или отредактировать Promotion",
+                "search": "Найти Promotion"
+            },
+            "created": "Новый Promotion создан с идентификатором {{ param }}",
+            "updated": "Promotion обновлен с идентификатором {{ param }}",
+            "deleted": "Promotion удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Promotion {{ id }}?"
+            },
+            "detail": {
+                "title": "Promotion"
+            },
+            "name": "Name",
+            "description": "Description",
+            "dateStart": "Date Start",
+            "dateEnd": "Date End",
+            "user": "User"
+        }
+    }
+}

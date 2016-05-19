@@ -1,0 +1,70 @@
+<div>
+    <h2 translate="kioskApp.promotion.home.title">Promotions</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="promotion.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="kioskApp.promotion.home.createLabel">
+                        Create new Promotion
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span translate="kioskApp.promotion.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="kioskApp.promotion.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateStart"><span translate="kioskApp.promotion.dateStart">Date Start</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateEnd"><span translate="kioskApp.promotion.dateEnd">Date End</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="userCustomerName"><span translate="kioskApp.promotion.user">User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="promotion in vm.promotions track by promotion.id">
+                    <td><a ui-sref="promotion-detail({id:promotion.id})">{{promotion.id}}</a></td>
+                    <td>{{promotion.name}}</td>
+                    <td>{{promotion.description}}</td>
+                        <td>{{promotion.dateStart | date:'mediumDate'}}</td>
+                        <td>{{promotion.dateEnd | date:'mediumDate'}}</td>
+                    <td>
+                        {{promotion.userCustomerName}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="promotion-detail({id:promotion.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="promotion.edit({id:promotion.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="promotion.delete({id:promotion.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>
