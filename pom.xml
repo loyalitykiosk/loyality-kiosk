@@ -517,11 +517,11 @@
                 <configuration>
                     <changeLogFile>src/main/resources/config/liquibase/master.xml</changeLogFile>
                     <diffChangeLogFile>src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
-                    <driver></driver>
-                    <url></url>
+                    <driver>${mysql-driver}</driver>
+                    <url>${mysql-url}</url>
                     <defaultSchemaName></defaultSchemaName>
-                    <username>kiosk</username>
-                    <password></password>
+                    <username>${mysql-username}</username>
+                    <password>${mysql-password}</password>
                     <referenceUrl>hibernate:spring:com.kiosk.domain?dialect=&amp;hibernate.ejb.naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy</referenceUrl>
                     <verbose>true</verbose>
                     <logging>debug</logging>

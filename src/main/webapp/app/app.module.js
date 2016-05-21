@@ -3,9 +3,9 @@
 
     angular
         .module('kioskApp', [
-            'ngStorage', 
+            'ngStorage',
             'tmh.dynamicLocale',
-            'pascalprecht.translate', 
+            'pascalprecht.translate',
             'ngResource',
             'ngCookies',
             'ngAria',
@@ -18,9 +18,14 @@
             // jhipster-needle-angularjs-add-module JHipster will add new module here
             'angular-loading-bar'
         ])
+        .config(wow)
         .run(run);
 
     run.$inject = ['stateHandler', 'translationHandler'];
+
+    function wow() {
+        new WOW().init();
+    }
 
     function run(stateHandler, translationHandler) {
         stateHandler.initialize();
