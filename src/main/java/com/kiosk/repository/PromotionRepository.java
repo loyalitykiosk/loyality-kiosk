@@ -2,6 +2,8 @@ package com.kiosk.repository;
 
 import com.kiosk.domain.Promotion;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 
 import java.util.List;
@@ -12,6 +14,6 @@ import java.util.List;
 public interface PromotionRepository extends JpaRepository<Promotion,Long> {
 
     @Query("select promotion from Promotion promotion where promotion.user.login = ?#{principal.username}")
-    List<Promotion> findByUserIsCurrentUser();
+    Page<Promotion> findByUserIsCurrentUser(Pageable pageable);
 
 }

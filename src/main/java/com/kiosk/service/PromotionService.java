@@ -15,7 +15,7 @@ public interface PromotionService {
 
     /**
      * Save a promotion.
-     * 
+     *
      * @param promotionDTO the entity to save
      * @return the persisted entity
      */
@@ -23,15 +23,24 @@ public interface PromotionService {
 
     /**
      *  Get all the promotions.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
     Page<Promotion> findAll(Pageable pageable);
 
+
+    /**
+     *  Get all the promotions of current user.
+     *
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    Page<Promotion> findByUserIsCurrentUser(Pageable pageable);
+
     /**
      *  Get the "id" promotion.
-     *  
+     *
      *  @param id the id of the entity
      *  @return the entity
      */
@@ -39,7 +48,7 @@ public interface PromotionService {
 
     /**
      *  Delete the "id" promotion.
-     *  
+     *
      *  @param id the id of the entity
      */
     void delete(Long id);

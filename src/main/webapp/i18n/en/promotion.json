@@ -20,7 +20,7 @@
             "description": "Description",
             "dateStart": "Date Start",
             "dateEnd": "Date End",
-            "user": "User"
+            "user": "Customer"
         }
     }
 }

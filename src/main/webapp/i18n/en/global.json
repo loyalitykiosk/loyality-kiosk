@@ -8,7 +8,7 @@
             "entities": {
                 "main": "Management",
                 "card": "Card Management",
-                "promotion": "Promotion",
+                "promotion": "Promotion Management",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -25,16 +25,16 @@ import java.util.stream.Collectors;
 public class PromotionServiceImpl implements PromotionService{
 
     private final Logger log = LoggerFactory.getLogger(PromotionServiceImpl.class);
-    
+
     @Inject
     private PromotionRepository promotionRepository;
-    
+
     @Inject
     private PromotionMapper promotionMapper;
-    
+
     /**
      * Save a promotion.
-     * 
+     *
      * @param promotionDTO the entity to save
      * @return the persisted entity
      */
@@ -48,14 +48,22 @@ public class PromotionServiceImpl implements PromotionService{
 
     /**
      *  Get all the promotions.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Page<Promotion> findAll(Pageable pageable) {
         log.debug("Request to get all Promotions");
-        Page<Promotion> result = promotionRepository.findAll(pageable); 
+        Page<Promotion> result = promotionRepository.findAll(pageable);
+        return result;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Promotion> findByUserIsCurrentUser(Pageable pageable) {
+        log.debug("Request to get all Promotions for current user");
+        Page<Promotion> result = promotionRepository.findByUserIsCurrentUser(pageable);
         return result;
     }
 
@@ -65,7 +73,7 @@ public class PromotionServiceImpl implements PromotionService{
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public PromotionDTO findOne(Long id) {
         log.debug("Request to get Promotion : {}", id);
         Promotion promotion = promotionRepository.findOne(id);
@@ -75,7 +83,7 @@ public class PromotionServiceImpl implements PromotionService{
 
     /**
      *  Delete the  promotion by id.
-     *  
+     *
      *  @param id the id of the entity
      */
     public void delete(Long id) {

@@ -18,7 +18,6 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span translate="kioskApp.promotion.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="description"><span translate="kioskApp.promotion.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="dateStart"><span translate="kioskApp.promotion.dateStart">Date Start</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -29,8 +28,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="promotion in vm.promotions track by promotion.id">
-                    <td><a ui-sref="promotion-detail({id:promotion.id})">{{promotion.id}}</a></td>
-                    <td>{{promotion.name}}</td>
+                    <td><a ui-sref="promotion-detail({id:promotion.id})">{{promotion.name}}</a></td>
                     <td>{{promotion.description}}</td>
                         <td>{{promotion.dateStart | date:'mediumDate'}}</td>
                         <td>{{promotion.dateEnd | date:'mediumDate'}}</td>
