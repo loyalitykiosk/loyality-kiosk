@@ -58,24 +58,26 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kioskApp.card.ownerBirthDate" for="field_ownerBirthDate">Owner Birth Date</label>
-                <div class="input-group">
-                    <input id="field_ownerBirthDate" type="text" class="form-control" name="ownerBirthDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.card.ownerBirthDate" is-open="vm.datePickerOpenStatus.ownerBirthDate"
-                    required/>
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('ownerBirthDate')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </div>
-            <div ng-show="editForm.ownerBirthDate.$invalid">
+            <label class="control-label" translate="kioskApp.card.smsNumber" for="field_smsNumber">Sms Number</label>
+            <input type="text" class="form-control" name="smsNumber" id="field_smsNumber"
+                    ng-model="vm.card.smsNumber"
+                    required />
+            <div ng-show="editForm.smsNumber.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.ownerBirthDate.$error.required" translate="entity.validation.required">
+                    ng-show="editForm.smsNumber.$error.required" translate="entity.validation.required">
                     This field is required.
                 </p>
             </div>
         </div>
         <div class="form-group">
+            <label class="control-label" translate="kioskApp.card.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                    ng-model="vm.card.email"
+                     />
+        </div>
+        <div class="form-group">
             <label class="control-label" translate="kioskApp.card.status" for="field_status">Status</label>
-            <select class="form-control" name="status" ng-model="vm.card.status" id="field_status" required>
+            <select ng-init="vm.card.status = 'active'" class="form-control" name="status" ng-model="vm.card.status" id="field_status" required>
                 <option value="active" translate="kioskApp.CardStatus.active">active</option>
                 <option value="blocked" translate="kioskApp.CardStatus.blocked">blocked</option>
             </select>
@@ -88,7 +90,7 @@
         </div>
         <div class="form-group">
             <label class="control-label" translate="kioskApp.card.type" for="field_type">Type</label>
-            <select class="form-control" name="type" ng-model="vm.card.type" id="field_type" required>
+            <select ng-init="vm.card.type = 'BRONZE'" class="form-control" name="type" ng-model="vm.card.type" id="field_type" required>
                 <option value="BRONZE" translate="kioskApp.CardType.BRONZE">BRONZE</option>
                 <option value="SILVER" translate="kioskApp.CardType.SILVER">SILVER</option>
                 <option value="GOLD" translate="kioskApp.CardType.GOLD">GOLD</option>
@@ -102,12 +104,6 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label translate="kioskApp.card.user" for="field_user">Issued By</label>
-            <select class="form-control" id="field_user" name="user" ng-model="vm.card.userId" ng-options="user.id as user.customerName for user in vm.users" required>
-                <option value=""></option>
-            </select>
-        </div>
         <div ng-show="editForm.user.$invalid">
             <p class="help-block"
                ng-show="editForm.user.$error.required" translate="entity.validation.required">

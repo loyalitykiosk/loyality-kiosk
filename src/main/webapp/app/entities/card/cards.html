@@ -22,10 +22,10 @@
                     <th jh-sort-by="number"><span translate="kioskApp.card.number">Number</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="ownerName"><span translate="kioskApp.card.ownerName">Owner Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="ownerSurname"><span translate="kioskApp.card.ownerSurname">Owner Surname</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="ownerBirthDate"><span translate="kioskApp.card.ownerBirthDate">Owner Birth Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="smsNumber"><span translate="kioskApp.card.smsNumber">Sms Number</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="email"><span translate="kioskApp.card.email">Email</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="status"><span translate="kioskApp.card.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="type"><span translate="kioskApp.card.type">Type</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="userCustomerName"><span translate="kioskApp.card.user">User</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -35,12 +35,10 @@
                     <td>{{card.number}}</td>
                     <td>{{card.ownerName}}</td>
                     <td>{{card.ownerSurname}}</td>
-                        <td>{{card.ownerBirthDate | date:'mediumDate'}}</td>
+                    <td>{{card.smsNumber}}</td>
+                    <td>{{card.email}}</td>
                     <td translate="{{'kioskApp.CardStatus.' + card.status}}">{{card.status}}</td>
                     <td translate="{{'kioskApp.CardType.' + card.type}}">{{card.type}}</td>
-                    <td>
-                        {{card.userCustomerName}}
-                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

@@ -1,6 +1,5 @@
 package com.kiosk.web.rest.dto;
 
-import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -31,7 +30,10 @@ public class CardDTO implements Serializable {
 
 
     @NotNull
-    private LocalDate ownerBirthDate;
+    private String smsNumber;
+
+
+    private String email;
 
 
     @NotNull
@@ -41,10 +43,6 @@ public class CardDTO implements Serializable {
     @NotNull
     private CardType type;
 
-
-    private Long userId;
-
-    private String userCustomerName;
 
     public Long getId() {
         return id;
@@ -74,12 +72,19 @@ public class CardDTO implements Serializable {
     public void setOwnerSurname(String ownerSurname) {
         this.ownerSurname = ownerSurname;
     }
-    public LocalDate getOwnerBirthDate() {
-        return ownerBirthDate;
+    public String getSmsNumber() {
+        return smsNumber;
     }
 
-    public void setOwnerBirthDate(LocalDate ownerBirthDate) {
-        this.ownerBirthDate = ownerBirthDate;
+    public void setSmsNumber(String smsNumber) {
+        this.smsNumber = smsNumber;
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     public CardStatus getStatus() {
         return status;
@@ -94,22 +99,6 @@ public class CardDTO implements Serializable {
 
     public void setType(CardType type) {
         this.type = type;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getUserCustomerName() {
-        return userCustomerName;
-    }
-
-    public void setUserCustomerName(String userCustomerName) {
-        this.userCustomerName = userCustomerName;
     }
 
     @Override
@@ -140,7 +129,8 @@ public class CardDTO implements Serializable {
             ", number='" + number + "'" +
             ", ownerName='" + ownerName + "'" +
             ", ownerSurname='" + ownerSurname + "'" +
-            ", ownerBirthDate='" + ownerBirthDate + "'" +
+            ", smsNumber='" + smsNumber + "'" +
+            ", email='" + email + "'" +
             ", status='" + status + "'" +
             ", type='" + type + "'" +
             '}';

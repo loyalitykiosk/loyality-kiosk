@@ -1,5 +1,7 @@
 package com.kiosk.service.impl;
 
+import com.kiosk.repository.UserRepository;
+import com.kiosk.security.SecurityUtils;
 import com.kiosk.service.CardService;
 import com.kiosk.domain.Card;
 import com.kiosk.repository.CardRepository;
@@ -30,6 +32,9 @@ public class CardServiceImpl implements CardService{
     private CardRepository cardRepository;
 
     @Inject
+    private UserRepository userRepository;
+
+    @Inject
     private CardMapper cardMapper;
 
     /**
@@ -41,6 +46,7 @@ public class CardServiceImpl implements CardService{
     public CardDTO save(CardDTO cardDTO) {
         log.debug("Request to save Card : {}", cardDTO);
         Card card = cardMapper.cardDTOToCard(cardDTO);
+        card.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
         card = cardRepository.save(card);
         CardDTO result = cardMapper.cardToCardDTO(card);
         return result;

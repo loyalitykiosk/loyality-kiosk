@@ -22,7 +22,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="number" type="varchar(10)">
-                <constraints nullable="false" unique="true" />
+                <constraints nullable="false" unique="true"/>
             </column>
 
             <column name="owner_name" type="varchar(255)">
@@ -33,8 +33,12 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="owner_birth_date" type="date">
+            <column name="sms_number" type="varchar(255)">
                 <constraints nullable="false" />
+            </column>
+
+            <column name="email" type="varchar(255)">
+                <constraints nullable="true" />
             </column>
 
             <column name="status" type="varchar(255)">

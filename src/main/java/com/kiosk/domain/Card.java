@@ -4,12 +4,12 @@ package com.kiosk.domain;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Objects;
 
 import com.kiosk.domain.enumeration.CardStatus;
 
 import com.kiosk.domain.enumeration.CardType;
+import org.hibernate.validator.constraints.Email;
 
 /**
  * A Card.
@@ -38,8 +38,13 @@ public class Card implements Serializable {
     private String ownerSurname;
 
     @NotNull
-    @Column(name = "owner_birth_date", nullable = false)
-    private LocalDate ownerBirthDate;
+    @Column(name = "sms_number", nullable = false)
+    private String smsNumber;
+
+    @Email
+    @Column(length = 100, name = "email")
+    @Size(max = 100)
+    private String email;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -87,12 +92,20 @@ public class Card implements Serializable {
         this.ownerSurname = ownerSurname;
     }
 
-    public LocalDate getOwnerBirthDate() {
-        return ownerBirthDate;
+    public String getSmsNumber() {
+        return smsNumber;
     }
 
-    public void setOwnerBirthDate(LocalDate ownerBirthDate) {
-        this.ownerBirthDate = ownerBirthDate;
+    public void setSmsNumber(String smsNumber) {
+        this.smsNumber = smsNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public CardStatus getStatus() {
@@ -146,7 +159,8 @@ public class Card implements Serializable {
             ", number='" + number + "'" +
             ", ownerName='" + ownerName + "'" +
             ", ownerSurname='" + ownerSurname + "'" +
-            ", ownerBirthDate='" + ownerBirthDate + "'" +
+            ", smsNumber='" + smsNumber + "'" +
+            ", email='" + email + "'" +
             ", status='" + status + "'" +
             ", type='" + type + "'" +
             '}';

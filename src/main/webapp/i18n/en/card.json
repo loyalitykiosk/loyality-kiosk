@@ -19,10 +19,10 @@
             "number": "Number",
             "ownerName": "Owner Name",
             "ownerSurname": "Owner Surname",
-            "ownerBirthDate": "Owner Birth Date",
+            "smsNumber": "Sms Number",
+            "email": "Email",
             "status": "Status",
-            "type": "Type",
-            "user": "Issued By"
+            "type": "Type"
         }
     }
 }

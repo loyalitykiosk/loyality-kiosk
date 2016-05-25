@@ -26,8 +26,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -54,9 +52,10 @@ public class CardResourceIntTest {
     private static final String UPDATED_OWNER_NAME = "BBBBB";
     private static final String DEFAULT_OWNER_SURNAME = "AAAAA";
     private static final String UPDATED_OWNER_SURNAME = "BBBBB";
-
-    private static final LocalDate DEFAULT_OWNER_BIRTH_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_OWNER_BIRTH_DATE = LocalDate.now(ZoneId.systemDefault());
+    private static final String DEFAULT_SMS_NUMBER = "AAAAA";
+    private static final String UPDATED_SMS_NUMBER = "BBBBB";
+    private static final String DEFAULT_EMAIL = "AAAAA";
+    private static final String UPDATED_EMAIL = "BBBBB";
 
     private static final CardStatus DEFAULT_STATUS = CardStatus.active;
     private static final CardStatus UPDATED_STATUS = CardStatus.blocked;
@@ -100,7 +99,8 @@ public class CardResourceIntTest {
         card.setNumber(DEFAULT_NUMBER);
         card.setOwnerName(DEFAULT_OWNER_NAME);
         card.setOwnerSurname(DEFAULT_OWNER_SURNAME);
-        card.setOwnerBirthDate(DEFAULT_OWNER_BIRTH_DATE);
+        card.setSmsNumber(DEFAULT_SMS_NUMBER);
+        card.setEmail(DEFAULT_EMAIL);
         card.setStatus(DEFAULT_STATUS);
         card.setType(DEFAULT_TYPE);
     }
@@ -125,7 +125,8 @@ public class CardResourceIntTest {
         assertThat(testCard.getNumber()).isEqualTo(DEFAULT_NUMBER);
         assertThat(testCard.getOwnerName()).isEqualTo(DEFAULT_OWNER_NAME);
         assertThat(testCard.getOwnerSurname()).isEqualTo(DEFAULT_OWNER_SURNAME);
-        assertThat(testCard.getOwnerBirthDate()).isEqualTo(DEFAULT_OWNER_BIRTH_DATE);
+        assertThat(testCard.getSmsNumber()).isEqualTo(DEFAULT_SMS_NUMBER);
+        assertThat(testCard.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testCard.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testCard.getType()).isEqualTo(DEFAULT_TYPE);
     }
@@ -189,10 +190,10 @@ public class CardResourceIntTest {
 
     @Test
     @Transactional
-    public void checkOwnerBirthDateIsRequired() throws Exception {
+    public void checkSmsNumberIsRequired() throws Exception {
         int databaseSizeBeforeTest = cardRepository.findAll().size();
         // set the field null
-        card.setOwnerBirthDate(null);
+        card.setSmsNumber(null);
 
         // Create the Card, which fails.
         CardDTO cardDTO = cardMapper.cardToCardDTO(card);
@@ -258,7 +259,8 @@ public class CardResourceIntTest {
                 .andExpect(jsonPath("$.[*].number").value(hasItem(DEFAULT_NUMBER.toString())))
                 .andExpect(jsonPath("$.[*].ownerName").value(hasItem(DEFAULT_OWNER_NAME.toString())))
                 .andExpect(jsonPath("$.[*].ownerSurname").value(hasItem(DEFAULT_OWNER_SURNAME.toString())))
-                .andExpect(jsonPath("$.[*].ownerBirthDate").value(hasItem(DEFAULT_OWNER_BIRTH_DATE.toString())))
+                .andExpect(jsonPath("$.[*].smsNumber").value(hasItem(DEFAULT_SMS_NUMBER.toString())))
+                .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
                 .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
                 .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())));
     }
@@ -277,7 +279,8 @@ public class CardResourceIntTest {
             .andExpect(jsonPath("$.number").value(DEFAULT_NUMBER.toString()))
             .andExpect(jsonPath("$.ownerName").value(DEFAULT_OWNER_NAME.toString()))
             .andExpect(jsonPath("$.ownerSurname").value(DEFAULT_OWNER_SURNAME.toString()))
-            .andExpect(jsonPath("$.ownerBirthDate").value(DEFAULT_OWNER_BIRTH_DATE.toString()))
+            .andExpect(jsonPath("$.smsNumber").value(DEFAULT_SMS_NUMBER.toString()))
+            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()));
     }
@@ -303,7 +306,8 @@ public class CardResourceIntTest {
         updatedCard.setNumber(UPDATED_NUMBER);
         updatedCard.setOwnerName(UPDATED_OWNER_NAME);
         updatedCard.setOwnerSurname(UPDATED_OWNER_SURNAME);
-        updatedCard.setOwnerBirthDate(UPDATED_OWNER_BIRTH_DATE);
+        updatedCard.setSmsNumber(UPDATED_SMS_NUMBER);
+        updatedCard.setEmail(UPDATED_EMAIL);
         updatedCard.setStatus(UPDATED_STATUS);
         updatedCard.setType(UPDATED_TYPE);
         CardDTO cardDTO = cardMapper.cardToCardDTO(updatedCard);
@@ -320,7 +324,8 @@ public class CardResourceIntTest {
         assertThat(testCard.getNumber()).isEqualTo(UPDATED_NUMBER);
         assertThat(testCard.getOwnerName()).isEqualTo(UPDATED_OWNER_NAME);
         assertThat(testCard.getOwnerSurname()).isEqualTo(UPDATED_OWNER_SURNAME);
-        assertThat(testCard.getOwnerBirthDate()).isEqualTo(UPDATED_OWNER_BIRTH_DATE);
+        assertThat(testCard.getSmsNumber()).isEqualTo(UPDATED_SMS_NUMBER);
+        assertThat(testCard.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testCard.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testCard.getType()).isEqualTo(UPDATED_TYPE);
     }

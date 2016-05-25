@@ -98,7 +98,8 @@
                                 number: null,
                                 ownerName: null,
                                 ownerSurname: null,
-                                ownerBirthDate: null,
+                                smsNumber: null,
+                                email: null,
                                 status: null,
                                 type: null,
                                 id: null

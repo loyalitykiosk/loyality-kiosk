@@ -18,9 +18,14 @@
             <span>{{vm.card.ownerSurname}}</span>
         </dd>
         <hr>
-        <dt><span translate="kioskApp.card.ownerBirthDate">Owner Birth Date</span></dt>
+        <dt><span translate="kioskApp.card.smsNumber">Sms Number</span></dt>
         <dd>
-            <span>{{vm.card.ownerBirthDate | date:'mediumDate'}}</span>
+            <span>{{vm.card.smsNumber}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="kioskApp.card.email">Email</span></dt>
+        <dd>
+            <span>{{vm.card.email}}</span>
         </dd>
         <hr>
         <dt><span translate="kioskApp.card.status">Status</span></dt>
@@ -31,11 +36,6 @@
         <dt><span translate="kioskApp.card.type">Type</span></dt>
         <dd>
             <span translate="{{'kioskApp.CardType.' + vm.card.type}}">{{vm.card.type}}</span>
-        </dd>
-        <hr>
-        <dt><span translate="kioskApp.card.user">Issued By</span></dt>
-        <dd>
-            {{vm.card.userCustomerName}}
         </dd>
         <hr>
     </dl>
