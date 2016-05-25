@@ -3,7 +3,8 @@
         "card" : {
             "home": {
                 "title": "Card Management",
-                "createLabel": "Create a new Loyality  Card",
+                "createLabel": "Create new Card",
+                "editLabel": "Edit Card",
                 "createOrEditLabel": "Create or edit a Loyalty Card",
                 "search": "Search for Card"
             },
