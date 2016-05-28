@@ -9,6 +9,9 @@
 
     function CardController ($scope, $state, Card, ParseLinks, AlertService, pagingParams, paginationConstants) {
         var vm = this;
+        vm.number= "";
+        vm.ownerName = "";
+        vm.smsNumber = "";
         vm.loadAll = loadAll;
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
@@ -18,6 +21,9 @@
 
         function loadAll () {
             Card.query({
+                number: vm.number,
+                ownerName: vm.ownerName,
+                smsNumber: vm.smsNumber,
                 page: pagingParams.page - 1,
                 size: paginationConstants.itemsPerPage,
                 sort: sort()

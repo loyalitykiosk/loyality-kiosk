@@ -10,6 +10,12 @@
                         Create new Card
                     </span>
                 </button>
+                <button class="btn btn-primary" ng-click="vm.loadAll()">
+                    <span class="glyphicon glyphicon-search"></span>
+                    <span  translate="kioskApp.card.home.findLabel">
+                        Refresh
+                    </span>
+                </button>
             </div>
         </div>
     </div>
@@ -27,6 +33,17 @@
                     <th jh-sort-by="status"><span translate="kioskApp.card.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="type"><span translate="kioskApp.card.type">Type</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="text" ng-model="vm.number"/></td>
+                    <td><input type="text" ng-model="vm.ownerName"/></td>
+                    <td></td>
+                    <td><input type="text" ng-model="vm.smsNumber"/></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </thead>
             <tbody>

@@ -65,6 +65,13 @@ public class CardServiceImpl implements CardService{
         return result;
     }
 
+    @Override
+    public Page<Card> findAllByNumberPhoneCustomerName(String number, String ownerName, String smsNumber, Pageable pageable) {
+        log.debug("Request to get all Cards by Number Phone CustomerName");
+        Page<Card> result = cardRepository.findAllByNumberPhoneCustomerName(number, ownerName, smsNumber, pageable);
+        return result;
+    }
+
     /**
      *  Get one card by id.
      *

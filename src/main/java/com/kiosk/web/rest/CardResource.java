@@ -10,7 +10,9 @@ import com.kiosk.web.rest.mapper.CardMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -103,10 +105,10 @@ public class CardResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
-    public ResponseEntity<List<CardDTO>> getAllCards(Pageable pageable)
+    public ResponseEntity<List<CardDTO>> getAllCards(@RequestParam(required = false) String number,@RequestParam(required = false) String ownerName,@RequestParam(required = false) String smsNumber,Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Cards");
-        Page<Card> page = cardService.findAll(pageable);
+        Page<Card> page = cardService.findAllByNumberPhoneCustomerName(number, ownerName,smsNumber, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/cards");
         return new ResponseEntity<>(cardMapper.cardsToCardDTOs(page.getContent()), headers, HttpStatus.OK);
     }

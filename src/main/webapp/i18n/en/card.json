@@ -4,6 +4,7 @@
             "home": {
                 "title": "Card Management",
                 "createLabel": "Create new Card",
+                "findLabel": "Refresh",
                 "editLabel": "Edit Card",
                 "createOrEditLabel": "Create or edit a Loyalty Card",
                 "search": "Search for Card"

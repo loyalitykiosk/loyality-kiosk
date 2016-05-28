@@ -29,6 +29,18 @@ public interface CardService {
      */
     Page<Card> findAll(Pageable pageable);
 
+
+    /**
+     *  Get all the cards satisfy parameters.
+     *
+     *  @param pageable the pagination information
+     *  @param number card number
+     *  @param ownerName name of card owner
+     *  @param smsNumber sms number
+     *  @return the list of entities
+     */
+    Page<Card> findAllByNumberPhoneCustomerName(String number, String ownerName, String smsNumber, Pageable pageable);
+
     /**
      *  Get the "id" card.
      *
