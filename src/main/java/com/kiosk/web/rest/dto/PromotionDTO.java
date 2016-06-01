@@ -1,6 +1,7 @@
 package com.kiosk.web.rest.dto;
 
 import java.time.LocalDate;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,9 +27,20 @@ public class PromotionDTO implements Serializable {
     private LocalDate dateEnd;
 
 
+    @NotNull
+    private String prizeName;
+
+
+    private String prizeDescription;
+
+
     private Long userId;
 
     private String userCustomerName;
+
+    private Long winnerId;
+
+    private String winnerOwnerName;
 
     public Long getId() {
         return id;
@@ -65,6 +77,20 @@ public class PromotionDTO implements Serializable {
     public void setDateEnd(LocalDate dateEnd) {
         this.dateEnd = dateEnd;
     }
+    public String getPrizeName() {
+        return prizeName;
+    }
+
+    public void setPrizeName(String prizeName) {
+        this.prizeName = prizeName;
+    }
+    public String getPrizeDescription() {
+        return prizeDescription;
+    }
+
+    public void setPrizeDescription(String prizeDescription) {
+        this.prizeDescription = prizeDescription;
+    }
 
     public Long getUserId() {
         return userId;
@@ -80,6 +106,22 @@ public class PromotionDTO implements Serializable {
 
     public void setUserCustomerName(String userCustomerName) {
         this.userCustomerName = userCustomerName;
+    }
+
+    public Long getWinnerId() {
+        return winnerId;
+    }
+
+    public void setWinnerId(Long cardId) {
+        this.winnerId = cardId;
+    }
+
+    public String getWinnerOwnerName() {
+        return winnerOwnerName;
+    }
+
+    public void setWinnerOwnerName(String cardOwnerName) {
+        this.winnerOwnerName = cardOwnerName;
     }
 
     @Override
@@ -111,6 +153,8 @@ public class PromotionDTO implements Serializable {
             ", description='" + description + "'" +
             ", dateStart='" + dateStart + "'" +
             ", dateEnd='" + dateEnd + "'" +
+            ", prizeName='" + prizeName + "'" +
+            ", prizeDescription='" + prizeDescription + "'" +
             '}';
     }
 }

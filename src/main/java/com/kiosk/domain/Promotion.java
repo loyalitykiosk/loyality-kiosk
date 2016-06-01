@@ -2,6 +2,7 @@ package com.kiosk.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -31,8 +32,18 @@ public class Promotion implements Serializable {
     @Column(name = "date_end")
     private LocalDate dateEnd;
 
+    @NotNull
+    @Column(name = "prize_name", nullable = false)
+    private String prizeName;
+
+    @Column(name = "prize_description")
+    private String prizeDescription;
+
     @ManyToOne
     private User user;
+
+    @ManyToOne
+    private Card winner;
 
     public Long getId() {
         return id;
@@ -74,12 +85,36 @@ public class Promotion implements Serializable {
         this.dateEnd = dateEnd;
     }
 
+    public String getPrizeName() {
+        return prizeName;
+    }
+
+    public void setPrizeName(String prizeName) {
+        this.prizeName = prizeName;
+    }
+
+    public String getPrizeDescription() {
+        return prizeDescription;
+    }
+
+    public void setPrizeDescription(String prizeDescription) {
+        this.prizeDescription = prizeDescription;
+    }
+
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Card getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Card card) {
+        this.winner = card;
     }
 
     @Override
@@ -110,6 +145,8 @@ public class Promotion implements Serializable {
             ", description='" + description + "'" +
             ", dateStart='" + dateStart + "'" +
             ", dateEnd='" + dateEnd + "'" +
+            ", prizeName='" + prizeName + "'" +
+            ", prizeDescription='" + prizeDescription + "'" +
             '}';
     }
 }

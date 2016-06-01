@@ -1,10 +1,12 @@
 
-<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myPromotionLabel" translate="kioskApp.promotion.home.createOrEditLabel">Create or edit a Promotion</h4>
+        <h4 class="modal-title" id="myPromotionLabel">
+            {{ vm.promotion.id == null ? ("kioskApp.promotion.home.createLabel" | translate) : ("kioskApp.promotion.home.editLabel" | translate) }}
+        </h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
@@ -28,7 +30,7 @@
         <div class="form-group">
             <label class="control-label" translate="kioskApp.promotion.dateStart" for="field_dateStart">Date Start</label>
                 <div class="input-group">
-                    <input id="field_dateStart" type="text" class="form-control" name="dateStart" uib-datepicker-popup="{{dateformat}}" ng-model="vm.promotion.dateStart" is-open="vm.datePickerOpenStatus.dateStart"
+                    <input id="field_dateStart" type="text" class="form-control" name="dateStart" datepicker-options="vm.dateoptions"  uib-datepicker-popup="{{dateformat}}" ng-model="vm.promotion.dateStart" is-open="vm.datePickerOpenStatus.dateStart"
                     />
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateStart')"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -38,17 +40,34 @@
         <div class="form-group">
             <label class="control-label" translate="kioskApp.promotion.dateEnd" for="field_dateEnd">Date End</label>
                 <div class="input-group">
-                    <input id="field_dateEnd" type="text" class="form-control" name="dateEnd" uib-datepicker-popup="{{dateformat}}" ng-model="vm.promotion.dateEnd" is-open="vm.datePickerOpenStatus.dateEnd"
+                    <input id="field_dateEnd" type="text" class="form-control" name="dateEnd" datepicker-options="vm.dateoptions" uib-datepicker-popup="{{dateformat}}" ng-model="vm.promotion.dateEnd" is-open="vm.datePickerOpenStatus.dateEnd"
                     />
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateEnd')"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
                 </div>
         </div>
-
         <div class="form-group">
-            <label translate="kioskApp.promotion.user" for="field_user">User</label>
-            <select class="form-control" id="field_user" name="user" ng-model="vm.promotion.userId" ng-options="user.id as user.customerName for user in vm.users">
+            <label class="control-label" translate="kioskApp.promotion.prizeName" for="field_prizeName">Prize Name</label>
+            <input type="text" class="form-control" name="prizeName" id="field_prizeName"
+                    ng-model="vm.promotion.prizeName"
+                    required />
+            <div ng-show="editForm.prizeName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.prizeName.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="kioskApp.promotion.prizeDescription" for="field_prizeDescription">Prize Description</label>
+            <textarea type="text" class="form-control" name="prizeDescription" id="field_prizeDescription"
+                    ng-model="vm.promotion.prizeDescription"
+                     />
+        </div>
+        <div class="form-group">
+            <label translate="kioskApp.promotion.winner" for="field_winner">Winner</label>
+            <select class="form-control" id="field_winner" name="winner" ng-model="vm.promotion.winnerId" ng-options="card.id as card.ownerName for card in vm.cards">
                 <option value=""></option>
             </select>
         </div>

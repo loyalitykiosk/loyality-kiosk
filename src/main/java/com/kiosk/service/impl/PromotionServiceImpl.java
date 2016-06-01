@@ -1,5 +1,7 @@
 package com.kiosk.service.impl;
 
+import com.kiosk.repository.UserRepository;
+import com.kiosk.security.SecurityUtils;
 import com.kiosk.service.PromotionService;
 import com.kiosk.domain.Promotion;
 import com.kiosk.repository.PromotionRepository;
@@ -30,6 +32,9 @@ public class PromotionServiceImpl implements PromotionService{
     private PromotionRepository promotionRepository;
 
     @Inject
+    private UserRepository userRepository;
+
+    @Inject
     private PromotionMapper promotionMapper;
 
     /**
@@ -41,6 +46,7 @@ public class PromotionServiceImpl implements PromotionService{
     public PromotionDTO save(PromotionDTO promotionDTO) {
         log.debug("Request to save Promotion : {}", promotionDTO);
         Promotion promotion = promotionMapper.promotionDTOToPromotion(promotionDTO);
+        promotion.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
         promotion = promotionRepository.save(promotion);
         PromotionDTO result = promotionMapper.promotionToPromotionDTO(promotion);
         return result;

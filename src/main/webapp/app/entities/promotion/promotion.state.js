@@ -95,6 +95,8 @@
                                 description: null,
                                 dateStart: null,
                                 dateEnd: null,
+                                prizeName: null,
+                                prizeDescription: null,
                                 id: null
                             };
                         }

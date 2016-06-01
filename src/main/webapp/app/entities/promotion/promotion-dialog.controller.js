@@ -5,12 +5,16 @@
         .module('kioskApp')
         .controller('PromotionDialogController', PromotionDialogController);
 
-    PromotionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Promotion', 'User'];
+    PromotionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Promotion', 'User', 'Card'];
 
-    function PromotionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Promotion, User) {
+    function PromotionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Promotion, User, Card) {
         var vm = this;
         vm.promotion = entity;
         vm.users = User.query();
+        vm.cards = Card.query();
+        vm.dateoptions = {
+            minDate: new Date()
+        };
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

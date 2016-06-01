@@ -20,7 +20,10 @@
             "description": "Description",
             "dateStart": "Date Start",
             "dateEnd": "Date End",
-            "user": "User"
+            "prizeName": "Prize Name",
+            "prizeDescription": "Prize Description",
+            "user": "User",
+            "winner": "Winner"
         }
     }
 }

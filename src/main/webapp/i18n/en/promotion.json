@@ -4,7 +4,7 @@
             "home": {
                 "title": "Promotions",
                 "createLabel": "Create a new Promotion",
-                "createOrEditLabel": "Create or edit a Promotion",
+                "editLabel": "Edit Promotion",
                 "search": "Search for Promotion"
             },
             "created": "A new Promotion is created with identifier {{ param }}",
@@ -20,7 +20,10 @@
             "description": "Description",
             "dateStart": "Date Start",
             "dateEnd": "Date End",
-            "user": "Customer"
+            "prizeName": "Prize",
+            "prizeDescription": "Prize Description",
+            "user": "Customer",
+            "winner": "Winner"
         }
     }
 }

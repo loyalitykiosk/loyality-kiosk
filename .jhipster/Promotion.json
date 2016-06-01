@@ -5,10 +5,16 @@
             "otherEntityName": "user",
             "relationshipType": "many-to-one",
             "otherEntityField": "customerName"
+        },
+        {
+            "relationshipName": "winner",
+            "otherEntityName": "card",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "ownerName"
         }
     ],
     "fields": [
-               {
+        {
             "fieldName": "name",
             "fieldType": "String"
         },
@@ -23,6 +29,17 @@
         {
             "fieldName": "dateEnd",
             "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "prizeName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "prizeDescription",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20160519131749",

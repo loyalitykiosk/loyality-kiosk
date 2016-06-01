@@ -23,9 +23,24 @@
             <span>{{vm.promotion.dateEnd | date:'mediumDate'}}</span>
         </dd>
         <hr>
+        <dt><span translate="kioskApp.promotion.prizeName">Prize Name</span></dt>
+        <dd>
+            <span>{{vm.promotion.prizeName}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="kioskApp.promotion.prizeDescription">Prize Description</span></dt>
+        <dd>
+            <span>{{vm.promotion.prizeDescription}}</span>
+        </dd>
+        <hr>
         <dt><span translate="kioskApp.promotion.user">User</span></dt>
         <dd>
             {{vm.promotion.userCustomerName}}
+        </dd>
+        <hr>
+        <dt><span translate="kioskApp.promotion.winner">Winner</span></dt>
+        <dd>
+            <a ui-sref="card-detail({id:vm.promotion.winnerId})">{{vm.promotion.winnerOwnerName}}</a>
         </dd>
         <hr>
     </dl>

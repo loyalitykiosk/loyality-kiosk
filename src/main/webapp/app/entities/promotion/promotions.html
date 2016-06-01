@@ -22,7 +22,7 @@
                     <th jh-sort-by="description"><span translate="kioskApp.promotion.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="dateStart"><span translate="kioskApp.promotion.dateStart">Date Start</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="dateEnd"><span translate="kioskApp.promotion.dateEnd">Date End</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="userCustomerName"><span translate="kioskApp.promotion.user">User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="winnerOwnerName"><span translate="kioskApp.promotion.winner">Winner</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -33,7 +33,7 @@
                         <td>{{promotion.dateStart | date:'mediumDate'}}</td>
                         <td>{{promotion.dateEnd | date:'mediumDate'}}</td>
                     <td>
-                        {{promotion.userCustomerName}}
+                        <a ui-sref="card-detail({id:promotion.winnerId})">{{promotion.winnerOwnerName}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
@@ -45,12 +45,14 @@
                             </button>
                             <button type="submit"
                                     ui-sref="promotion.edit({id:promotion.id})"
+                                    ng-show="! promotion.winnerOwnerName"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
                             </button>
                             <button type="submit"
                                     ui-sref="promotion.delete({id:promotion.id})"
+                                    ng-show="! promotion.winnerOwnerName"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>

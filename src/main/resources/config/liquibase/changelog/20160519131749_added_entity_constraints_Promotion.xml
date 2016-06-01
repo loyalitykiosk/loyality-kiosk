@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
 
+        <addForeignKeyConstraint baseColumnNames="winner_id"
+                                 baseTableName="promotion"
+                                 constraintName="fk_promotion_winner_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="card"/>
+
     </changeSet>
 </databaseChangeLog>

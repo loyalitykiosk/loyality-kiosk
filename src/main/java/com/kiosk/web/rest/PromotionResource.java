@@ -12,7 +12,6 @@ import com.kiosk.web.rest.mapper.PromotionMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,9 +21,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -56,7 +55,7 @@ public class PromotionResource {
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<PromotionDTO> createPromotion(@RequestBody PromotionDTO promotionDTO) throws URISyntaxException {
+    public ResponseEntity<PromotionDTO> createPromotion(@Valid @RequestBody PromotionDTO promotionDTO) throws URISyntaxException {
         log.debug("REST request to save Promotion : {}", promotionDTO);
         if (promotionDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("promotion", "idexists", "A new promotion cannot already have an ID")).body(null);
@@ -80,7 +79,7 @@ public class PromotionResource {
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<PromotionDTO> updatePromotion(@RequestBody PromotionDTO promotionDTO) throws URISyntaxException {
+    public ResponseEntity<PromotionDTO> updatePromotion(@Valid @RequestBody PromotionDTO promotionDTO) throws URISyntaxException {
         log.debug("REST request to update Promotion : {}", promotionDTO);
         if (promotionDTO.getId() == null) {
             return createPromotion(promotionDTO);
