@@ -78,13 +78,59 @@
                         </p>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="langKey" translate="settings.form.language">Language</label>
-                    <select id="langKey" name="langKey" class="form-control" ng-model="vm.settingsAccount.langKey" ng-controller="JhiLanguageController as languageVm" ng-options="code as (code | findLanguageFromKey) for code in languageVm.languages"></select>
-                </div>
-
                 <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" translate="settings.form.button">Save</button>
             </form>
+
+            <h2 translate="settings.special-form.title" translate-values="{username: '{{vm.settingsAccount.login}}'}">Special settings for [<b>{{vm.settingsAccount.login}}</b>]</h2>
+            <form name="special-settings-form" role="form" novalidate show-validation>
+
+                <div class="form-group">
+                    <label class="control-label" for="platinum" translate="settings.special-form.platinum">Platinum</label>
+                    <input type="text" class="form-control" id="platinum" name="platinum" placeholder="{{'settings.special-form.platinum.placeholder' | translate}}"
+                            ng-minlength=1 ng-maxlength=50 required maxlength="50">
+                    <div ng-show="special-settings-form.platinum.$dirty && special-settings-form.platinum.$invalid">
+                        <p class="help-block"
+                           ng-show="special-settings-form.platinum.$error.required" translate="settings.messages.validate.platinum.required">
+                            Platinum point are required
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="gold" translate="settings.special-form.gold">Gold</label>
+                    <input type="text" class="form-control" id="gold" name="gold" placeholder="{{'settings.special-form.gold.placeholder' | translate}}"
+                            ng-minlength=1 ng-maxlength=50 required maxlength="50">
+                    <div ng-show="special-settings-form.gold.$dirty && special-settings-form.gold.$invalid">
+                        <p class="help-block"
+                           ng-show="special-settings-form.gold.$error.required" translate="settings.messages.validate.gold.required">
+                            Gold point are required
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="silver" translate="settings.special-form.silver">Silver</label>
+                    <input type="text" class="form-control" id="silver" name="silver" placeholder="{{'settings.special-form.silver.placeholder' | translate}}"
+                            ng-minlength=1 ng-maxlength=50 required maxlength="50">
+                    <div ng-show="special-settings-form.silver.$dirty && special-settings-form.silver.$invalid">
+                        <p class="help-block"
+                           ng-show="special-settings-form.silver.$error.required" translate="settings.messages.validate.silver.required">
+                            Silver point are required
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="bronze" translate="settings.special-form.bronze">Bronze</label>
+                    <input type="text" class="form-control" id="bronze" name="silver" placeholder="{{'settings.special-form.bronze.placeholder' | translate}}"
+                            ng-minlength=1 ng-maxlength=50 required maxlength="50">
+                    <div ng-show="special-settings-form.bronze.$dirty && special-settings-form.bronze.$invalid">
+                        <p class="help-block"
+                           ng-show="special-settings-form.bronze.$error.required" translate="settings.messages.validate.bronze.required">
+                            Bronze point are required
+                        </p>
+                    </div>
+                </div>
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" translate="settings.form.button">Save</button>
+            </form>
+
         </div>
     </div>
 

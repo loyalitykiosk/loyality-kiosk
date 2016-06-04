@@ -1,0 +1,26 @@
+{
+    "kioskApp": {
+        "kiosk" : {
+            "home": {
+                "title": "Kiosks",
+                "createLabel": "Создать новый Kiosk",
+                "createOrEditLabel": "Создать или отредактировать Kiosk",
+                "search": "Найти Kiosk"
+            },
+            "created": "Новый Kiosk создан с идентификатором {{ param }}",
+            "updated": "Kiosk обновлен с идентификатором {{ param }}",
+            "deleted": "Kiosk удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Kiosk {{ id }}?"
+            },
+            "detail": {
+                "title": "Kiosk"
+            },
+            "name": "Name",
+            "description": "Description",
+            "location": "Location",
+            "license": "License",
+            "customer": "Customer"
+        }
+    }
+}

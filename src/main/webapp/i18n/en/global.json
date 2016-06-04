@@ -9,6 +9,7 @@
                 "main": "Management",
                 "card": "Card Management",
                 "promotion": "Promotion Management",
+                "kiosk": "Kiosk Management",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

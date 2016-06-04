@@ -1,6 +1,6 @@
 {
     "settings": {
-        "title": "User settings for [<b>{{username}}</b>]",
+        "title": "Customer settings for user [<b>{{username}}</b>]",
         "form": {
             "firstname": "First Name",
             "firstname.placeholder": "Your first name",
@@ -9,6 +9,19 @@
             "language": "Language",
             "button": "Save"
         },
+        "special-form": {
+            "title":"Special settings for user [<b>{{username}}</b>]",
+            "platinum": "PLATINUM",
+            "platinum.placeholder": "Platinum Status points",
+            "gold": "GOLD",
+            "gold.placeholder": "Gold Status points",
+            "silver": "SILVER",
+            "silver.placeholder": "Silver Status points",
+            "bronze": "BRONZE",
+            "bronze.placeholder": "Bronze Status points",
+            "button": "Save"
+        }
+        ,
         "messages": {
             "error": {
                 "fail": "<strong>An error has occurred!</strong> Settings could not be saved.",
@@ -25,6 +38,18 @@
                     "required": "Your last name is required.",
                     "minlength": "Your last name is required to be at least 1 character",
                     "maxlength": "Your last name cannot be longer than 50 characters"
+                },
+                "platinum": {
+                    "required": "Platinum point are required."
+                },
+                "gold": {
+                    "required": "Gold point are required."
+                },
+                "silver": {
+                    "required": "Silver point are required."
+                },
+                "bronze": {
+                    "required": "Bronze point are required."
                 }
             }
         }

@@ -1,0 +1,38 @@
+
+<div>
+    <h2><span translate="kioskApp.kiosk.detail.title">Kiosk</span> {{vm.kiosk.id}}</h2>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt><span translate="kioskApp.kiosk.name">Name</span></dt>
+        <dd>
+            <span>{{vm.kiosk.name}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="kioskApp.kiosk.description">Description</span></dt>
+        <dd>
+            <span>{{vm.kiosk.description}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="kioskApp.kiosk.location">Location</span></dt>
+        <dd>
+            <span>{{vm.kiosk.location}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="kioskApp.kiosk.license">License</span></dt>
+        <dd>
+            <span>{{vm.kiosk.license}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="kioskApp.kiosk.customer">Customer</span></dt>
+        <dd>
+            {{vm.kiosk.customerCustomerName}}
+        </dd>
+        <hr>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

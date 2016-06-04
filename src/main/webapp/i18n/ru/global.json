@@ -9,6 +9,7 @@
                 "main": "Сущности",
                 "card": "Card",
                 "promotion": "Promotion",
+                "kiosk": "Kiosk",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

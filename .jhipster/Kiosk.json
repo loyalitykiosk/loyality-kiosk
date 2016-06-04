@@ -1,0 +1,46 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "customer",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "customerName"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "location",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "license",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "20",
+            "fieldValidateRulesMaxlength": 20
+        }
+    ],
+    "changelogDate": "20160602181123",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "kiosk",
+    "pagination": "pager"
+}

@@ -1,0 +1,70 @@
+<div>
+    <h2 translate="kioskApp.kiosk.home.title">Kiosks</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="kiosk.new" has-authority="ROLE_ADMIN">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="kioskApp.kiosk.home.createLabel">
+                        Create new Kiosk
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="name"><span translate="kioskApp.kiosk.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="kioskApp.kiosk.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="location"><span translate="kioskApp.kiosk.location">Location</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="license"><span translate="kioskApp.kiosk.license">License</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="customerCustomerName"><span translate="kioskApp.kiosk.customer">Customer</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="kiosk in vm.kiosks track by kiosk.id">
+                    <td><a ui-sref="kiosk-detail({id:kiosk.id})">{{kiosk.name}}</a></td>
+                    <td>{{kiosk.description}}</td>
+                    <td>{{kiosk.location}}</td>
+                    <td>{{kiosk.license}}</td>
+                    <td>
+                        {{kiosk.customerCustomerName}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="kiosk-detail({id:kiosk.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="kiosk.edit({id:kiosk.id})"
+                                    class="btn btn-primary btn-sm"
+                                    has-authority="ROLE_ADMIN">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="kiosk.delete({id:kiosk.id})"
+                                    class="btn btn-danger btn-sm"
+                                    has-authority="ROLE_ADMIN">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>
