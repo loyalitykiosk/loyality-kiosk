@@ -34,6 +34,21 @@
                 <constraints nullable="false"/>
             </column>
             <column name="customer_details" type="varchar(255)"/>
+            <column name="platinum_points" type="bigint" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="gold_points" type="bigint" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="silver_points" type="bigint" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="bronze_points" type="bigint" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
             <column name="email" type="varchar(100)">
                 <constraints unique="true" nullable="false"/>
             </column>

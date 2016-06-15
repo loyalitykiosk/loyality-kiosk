@@ -36,7 +36,11 @@ describe('Controller Tests', function() {
                 email: "john.doe@mail.com",
                 langKey: "en",
                 login: "john",
-                customerName : "John Customer"
+                customerName : "John Customer",
+                platinumPoints: 0,
+                goldPoints: 0,
+                silverPoints: 0,
+                bronzePoints: 0
             };
             MockPrincipal.identity.and.returnValue($q.resolve(accountValues));
             MockAuth.updateAccount.and.returnValue($q.resolve());

@@ -25,7 +25,7 @@
 
         vm.loadAll();
 
-        
+
         JhiLanguageService.getAll().then(function (languages) {
             vm.languages = languages;
         });
@@ -61,7 +61,8 @@
                 id: null, login: null, firstName: null, lastName: null, email: null,
                 activated: null, langKey: null, createdBy: null, createdDate: null,
                 lastModifiedBy: null, lastModifiedDate: null, resetDate: null,
-                resetKey: null, authorities: null
+                resetKey: null, authorities: null, platinumPoints : null ,goldPoints :null,
+                silverPoints : null, bronzePoints : null
             };
             vm.editForm.$setPristine();
             vm.editForm.$setUntouched();

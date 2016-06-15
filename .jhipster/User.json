@@ -11,6 +11,34 @@
         {
             "fieldName": "customerDetails",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "platinumPoints",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "goldPoints",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "silverPoints",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "bronzePoints",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20160514133211",

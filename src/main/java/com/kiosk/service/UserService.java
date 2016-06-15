@@ -119,6 +119,10 @@ public class UserService {
         user.setEmail(managedUserDTO.getEmail());
         user.setCustomerName(managedUserDTO.getCustomerName());
         user.setCustomerDetails(managedUserDTO.getCustomerDetails());
+        user.setPlatinumPoints(0l);
+        user.setGoldPoints(0l);
+        user.setSilverPoints(0l);
+        user.setBronzePoints(0l);
         if (managedUserDTO.getLangKey() == null) {
             user.setLangKey("en"); // default language
         } else {
@@ -141,12 +145,17 @@ public class UserService {
         return user;
     }
 
-    public void updateUserInformation(String firstName, String lastName, String email, String langKey) {
+    public void updateUserInformation(String firstName, String lastName, String email, String langKey,
+                                      Long platinumPoints,Long goldPoints, Long silverPoints, Long bronzePoints) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(u -> {
             u.setFirstName(firstName);
             u.setLastName(lastName);
             u.setEmail(email);
             u.setLangKey(langKey);
+            u.setPlatinumPoints(platinumPoints);
+            u.setGoldPoints(goldPoints);
+            u.setSilverPoints(silverPoints);
+            u.setBronzePoints(bronzePoints);
             userRepository.save(u);
             log.debug("Changed Information for User: {}", u);
         });

@@ -41,19 +41,27 @@ public class UserDTO {
 
     private Set<String> authorities;
 
+    private Long platinumPoints;
+
+    private Long goldPoints;
+
+    private Long silverPoints;
+
+    private Long bronzePoints;
+
     public UserDTO() {
     }
 
     public UserDTO(User user) {
-        this(user.getLogin(), user.getFirstName(), user.getLastName(),
-            user.getEmail(), user.getActivated(), user.getLangKey(),
-            user.getCustomerName(), user.getCustomerDetails(),
-            user.getAuthorities().stream().map(Authority::getName)
+        this(user.getLogin(), user.getFirstName(), user.getLastName(),user.getEmail(), user.getActivated(), user.getLangKey(),
+            user.getCustomerName(), user.getCustomerDetails(), user.getPlatinumPoints(), user.getGoldPoints(), user.getSilverPoints(),
+            user.getBronzePoints(), user.getAuthorities().stream().map(Authority::getName)
                 .collect(Collectors.toSet()));
     }
 
-    public UserDTO(String login, String firstName, String lastName,
-        String email, boolean activated, String langKey,String customerName, String customerDetails, Set<String> authorities) {
+    public UserDTO(String login, String firstName, String lastName, String email, boolean activated,
+                    String langKey,String customerName, String customerDetails, Long platinumPoints,
+                   Long goldPoints, Long silverPoints, Long bronzePoints, Set<String> authorities) {
 
         this.login = login;
         this.firstName = firstName;
@@ -64,6 +72,10 @@ public class UserDTO {
         this.authorities = authorities;
         this.customerName = customerName;
         this.customerDetails = customerDetails;
+        this.platinumPoints = platinumPoints;
+        this.goldPoints = goldPoints;
+        this.silverPoints = silverPoints;
+        this.bronzePoints = bronzePoints;
     }
 
     public String getLogin() {
@@ -101,6 +113,36 @@ public class UserDTO {
     public Set<String> getAuthorities() {
         return authorities;
     }
+
+    public Long getPlatinumPoints() {
+        return platinumPoints;
+    }
+
+    public void setPlatinumPoints(Long platinumPoints) {
+        this.platinumPoints = platinumPoints;
+    }
+    public Long getGoldPoints() {
+        return goldPoints;
+    }
+
+    public void setGoldPoints(Long goldPoints) {
+        this.goldPoints = goldPoints;
+    }
+    public Long getSilverPoints() {
+        return silverPoints;
+    }
+
+    public void setSilverPoints(Long silverPoints) {
+        this.silverPoints = silverPoints;
+    }
+    public Long getBronzePoints() {
+        return bronzePoints;
+    }
+
+    public void setBronzePoints(Long bronzePoints) {
+        this.bronzePoints = bronzePoints;
+    }
+
 
     @Override
     public String toString() {

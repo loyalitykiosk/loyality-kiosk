@@ -90,6 +90,22 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
     private Set<PersistentToken> persistentTokens = new HashSet<>();
 
+    @NotNull
+    @Column(name = "platinum_points", nullable = false)
+    private Long platinumPoints;
+
+    @NotNull
+    @Column(name = "gold_points", nullable = false)
+    private Long goldPoints;
+
+    @NotNull
+    @Column(name = "silver_points", nullable = false)
+    private Long silverPoints;
+
+    @NotNull
+    @Column(name = "bronze_points", nullable = false)
+    private Long bronzePoints;
+
     public Long getId() {
         return id;
     }
@@ -208,6 +224,38 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setPersistentTokens(Set<PersistentToken> persistentTokens) {
         this.persistentTokens = persistentTokens;
+    }
+
+    public Long getPlatinumPoints() {
+        return platinumPoints;
+    }
+
+    public void setPlatinumPoints(Long platinumPoints) {
+        this.platinumPoints = platinumPoints;
+    }
+
+    public Long getGoldPoints() {
+        return goldPoints;
+    }
+
+    public void setGoldPoints(Long goldPoints) {
+        this.goldPoints = goldPoints;
+    }
+
+    public Long getSilverPoints() {
+        return silverPoints;
+    }
+
+    public void setSilverPoints(Long silverPoints) {
+        this.silverPoints = silverPoints;
+    }
+
+    public Long getBronzePoints() {
+        return bronzePoints;
+    }
+
+    public void setBronzePoints(Long bronzePoints) {
+        this.bronzePoints = bronzePoints;
     }
 
     @Override

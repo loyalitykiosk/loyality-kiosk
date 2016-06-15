@@ -10,7 +10,7 @@
             "button": "Save"
         },
         "special-form": {
-            "title":"Special settings for user [<b>{{username}}</b>]",
+            "title":"Card Status settings for user [<b>{{username}}</b>]",
             "platinum": "PLATINUM",
             "platinum.placeholder": "Platinum Status points",
             "gold": "GOLD",

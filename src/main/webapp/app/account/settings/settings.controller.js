@@ -26,7 +26,11 @@
                 langKey: account.langKey,
                 lastName: account.lastName,
                 login: account.login,
-                customerName : account.customerName
+                customerName : account.customerName,
+                platinumPoints : account.platinumPoints,
+                goldPoints : account.goldPoints,
+                silverPoints : account.silverPoints,
+                bronzePoints : account.bronzePoints
             };
         };
 
