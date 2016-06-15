@@ -8,9 +8,11 @@
     <include file="changelog/20160515150634_added_entity_Card.xml" relativeToChangelogFile="true"/>
     <include file="changelog/20160519131749_added_entity_Promotion.xml" relativeToChangelogFile="true"/>
     <include file="changelog/20160602181123_added_entity_Kiosk.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/20160615151157_added_entity_CardRequest.xml" relativeToChangelogFile="true"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="changelog/20160515150634_added_entity_constraints_Card.xml" relativeToChangelogFile="true"/>
     <include file="changelog/20160519131749_added_entity_constraints_Promotion.xml" relativeToChangelogFile="true"/>
     <include file="changelog/20160602181123_added_entity_constraints_Kiosk.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/20160615151157_added_entity_constraints_CardRequest.xml" relativeToChangelogFile="true"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

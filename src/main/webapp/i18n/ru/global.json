@@ -10,6 +10,7 @@
                 "card": "Card",
                 "promotion": "Promotion",
                 "kiosk": "Kiosk",
+                "cardRequest": "Requests for new Card",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
