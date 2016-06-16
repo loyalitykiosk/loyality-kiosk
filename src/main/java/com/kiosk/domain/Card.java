@@ -60,6 +60,11 @@ public class Card implements Serializable {
     @JoinColumn(nullable = false)
     private User user;
 
+    public Card() {
+        this.setStatus(CardStatus.blocked);
+        this.setType(CardType.BRONZE);
+    }
+
     public Long getId() {
         return id;
     }

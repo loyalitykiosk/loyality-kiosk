@@ -1,0 +1,42 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "kiosk",
+            "otherEntityName": "kiosk",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "ownerName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "ownerSurname",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "smsNumber",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160615151157",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "card_request",
+    "pagination": "no"
+}

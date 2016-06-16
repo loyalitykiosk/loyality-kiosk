@@ -1,0 +1,28 @@
+{
+    "kioskApp": {
+        "cardRequest" : {
+            "home": {
+                "title": "Card Requests",
+                "createLabel": "Create Card from Request",
+                "search": "Search for Card Request"
+            },
+            "created": "A new Card Request is created with identifier {{ param }}",
+            "updated": "A Card Request is updated with identifier {{ param }}",
+            "deleted": "A Card Request is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Card Request {{ id }}?"
+            },
+            "detail": {
+                "title": "Card Request"
+            },
+            "createCard": "Create Card",
+            "updateRequest": "Update Request",
+            "ownerName": "Owner Name",
+            "ownerSurname": "Owner Surname",
+            "email": "Email",
+            "smsNumber": "Sms Number",
+            "kiosk": "Registration Kiosk",
+            "cardNumber":"Card Number"
+        }
+    }
+}

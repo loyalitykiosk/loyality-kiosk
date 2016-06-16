@@ -1,0 +1,55 @@
+<div>
+    <h2 translate="kioskApp.cardRequest.home.title">Card Requests</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span translate="global.field.id">ID</span></th>
+                    <th><span translate="kioskApp.cardRequest.ownerName">Owner Name</span></th>
+                    <th><span translate="kioskApp.cardRequest.ownerSurname">Owner Surname</span></th>
+                    <th><span translate="kioskApp.cardRequest.email">Email</span></th>
+                    <th><span translate="kioskApp.cardRequest.smsNumber">Sms Number</span></th>
+                    <th><span translate="kioskApp.cardRequest.kiosk">Kiosk</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cardRequest in vm.cardRequests track by cardRequest.id">
+                    <td><a ui-sref="card-request-detail({id:cardRequest.id})">{{cardRequest.id}}</a></td>
+                    <td>{{cardRequest.ownerName}}</td>
+                    <td>{{cardRequest.ownerSurname}}</td>
+                    <td>{{cardRequest.email}}</td>
+                    <td>{{cardRequest.smsNumber}}</td>
+                    <td>
+                        <a ui-sref="kiosk-detail({id:cardRequest.kioskId})">{{cardRequest.kioskName}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="card-request.edit({id:cardRequest.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="card-request.delete({id:cardRequest.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
