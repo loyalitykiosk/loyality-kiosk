@@ -102,6 +102,7 @@
                                 email: null,
                                 status: null,
                                 type: null,
+                                balance: 0,
                                 id: null
                             };
                         }

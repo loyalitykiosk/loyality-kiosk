@@ -10,11 +10,6 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.card.id">
-            <label for="id" translate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.card.id" readonly />
-        </div>
         <div class="form-group">
             <label class="control-label" translate="kioskApp.card.number" for="field_number">Number</label>
             <input type="text" class="form-control" name="number" id="field_number"
@@ -106,11 +101,9 @@
             </div>
         </div>
 
-        <div ng-show="editForm.user.$invalid">
-            <p class="help-block"
-               ng-show="editForm.user.$error.required" translate="entity.validation.required">
-                This field is required.
-            </p>
+        <div class="form-group">
+            <label class="control-label" translate="kioskApp.card.balance" for="field_balance">Balance</label><br>
+            <label class="control-label" id="field_balance"><b>{{ vm.card.balance }}</b> points</label>
         </div>
     </div>
     <div class="modal-footer">

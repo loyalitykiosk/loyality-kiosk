@@ -49,6 +49,10 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="balance" type="double" defaultValue="0">
+                <constraints nullable="false" />
+            </column>
+
             <column name="user_id" type="bigint"/>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>

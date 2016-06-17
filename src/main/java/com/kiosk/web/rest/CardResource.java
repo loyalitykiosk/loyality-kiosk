@@ -63,6 +63,7 @@ public class CardResource {
         if (cardService.findByNumber(cardDTO.getNumber()) != null){
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("card", "numberexists", "Card with such number already exists")).body(null);
         }
+        cardDTO.setBalance(0d);
         CardDTO result = cardService.save(cardDTO);
         return ResponseEntity.created(new URI("/api/cards/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("card", result.getId().toString()))
@@ -70,7 +71,7 @@ public class CardResource {
     }
 
     /**
-     * PUT  /cards : Updates an existing card.
+     * PUT  /cards : Updates an existing card. All fields but balance.
      *
      * @param cardDTO the cardDTO to update
      * @return the ResponseEntity with status 200 (OK) and with body the updated cardDTO,
@@ -87,6 +88,7 @@ public class CardResource {
         if (cardDTO.getId() == null) {
             return createCard(cardDTO);
         }
+        cardDTO.setBalance(Optional.ofNullable(cardService.findOne(cardDTO.getId())).map(CardDTO::getBalance).orElse(0d));
         CardDTO result = cardService.save(cardDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("card", cardDTO.getId().toString()))

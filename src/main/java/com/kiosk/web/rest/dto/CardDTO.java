@@ -43,6 +43,8 @@ public class CardDTO implements Serializable {
     @NotNull
     private CardType type;
 
+    @NotNull
+    private Double balance;
 
     public Long getId() {
         return id;
@@ -99,6 +101,13 @@ public class CardDTO implements Serializable {
 
     public void setType(CardType type) {
         this.type = type;
+    }
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
     }
 
     @Override

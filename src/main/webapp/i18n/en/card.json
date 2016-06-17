@@ -24,7 +24,8 @@
             "smsNumber": "Sms Number",
             "email": "Email",
             "status": "Status",
-            "type": "Type"
+            "type": "Type",
+            "balance": "Balance"
         }
     }
 }

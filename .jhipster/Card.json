@@ -59,6 +59,13 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "balance",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20160515150634",

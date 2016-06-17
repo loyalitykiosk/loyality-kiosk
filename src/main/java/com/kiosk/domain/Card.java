@@ -56,6 +56,10 @@ public class Card implements Serializable {
     @Column(name = "type", nullable = false)
     private CardType type;
 
+    @NotNull
+    @Column(name = "balance", nullable = false)
+    private Double balance;
+
     @ManyToOne
     @JoinColumn(nullable = false)
     private User user;
@@ -127,6 +131,14 @@ public class Card implements Serializable {
 
     public void setType(CardType type) {
         this.type = type;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
     }
 
     public User getUser() {
