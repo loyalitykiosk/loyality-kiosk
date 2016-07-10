@@ -20,6 +20,7 @@ public interface CardRepository extends JpaRepository<Card,Long> {
     @Query("select card from Card card where (:number is null or card.number like :number||'%') and (:ownerName is null or card.ownerName like :ownerName||'%') and (:smsNumber is null or card.smsNumber like :smsNumber||'%') and card.user.login = ?#{principal.username}")
     Page<Card> findAllByNumberPhoneCustomerName(@Param("number") String number, @Param("ownerName")String ownerName, @Param("smsNumber")String smsNumber, Pageable pageable);
 
-    Card findByNumber(String number);
+    @Query("select card from Card card where card.number = :number and card.user.login = ?#{principal.username}")
+    Card findByNumber(@Param("number") String number);
 
 }

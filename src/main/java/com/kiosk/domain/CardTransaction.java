@@ -40,6 +40,17 @@ public class CardTransaction implements Serializable {
     @Column(name = "kiosk_id", nullable = false)
     private Long kioskId;
 
+    public CardTransaction() {
+    }
+
+    public CardTransaction(ZonedDateTime timestamp, Long cardId, Double balanceBefore, Double balanceAfter, Long kioskId) {
+        this.timestamp = timestamp;
+        this.cardId = cardId;
+        this.balanceBefore = balanceBefore;
+        this.balanceAfter = balanceAfter;
+        this.kioskId = kioskId;
+    }
+
     public Long getId() {
         return id;
     }

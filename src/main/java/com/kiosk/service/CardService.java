@@ -2,6 +2,7 @@ package com.kiosk.service;
 
 import com.kiosk.domain.Card;
 import com.kiosk.web.rest.dto.CardDTO;
+import com.kiosk.web.rest.dto.CheckInDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -63,4 +64,12 @@ public interface CardService {
      *  @return the entity or null
      */
     CardDTO findByNumber(String number);
+
+    /**
+     *  Get the card by its number.
+     *
+     *  @param checkInDTO
+     *  @return the entity or null
+     */
+    CardDTO checkIn(CheckInDTO checkInDTO);
 }

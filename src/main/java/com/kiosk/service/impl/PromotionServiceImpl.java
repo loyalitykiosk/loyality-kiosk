@@ -73,6 +73,12 @@ public class PromotionServiceImpl implements PromotionService{
         return result;
     }
 
+
+    @Override
+    public List<PromotionDTO> findByUserIsCurrentUser() {
+        return promotionMapper.promotionsToPromotionDTOs(promotionRepository.findByUserIsCurrentUser());
+    }
+
     /**
      *  Get one promotion by id.
      *

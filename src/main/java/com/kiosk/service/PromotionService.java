@@ -38,6 +38,14 @@ public interface PromotionService {
      */
     Page<Promotion> findByUserIsCurrentUser(Pageable pageable);
 
+
+    /**
+     *  Get all the promotions of current user.
+     *
+     *  @return the list of entities
+     */
+    List<PromotionDTO> findByUserIsCurrentUser();
+
     /**
      *  Get the "id" promotion.
      *

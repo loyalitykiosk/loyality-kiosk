@@ -1,11 +1,17 @@
 package com.kiosk.service.impl;
 
+import com.kiosk.domain.CardTransaction;
+import com.kiosk.domain.Kiosk;
+import com.kiosk.repository.CardTransactionRepository;
+import com.kiosk.repository.KioskRepository;
 import com.kiosk.repository.UserRepository;
 import com.kiosk.security.SecurityUtils;
 import com.kiosk.service.CardService;
 import com.kiosk.domain.Card;
 import com.kiosk.repository.CardRepository;
+import com.kiosk.service.UserService;
 import com.kiosk.web.rest.dto.CardDTO;
+import com.kiosk.web.rest.dto.CheckInDTO;
 import com.kiosk.web.rest.mapper.CardMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +21,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.time.Duration;
+import java.time.ZonedDateTime;
 
 /**
  * Service Implementation for managing Card.
@@ -32,7 +37,16 @@ public class CardServiceImpl implements CardService{
     private CardRepository cardRepository;
 
     @Inject
+    private KioskRepository kioskRepository;
+
+    @Inject
+    private CardTransactionRepository cardTransactionRepository;
+
+    @Inject
     private UserRepository userRepository;
+
+    @Inject
+    private UserService userService;
 
     @Inject
     private CardMapper cardMapper;
@@ -104,5 +118,22 @@ public class CardServiceImpl implements CardService{
             return  cardMapper.cardToCardDTO(card);
         }
         return  null;
+    }
+
+    @Override
+    @Transactional
+    public CardDTO  checkIn(CheckInDTO checkInDTO) {
+        Card card = cardRepository.findByNumber(checkInDTO.getCardNumber());
+        if (null == card) return null;
+        Kiosk kiosk = kioskRepository.findByLicense(checkInDTO.getKioskLicense());
+        if (null == kiosk) return null;
+        CardTransaction lastTransaction = cardTransactionRepository.findFirstByCardIdAndKioskIdOrderByTimestampDesc(card.getId(),kiosk.getId());
+        if (lastTransaction != null && ZonedDateTime.now().minus(Duration.ofMinutes(1)).isBefore(lastTransaction.getTimestamp())){
+            return  cardMapper.cardToCardDTO(card);
+        }
+        Long points = card.getType().getPoints(userService.getUserWithOutAuthorities());
+        cardTransactionRepository.save(new CardTransaction(ZonedDateTime.now(),card.getId(),card.getBalance(),card.getBalance() + Math.abs(points),kiosk.getId()));
+        card.setBalance(card.getBalance() + + Math.abs(points));
+        return  cardMapper.cardToCardDTO(cardRepository.save(card));
     }
 }

@@ -16,4 +16,8 @@ public interface PromotionRepository extends JpaRepository<Promotion,Long> {
     @Query("select promotion from Promotion promotion where promotion.user.login = ?#{principal.username}")
     Page<Promotion> findByUserIsCurrentUser(Pageable pageable);
 
+
+    @Query("select promotion from Promotion promotion where current_date() between promotion.dateStart and promotion.dateEnd and promotion.user.login = ?#{principal.username}")
+    List<Promotion> findByUserIsCurrentUser();
+
 }

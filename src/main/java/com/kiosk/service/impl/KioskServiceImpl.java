@@ -72,6 +72,11 @@ public class KioskServiceImpl implements KioskService{
         return result;
     }
 
+    @Override
+    public KioskDTO findByLicense(String license) {
+        return kioskMapper.kioskToKioskDTO(kioskRepository.findByLicense(license));
+    }
+
     /**
      *  Get one kiosk by id.
      *

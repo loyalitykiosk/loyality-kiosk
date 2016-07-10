@@ -37,6 +37,9 @@ public interface KioskService {
      */
     Page<Kiosk> findByUserIsCurrentUser(Pageable pageable);
 
+
+    KioskDTO findByLicense(String license);
+
     /**
      *  Get the "id" kiosk.
      *
