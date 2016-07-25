@@ -5,6 +5,7 @@ import java.time.ZonedDateTime;
 import java.util.Set;
 
 import com.kiosk.domain.User;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -41,10 +42,12 @@ public class ManagedUserDTO extends UserDTO {
     }
 
     public ManagedUserDTO(Long id, String login, String password, String firstName, String lastName,
-                          String email, boolean activated, String langKey,String customerDetails,String customerName,
-                          Long platinumPoints, Long goldPoints, Long silverPoints, Long bronzePoints,Set<String> authorities ,
-                          ZonedDateTime createdDate, String lastModifiedBy, ZonedDateTime lastModifiedDate ) {
-        super(login, firstName, lastName, email, activated, langKey, customerName, customerDetails,platinumPoints,goldPoints,silverPoints,bronzePoints, authorities);
+                          String email, boolean activated, String langKey, String customerDetails, String customerName,
+                          Long platinumPoints, Long goldPoints, Long silverPoints, Long bronzePoints,
+                          Long silverBarier, Long goldBarier, Long platinumBarier, Long checkinTimeout,
+                          Set<String> authorities, ZonedDateTime createdDate, String lastModifiedBy, ZonedDateTime lastModifiedDate) {
+        super(login, firstName, lastName, email, activated, langKey, customerName, customerDetails, platinumPoints, goldPoints, silverPoints, bronzePoints, silverBarier
+            , goldBarier, platinumBarier, checkinTimeout, authorities);
         this.id = id;
         this.createdDate = createdDate;
         this.lastModifiedBy = lastModifiedBy;

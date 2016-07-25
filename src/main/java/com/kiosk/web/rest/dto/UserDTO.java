@@ -49,19 +49,38 @@ public class UserDTO {
 
     private Long bronzePoints;
 
+    @NotNull
+    private Long silverBarier;
+
+
+    @NotNull
+    private Long goldBarier;
+
+
+    @NotNull
+    private Long platinumBarier;
+
+
+    @NotNull
+    private Long checkinTimeout;
+
+
+
     public UserDTO() {
     }
 
     public UserDTO(User user) {
-        this(user.getLogin(), user.getFirstName(), user.getLastName(),user.getEmail(), user.getActivated(), user.getLangKey(),
+        this(user.getLogin(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getActivated(), user.getLangKey(),
             user.getCustomerName(), user.getCustomerDetails(), user.getPlatinumPoints(), user.getGoldPoints(), user.getSilverPoints(),
-            user.getBronzePoints(), user.getAuthorities().stream().map(Authority::getName)
+            user.getBronzePoints(), user.getSilverBarier(), user.getGoldBarier(), user.getPlatinumBarier(), user.getCheckinTimeout(),
+            user.getAuthorities().stream().map(Authority::getName)
                 .collect(Collectors.toSet()));
     }
 
     public UserDTO(String login, String firstName, String lastName, String email, boolean activated,
                     String langKey,String customerName, String customerDetails, Long platinumPoints,
-                   Long goldPoints, Long silverPoints, Long bronzePoints, Set<String> authorities) {
+                   Long goldPoints, Long silverPoints, Long bronzePoints,Long silverBarier,
+                   Long goldBarier,Long platinumBarier,Long checkinTimeout,Set<String> authorities) {
 
         this.login = login;
         this.firstName = firstName;
@@ -76,6 +95,10 @@ public class UserDTO {
         this.goldPoints = goldPoints;
         this.silverPoints = silverPoints;
         this.bronzePoints = bronzePoints;
+        this.silverBarier = silverBarier;
+        this.goldBarier = goldBarier;
+        this.platinumBarier = platinumBarier;
+        this.checkinTimeout = checkinTimeout;
     }
 
     public String getLogin() {
@@ -141,6 +164,35 @@ public class UserDTO {
 
     public void setBronzePoints(Long bronzePoints) {
         this.bronzePoints = bronzePoints;
+    }
+
+    public Long getSilverBarier() {
+        return silverBarier;
+    }
+
+    public void setSilverBarier(Long silverBarier) {
+        this.silverBarier = silverBarier;
+    }
+    public Long getGoldBarier() {
+        return goldBarier;
+    }
+
+    public void setGoldBarier(Long goldBarier) {
+        this.goldBarier = goldBarier;
+    }
+    public Long getPlatinumBarier() {
+        return platinumBarier;
+    }
+
+    public void setPlatinumBarier(Long platinumBarier) {
+        this.platinumBarier = platinumBarier;
+    }
+    public Long getCheckinTimeout() {
+        return checkinTimeout;
+    }
+
+    public void setCheckinTimeout(Long checkinTimeout) {
+        this.checkinTimeout = checkinTimeout;
     }
 
 

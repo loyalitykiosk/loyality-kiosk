@@ -10,7 +10,7 @@
             "button": "Save"
         },
         "special-form": {
-            "title":"Card Status settings for user [<b>{{username}}</b>]",
+            "title":"Check-in and status threshold settings",
             "platinum": "PLATINUM",
             "platinum.placeholder": "Platinum Status points",
             "gold": "GOLD",
@@ -19,9 +19,19 @@
             "silver.placeholder": "Silver Status points",
             "bronze": "BRONZE",
             "bronze.placeholder": "Bronze Status points",
+            "silver-barier": "SILVER Threshold",
+            "silver-barier.placeholder": "Silver Threshold value",
+            "gold-barier": "GOLD Threshold",
+            "gold-barier.placeholder": "Gold Threshold value",
+            "platinum-barier": "PLATINUM Threshold",
+            "platinum-barier.placeholder": "Platinum Threshold value",
             "button": "Save"
-        }
-        ,
+        },
+        "checkin-form": {
+            "title":"Check-in timeout",
+            "checkin-timeout": "Check-in timeout (min)",
+            "checkin-timeout.placeholder": "Check-in timeout value"
+        },
         "messages": {
             "error": {
                 "fail": "<strong>An error has occurred!</strong> Settings could not be saved.",
@@ -50,6 +60,18 @@
                 },
                 "bronze": {
                     "required": "Bronze point are required."
+                },
+                "silver-barier": {
+                    "required": "Silver Threshold is required."
+                },
+                "gold-barier": {
+                    "required": "Gold Threshold is required."
+                },
+                "platinum-barier": {
+                    "required": "Platinum Threshold is required."
+                },
+                "checkin-timeout": {
+                    "required": "Check-in value is required."
                 }
             }
         }

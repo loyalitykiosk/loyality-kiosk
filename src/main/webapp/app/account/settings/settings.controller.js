@@ -30,7 +30,11 @@
                 platinumPoints : account.platinumPoints,
                 goldPoints : account.goldPoints,
                 silverPoints : account.silverPoints,
-                bronzePoints : account.bronzePoints
+                bronzePoints : account.bronzePoints,
+                silverBarier : account.silverBarier,
+                goldBarier : account.goldBarier,
+                platinumBarier : account.platinumBarier,
+                checkinTimeout : account.checkinTimeout
             };
         };
 

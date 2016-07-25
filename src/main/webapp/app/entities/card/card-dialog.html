@@ -14,7 +14,7 @@
             <label class="control-label" translate="kioskApp.card.number" for="field_number">Number</label>
             <input type="text" class="form-control" name="number" id="field_number"
                     ng-model="vm.card.number"
-                    required ng-minlength="10" ng-maxlength="10" ng-focus tabindex="1" />
+                    required ng-minlength="1" ng-maxlength="100" ng-focus tabindex="1" />
             <div ng-show="editForm.number.$invalid">
                 <p class="help-block"
                     ng-show="editForm.number.$error.required" translate="entity.validation.required">
@@ -22,11 +22,11 @@
                 </p>
                 <p class="help-block"
                     ng-show="editForm.number.$error.minlength" translate="entity.validation.minlength" translate-value-min="10">
-                    This field is required to be at least 10 characters.
+                    This field is required to be at least 1 character.
                 </p>
                 <p class="help-block"
                     ng-show="editForm.number.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="10">
-                    This field cannot be longer than 10 characters.
+                    This field cannot be longer than 100 characters.
                 </p>
             </div>
         </div>

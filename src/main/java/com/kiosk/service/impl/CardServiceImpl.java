@@ -2,6 +2,7 @@ package com.kiosk.service.impl;
 
 import com.kiosk.domain.CardTransaction;
 import com.kiosk.domain.Kiosk;
+import com.kiosk.domain.User;
 import com.kiosk.repository.CardTransactionRepository;
 import com.kiosk.repository.KioskRepository;
 import com.kiosk.repository.UserRepository;
@@ -127,13 +128,16 @@ public class CardServiceImpl implements CardService{
         if (null == card) return null;
         Kiosk kiosk = kioskRepository.findByLicense(checkInDTO.getKioskLicense());
         if (null == kiosk) return null;
+        final User current = userRepository.currentUser();
         CardTransaction lastTransaction = cardTransactionRepository.findFirstByCardIdAndKioskIdOrderByTimestampDesc(card.getId(),kiosk.getId());
-        if (lastTransaction != null && ZonedDateTime.now().minus(Duration.ofMinutes(1)).isBefore(lastTransaction.getTimestamp())){
+        if (lastTransaction != null && ZonedDateTime.now().minus(Duration.ofMinutes(current.getCheckinTimeout())).isBefore(lastTransaction.getTimestamp())){
             return  cardMapper.cardToCardDTO(card);
         }
         Long points = card.getType().getPoints(userService.getUserWithOutAuthorities());
         cardTransactionRepository.save(new CardTransaction(ZonedDateTime.now(),card.getId(),card.getBalance(),card.getBalance() + Math.abs(points),kiosk.getId()));
         card.setBalance(card.getBalance() + + Math.abs(points));
+        card.setType(card.getType().upgrade(current, card));
         return  cardMapper.cardToCardDTO(cardRepository.save(card));
     }
+
 }

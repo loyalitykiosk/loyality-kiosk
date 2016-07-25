@@ -84,10 +84,19 @@
                     <label class="control-label" for="platinum" translate="settings.special-form.platinum">Platinum</label>
                     <input type="number" class="form-control" id="platinum" name="platinum" placeholder="{{'settings.special-form.platinum.placeholder' | translate}}"
                            ng-model="vm.settingsAccount.platinumPoints" required >
-                    <div ng-show="special-settings-form.platinum.$dirty && special-settings-form.platinum.$invalid">
+                    <div ng-show="form.platinum.$dirty && form.platinum.$invalid">
                         <p class="help-block"
-                           ng-show="special-settings-form.platinum.$error.required" translate="settings.messages.validate.platinum.required">
+                           ng-show="form.platinum.$error.required" translate="settings.messages.validate.platinum.required">
                             Platinum point are required
+                        </p>
+                    </div>
+                    <label class="control-label" for="platinumBarier" translate="settings.special-form.platinum-barier">Platinum Threshold</label>
+                    <input type="number" class="form-control" id="platinumBarier" name="platinumBarier" placeholder="{{'settings.special-form.platinum-barier.placeholder' | translate}}"
+                           ng-model="vm.settingsAccount.platinumBarier" required >
+                    <div ng-show="form.platinumBarier.$dirty && form.platinumBarier.$invalid">
+                        <p class="help-block"
+                           ng-show="form.platinumBarier.$error.required" translate="settings.messages.validate.platinum-barier.required">
+                            Gold Threshold is required
                         </p>
                     </div>
                 </div>
@@ -95,10 +104,19 @@
                     <label class="control-label" for="gold" translate="settings.special-form.gold">Gold</label>
                     <input type="number" class="form-control" id="gold" name="gold" placeholder="{{'settings.special-form.gold.placeholder' | translate}}"
                            ng-model="vm.settingsAccount.goldPoints" required >
-                    <div ng-show="special-settings-form.gold.$dirty && special-settings-form.gold.$invalid">
+                    <div ng-show="form.gold.$dirty && form.gold.$invalid">
                         <p class="help-block"
-                           ng-show="special-settings-form.gold.$error.required" translate="settings.messages.validate.gold.required">
+                           ng-show="form.gold.$error.required" translate="settings.messages.validate.gold.required">
                             Gold point are required
+                        </p>
+                    </div>
+                    <label class="control-label" for="goldBarier" translate="settings.special-form.gold-barier">Gold Threshold</label>
+                    <input type="number" class="form-control" id="goldBarier" name="goldBarier" placeholder="{{'settings.special-form.gold-barier.placeholder' | translate}}"
+                           ng-model="vm.settingsAccount.goldBarier" required >
+                    <div ng-show="form.goldBarier.$dirty && form.goldBarier.$invalid">
+                        <p class="help-block"
+                           ng-show="form.goldBarier.$error.required" translate="settings.messages.validate.gold-barier.required">
+                            Gold Threshold is required
                         </p>
                     </div>
                 </div>
@@ -106,10 +124,19 @@
                     <label class="control-label" for="silver" translate="settings.special-form.silver">Silver</label>
                     <input type="number" class="form-control" id="silver" name="silver" placeholder="{{'settings.special-form.silver.placeholder' | translate}}"
                            ng-model="vm.settingsAccount.silverPoints" required>
-                    <div ng-show="special-settings-form.silver.$dirty && special-settings-form.silver.$invalid">
+                    <div ng-show="form.silver.$dirty && form.silver.$invalid">
                         <p class="help-block"
-                           ng-show="special-settings-form.silver.$error.required" translate="settings.messages.validate.silver.required">
+                           ng-show="form.silver.$error.required" translate="settings.messages.validate.silver.required">
                             Silver point are required
+                        </p>
+                    </div>
+                    <label class="control-label" for="silverBarier" translate="settings.special-form.silver-barier">Silver Threshold</label>
+                    <input type="number" class="form-control" id="silverBarier" name="silverBarier" placeholder="{{'settings.special-form.silver-barier.placeholder' | translate}}"
+                           ng-model="vm.settingsAccount.silverBarier" required >
+                    <div ng-show="form.silverBarier.$dirty && form.silverBarier.$invalid">
+                        <p class="help-block"
+                           ng-show="form.silverBarier.$error.required" translate="settings.messages.validate.silver-barier.required">
+                            Silver Threshold is required
                         </p>
                     </div>
                 </div>
@@ -117,13 +144,28 @@
                     <label class="control-label" for="bronze" translate="settings.special-form.bronze">Bronze</label>
                     <input type="number" class="form-control" id="bronze" name="silver" placeholder="{{'settings.special-form.bronze.placeholder' | translate}}"
                            ng-model="vm.settingsAccount.bronzePoints" required>
-                    <div ng-show="special-settings-form.bronze.$dirty && special-settings-form.bronze.$invalid">
+                    <div ng-show="form.bronze.$dirty && form.bronze.$invalid">
                         <p class="help-block"
-                           ng-show="special-settings-form.bronze.$error.required" translate="settings.messages.validate.bronze.required">
+                           ng-show="form.bronze.$error.required" translate="settings.messages.validate.bronze.required">
                             Bronze point are required
                         </p>
                     </div>
                 </div>
+
+                <h2 translate="settings.special-form.title" translate-values="{username: '{{vm.settingsAccount.login}}'}">Check-in settings</h2>
+
+                <div class="form-group">
+                    <label class="control-label" for="checkinTimeout" translate="settings.checkin-form.checkin-timeout">Check timeout</label>
+                    <input type="number" class="form-control" id="checkinTimeout" name="checkinTimeout" placeholder="{{'settings.checkin-form.checkin-timeout.placeholder' | translate}}"
+                           ng-model="vm.settingsAccount.checkinTimeout" required >
+                    <div ng-show="form.checkinTimeout.$dirty && form.checkinTimeout.$invalid">
+                        <p class="help-block"
+                           ng-show="form.checkinTimeout.$error.required" translate="settings.messages.validate.checkin-timeout.required">
+                            Type value for check-in timeout
+                        </p>
+                    </div>
+                </div>
+
                 <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" translate="settings.form.button">Save</button>
             </form>
         </div>

@@ -49,6 +49,23 @@
             <column name="bronze_points" type="bigint" defaultValue="0">
                 <constraints nullable="false" />
             </column>
+
+            <column name="silver_barier" type="bigint" defaultValue="100">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="gold_barier" type="bigint" defaultValue="200">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="platinum_barier" type="bigint" defaultValue="300">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="checkin_timeout" type="bigint" defaultValue="30">
+                <constraints nullable="false" />
+            </column>
+
             <column name="email" type="varchar(100)">
                 <constraints unique="true" nullable="false"/>
             </column>

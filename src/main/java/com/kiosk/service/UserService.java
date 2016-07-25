@@ -146,7 +146,8 @@ public class UserService {
     }
 
     public void updateUserInformation(String firstName, String lastName, String email, String langKey,
-                                      Long platinumPoints,Long goldPoints, Long silverPoints, Long bronzePoints) {
+                                      Long platinumPoints,Long goldPoints, Long silverPoints, Long bronzePoints,
+                                      Long silverBarier,Long goldBarier,Long platinumBarier,Long checkinTimeout) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(u -> {
             u.setFirstName(firstName);
             u.setLastName(lastName);
@@ -156,6 +157,10 @@ public class UserService {
             u.setGoldPoints(goldPoints);
             u.setSilverPoints(silverPoints);
             u.setBronzePoints(bronzePoints);
+            u.setSilverBarier(silverBarier);
+            u.setGoldBarier(goldBarier);
+            u.setPlatinumBarier(platinumBarier);
+            u.setCheckinTimeout(checkinTimeout);
             userRepository.save(u);
             log.debug("Changed Information for User: {}", u);
         });

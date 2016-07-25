@@ -40,7 +40,11 @@ describe('Controller Tests', function() {
                 platinumPoints: 0,
                 goldPoints: 0,
                 silverPoints: 0,
-                bronzePoints: 0
+                bronzePoints: 0,
+                silverBarier:0,
+                goldBarier:0,
+                platinumBarier:0,
+                checkinTimeout:30
             };
             MockPrincipal.identity.and.returnValue($q.resolve(accountValues));
             MockAuth.updateAccount.and.returnValue($q.resolve());

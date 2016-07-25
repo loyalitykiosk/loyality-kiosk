@@ -106,6 +106,22 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "bronze_points", nullable = false)
     private Long bronzePoints;
 
+    @NotNull
+    @Column(name = "silver_barier", nullable = false)
+    private Long silverBarier;
+
+    @NotNull
+    @Column(name = "gold_barier", nullable = false)
+    private Long goldBarier;
+
+    @NotNull
+    @Column(name = "platinum_barier", nullable = false)
+    private Long platinumBarier;
+
+    @NotNull
+    @Column(name = "checkin_timeout", nullable = false)
+    private Long checkinTimeout;
+
     public Long getId() {
         return id;
     }
@@ -256,6 +272,38 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setBronzePoints(Long bronzePoints) {
         this.bronzePoints = bronzePoints;
+    }
+
+    public Long getSilverBarier() {
+        return silverBarier;
+    }
+
+    public void setSilverBarier(Long silverBarier) {
+        this.silverBarier = silverBarier;
+    }
+
+    public Long getGoldBarier() {
+        return goldBarier;
+    }
+
+    public void setGoldBarier(Long goldBarier) {
+        this.goldBarier = goldBarier;
+    }
+
+    public Long getPlatinumBarier() {
+        return platinumBarier;
+    }
+
+    public void setPlatinumBarier(Long platinumBarier) {
+        this.platinumBarier = platinumBarier;
+    }
+
+    public Long getCheckinTimeout() {
+        return checkinTimeout;
+    }
+
+    public void setCheckinTimeout(Long checkinTimeout) {
+        this.checkinTimeout = checkinTimeout;
     }
 
     @Override

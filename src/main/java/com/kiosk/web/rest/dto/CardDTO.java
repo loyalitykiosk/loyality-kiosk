@@ -17,7 +17,7 @@ public class CardDTO implements Serializable {
     private Long id;
 
     @NotNull
-    @Size(min = 10, max = 10)
+    @Size(min = 1, max = 100)
     private String number;
 
 

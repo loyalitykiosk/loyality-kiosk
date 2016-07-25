@@ -19,4 +19,13 @@ public enum CardType {
         }
     }
 
+    public CardType upgrade(User user, Card card){
+        switch (this){
+            case GOLD:  return card.getBalance() >= user.getPlatinumBarier() ? PLATINUM : this;
+            case SILVER: return card.getBalance() >= user.getGoldBarier() ? GOLD : this;
+            case BRONZE:  return card.getBalance() >= user.getSilverBarier() ? SILVER : this;
+            default: return  this;
+        }
+    }
+
 }
