@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.kiosk.domain.Authority;
 import com.kiosk.domain.User;
 import com.kiosk.repository.AuthorityRepository;
+import com.kiosk.repository.SubscriptionRepository;
 import com.kiosk.repository.UserRepository;
 import com.kiosk.security.AuthoritiesConstants;
 import com.kiosk.security.SecurityUtils;
@@ -74,6 +75,9 @@ public class UserResource {
 
     @Inject
     private AuthorityRepository authorityRepository;
+
+    @Inject
+    private SubscriptionRepository subscriptionRepository;
 
     @Inject
     private UserService userService;
@@ -156,6 +160,7 @@ public class UserResource {
                 user.setLangKey(managedUserDTO.getLangKey());
                 user.setCustomerName(managedUserDTO.getCustomerName());
                 user.setCustomerDetails(managedUserDTO.getCustomerDetails());
+                user.setSubscription(subscriptionRepository.findOne(managedUserDTO.getSubscriptionId()));
                 Set<Authority> authorities = user.getAuthorities();
                 authorities.clear();
                 managedUserDTO.getAuthorities().stream().forEach(

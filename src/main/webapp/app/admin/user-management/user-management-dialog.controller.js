@@ -5,11 +5,12 @@
         .module('kioskApp')
         .controller('UserManagementDialogController',UserManagementDialogController);
 
-    UserManagementDialogController.$inject = ['$stateParams', '$uibModalInstance', 'entity', 'User', 'JhiLanguageService'];
+    UserManagementDialogController.$inject = ['$stateParams', '$uibModalInstance', 'entity', 'User', 'JhiLanguageService','Subscription'];
 
-    function UserManagementDialogController ($stateParams, $uibModalInstance, entity, User, JhiLanguageService) {
+    function UserManagementDialogController ($stateParams, $uibModalInstance, entity, User, JhiLanguageService,Subscription) {
         var vm = this;
 
+        vm.subscriptions = Subscription.query();
         vm.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         vm.clear = clear;
         vm.languages = null;

@@ -70,7 +70,7 @@
                                 id: null, login: null, firstName: null, lastName: null, email: null,
                                 activated: true, langKey: null, createdBy: null, createdDate: null,
                                 lastModifiedBy: null, lastModifiedDate: null, resetDate: null,
-                                resetKey: null,customerName: null, customerDetails: null, authorities: null
+                                resetKey: null,customerName: null, customerDetails: null,subscriptionId:null, subscriptionName:null ,authorities: null
                             };
                         }
                     }

@@ -5,6 +5,7 @@ import com.kiosk.domain.PersistentToken;
 import com.kiosk.domain.User;
 import com.kiosk.repository.AuthorityRepository;
 import com.kiosk.repository.PersistentTokenRepository;
+import com.kiosk.repository.SubscriptionRepository;
 import com.kiosk.repository.UserRepository;
 import com.kiosk.security.SecurityUtils;
 import com.kiosk.service.util.RandomUtil;
@@ -44,6 +45,9 @@ public class UserService {
 
     @Inject
     private AuthorityRepository authorityRepository;
+
+    @Inject
+    private SubscriptionRepository subscriptionRepository;
 
     public Optional<User> activateRegistration(String key) {
         log.debug("Activating user for activation key {}", key);
@@ -119,10 +123,8 @@ public class UserService {
         user.setEmail(managedUserDTO.getEmail());
         user.setCustomerName(managedUserDTO.getCustomerName());
         user.setCustomerDetails(managedUserDTO.getCustomerDetails());
-        user.setPlatinumPoints(0l);
-        user.setGoldPoints(0l);
-        user.setSilverPoints(0l);
-        user.setBronzePoints(0l);
+        user.setSubscription(subscriptionRepository.findOne(managedUserDTO.getSubscriptionId()));
+
         if (managedUserDTO.getLangKey() == null) {
             user.setLangKey("en"); // default language
         } else {

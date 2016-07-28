@@ -19,6 +19,17 @@ import java.time.ZonedDateTime;
 @Table(name = "jhi_user")
 public class User extends AbstractAuditingEntity implements Serializable {
 
+    public User() {
+        this.setSilverBarier(0l);
+        this.setGoldBarier(0l);
+        this.setPlatinumBarier(0l);
+        this.setCheckinTimeout(0l);
+        this.setPlatinumPoints(0l);
+        this.setGoldPoints(0l);
+        this.setSilverPoints(0l);
+        this.setBronzePoints(0l);
+    }
+
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -121,6 +132,9 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @NotNull
     @Column(name = "checkin_timeout", nullable = false)
     private Long checkinTimeout;
+
+    @ManyToOne
+    private Subscription subscription;
 
     public Long getId() {
         return id;
@@ -304,6 +318,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setCheckinTimeout(Long checkinTimeout) {
         this.checkinTimeout = checkinTimeout;
+    }
+
+    public Subscription getSubscription() {
+        return subscription;
+    }
+
+    public void setSubscription(Subscription subscription) {
+        this.subscription = subscription;
     }
 
     @Override

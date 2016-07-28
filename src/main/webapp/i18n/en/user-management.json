@@ -19,7 +19,7 @@
         "login": "Login",
         "firstName": "First name",
         "lastName": "Last name",
-        "customerName":"Customer name",
+        "customerName":"Company name",
         "customerDetails":"Additional details",
         "email": "Email",
         "activated": "Activated",
@@ -29,6 +29,7 @@
         "createdBy": "Created by",
         "createdDate": "Created date",
         "lastModifiedBy": "Modified by",
-        "lastModifiedDate": "Modified date"
+        "lastModifiedDate": "Modified date",
+        "subscription": "Subscription Plan"
     }
 }

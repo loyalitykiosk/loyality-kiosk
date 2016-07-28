@@ -65,6 +65,9 @@ public class UserDTO {
     private Long checkinTimeout;
 
 
+    private Long subscriptionId;
+
+    private String subscriptionName;
 
     public UserDTO() {
     }
@@ -73,14 +76,14 @@ public class UserDTO {
         this(user.getLogin(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getActivated(), user.getLangKey(),
             user.getCustomerName(), user.getCustomerDetails(), user.getPlatinumPoints(), user.getGoldPoints(), user.getSilverPoints(),
             user.getBronzePoints(), user.getSilverBarier(), user.getGoldBarier(), user.getPlatinumBarier(), user.getCheckinTimeout(),
-            user.getAuthorities().stream().map(Authority::getName)
+            user.getSubscription().getId(), user.getSubscription().getName(),user.getAuthorities().stream().map(Authority::getName)
                 .collect(Collectors.toSet()));
     }
 
     public UserDTO(String login, String firstName, String lastName, String email, boolean activated,
-                    String langKey,String customerName, String customerDetails, Long platinumPoints,
+                   String langKey,String customerName, String customerDetails, Long platinumPoints,
                    Long goldPoints, Long silverPoints, Long bronzePoints,Long silverBarier,
-                   Long goldBarier,Long platinumBarier,Long checkinTimeout,Set<String> authorities) {
+                   Long goldBarier,Long platinumBarier,Long checkinTimeout,Long subscriptionId,String subscriptionName, Set<String> authorities) {
 
         this.login = login;
         this.firstName = firstName;
@@ -99,6 +102,8 @@ public class UserDTO {
         this.goldBarier = goldBarier;
         this.platinumBarier = platinumBarier;
         this.checkinTimeout = checkinTimeout;
+        this.subscriptionId = subscriptionId;
+        this.subscriptionName = subscriptionName;
     }
 
     public String getLogin() {
@@ -194,6 +199,23 @@ public class UserDTO {
     public void setCheckinTimeout(Long checkinTimeout) {
         this.checkinTimeout = checkinTimeout;
     }
+
+    public Long getSubscriptionId() {
+        return subscriptionId;
+    }
+
+    public void setSubscriptionId(Long subscriptionId) {
+        this.subscriptionId = subscriptionId;
+    }
+
+    public String getSubscriptionName() {
+        return subscriptionName;
+    }
+
+    public void setSubscriptionName(String subscriptionName) {
+        this.subscriptionName = subscriptionName;
+    }
+
 
 
     @Override
