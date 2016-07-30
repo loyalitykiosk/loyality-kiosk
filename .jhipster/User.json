@@ -5,6 +5,14 @@
             "otherEntityName": "subscription",
             "relationshipType": "many-to-one",
             "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "userSettings",
+            "otherEntityName": "userSettings",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "user"
         }
     ],
     "fields": [

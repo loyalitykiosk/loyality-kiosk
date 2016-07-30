@@ -136,6 +136,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @ManyToOne
     private Subscription subscription;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(unique = true)
+    private UserSettings userSettings;
+
     public Long getId() {
         return id;
     }
@@ -326,6 +330,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setSubscription(Subscription subscription) {
         this.subscription = subscription;
+    }
+
+    public UserSettings getUserSettings() {
+        return userSettings;
+    }
+
+    public void setUserSettings(UserSettings userSettings) {
+        this.userSettings = userSettings;
     }
 
     @Override

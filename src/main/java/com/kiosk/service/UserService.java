@@ -1,8 +1,6 @@
 package com.kiosk.service;
 
-import com.kiosk.domain.Authority;
-import com.kiosk.domain.PersistentToken;
-import com.kiosk.domain.User;
+import com.kiosk.domain.*;
 import com.kiosk.repository.AuthorityRepository;
 import com.kiosk.repository.PersistentTokenRepository;
 import com.kiosk.repository.SubscriptionRepository;
@@ -110,7 +108,7 @@ public class UserService {
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
         newUser.setAuthorities(authorities);
-        userRepository.save(newUser);
+//        userRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
         return newUser;
     }
@@ -123,7 +121,10 @@ public class UserService {
         user.setEmail(managedUserDTO.getEmail());
         user.setCustomerName(managedUserDTO.getCustomerName());
         user.setCustomerDetails(managedUserDTO.getCustomerDetails());
-        user.setSubscription(subscriptionRepository.findOne(managedUserDTO.getSubscriptionId()));
+        Subscription subscription = subscriptionRepository.findOne(managedUserDTO.getSubscriptionId());
+        user.setSubscription(subscription);
+        user.setUserSettings(new UserSettings());
+        user.getUserSettings().setSmsBalance(subscription.getSmsPlan());
 
         if (managedUserDTO.getLangKey() == null) {
             user.setLangKey("en"); // default language
@@ -242,6 +243,17 @@ public class UserService {
         for (User user : users) {
             log.debug("Deleting not activated user {}", user.getLogin());
             userRepository.delete(user);
+        }
+    }
+
+    @Scheduled(cron = "0 0 0 1 * ?")
+    public void renewUserSettings(){
+        List<User> users = userRepository.findAll();
+        for (User user : users) {
+            log.debug("Renew user's settings {}", user.getLogin());
+            Integer smsNumber = user.getSubscription().getSmsPlan();
+            user.getUserSettings().setSmsBalance(smsNumber);
+            userRepository.save(user);
         }
     }
 }
