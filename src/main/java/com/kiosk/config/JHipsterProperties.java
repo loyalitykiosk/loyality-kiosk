@@ -16,6 +16,8 @@ import org.springframework.web.cors.CorsConfiguration;
 @ConfigurationProperties(prefix = "jhipster", ignoreUnknownFields = false)
 public class JHipsterProperties {
 
+    private final Sms sms = new Sms();
+
     private final Async async = new Async();
 
     private final Http http = new Http();
@@ -34,6 +36,10 @@ public class JHipsterProperties {
 
     public Async getAsync() {
         return async;
+    }
+
+    public Sms getSms() {
+        return sms;
     }
 
     public Http getHttp() {
@@ -142,6 +148,47 @@ public class JHipsterProperties {
 
         public void setFrom(String from) {
             this.from = from;
+        }
+    }
+
+
+    public static class Sms {
+
+        private String from;
+        private String id;
+        private String token;
+        private String version;
+
+        public String getFrom() {
+            return from;
+        }
+
+        public void setFrom(String from) {
+            this.from = from;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getToken() {
+            return token;
+        }
+
+        public void setToken(String token) {
+            this.token = token;
+        }
+
+        public String getVersion() {
+            return version;
+        }
+
+        public void setVersion(String version) {
+            this.version = version;
         }
     }
 

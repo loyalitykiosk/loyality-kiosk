@@ -246,6 +246,9 @@ public class UserService {
         }
     }
 
+    /**
+     * Reset sms balance for evety user once a month based on chosen subscription
+     */
     @Scheduled(cron = "0 0 0 1 * ?")
     public void renewUserSettings(){
         List<User> users = userRepository.findAll();

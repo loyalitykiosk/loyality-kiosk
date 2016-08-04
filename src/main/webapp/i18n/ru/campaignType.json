@@ -1,0 +1,9 @@
+{
+    "kioskApp": {
+        "CampaignType" : {
+            "null": "",
+            "PROMOTION": "PROMOTION",
+            "CUSTOM": "CUSTOM"
+        }
+    }
+}

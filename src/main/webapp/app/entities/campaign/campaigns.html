@@ -1,0 +1,69 @@
+<div>
+    <h2 translate="kioskApp.campaign.home.title">Campaigns</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-6 no-padding-left">
+                <button class="btn btn-primary" ui-sref="campaign.newpromo" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="kioskApp.campaign.home.createPromoLabel">
+                        Create new Promo Campaign
+                    </span>
+                </button>
+                <button class="btn btn-primary" ui-sref="campaign.newcustom" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  translate="kioskApp.campaign.home.createCustomLabel">
+                        Create new Custom Campaign
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cardType"><span translate="kioskApp.campaign.cardType">Card Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="type"><span translate="kioskApp.campaign.type">Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span translate="kioskApp.campaign.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="promotion.name"><span translate="kioskApp.campaign.promotion">Promotion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="campaign in vm.campaigns track by campaign.id">
+                    <td><a ui-sref="campaign-detail({id:campaign.id})">{{campaign.id}}</a></td>
+                    <td translate="{{'kioskApp.CardType.' + campaign.cardType}}">{{campaign.cardType}}</td>
+                    <td translate="{{'kioskApp.CampaignType.' + campaign.type}}">{{campaign.type}}</td>
+                    <td translate="{{'kioskApp.CampaignStatus.' + campaign.status}}">{{campaign.status}}</td>
+                    <td>
+                        <a ui-sref="promotion-detail({id:campaign.promotion.id})">{{campaign.promotion.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="campaign-detail({id:campaign.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="campaign.delete({id:campaign.id})"
+                                    ng-disabled="campaign.status!='NEW'"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

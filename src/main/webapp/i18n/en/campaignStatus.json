@@ -1,0 +1,10 @@
+{
+    "kioskApp": {
+        "CampaignStatus" : {
+            "null": "",
+            "NEW": "NEW",
+            "SENDING": "SENDING",
+            "DELIVERED": "DELIVERED"
+        }
+    }
+}

@@ -76,6 +76,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.plivo</groupId>
+            <artifactId>plivo-java</artifactId>
+            <version>3.0.9</version>
+        </dependency>
+        <dependency>
             <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-core</artifactId>
         </dependency>

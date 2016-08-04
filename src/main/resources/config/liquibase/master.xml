@@ -11,6 +11,7 @@
     <include file="changelog/20160615151157_added_entity_CardRequest.xml" relativeToChangelogFile="true"/>
     <include file="changelog/20160617164457_added_entity_CardTransaction.xml" relativeToChangelogFile="true"/>
     <include file="changelog/20160725105941_added_entity_Subscription.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/20160730130952_added_entity_Campaign.xml" relativeToChangelogFile="true"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="changelog/20160515150634_added_entity_constraints_Card.xml" relativeToChangelogFile="true"/>
     <include file="changelog/20160519131749_added_entity_constraints_Promotion.xml" relativeToChangelogFile="true"/>

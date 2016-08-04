@@ -1,0 +1,28 @@
+{
+    "kioskApp": {
+        "campaign" : {
+            "home": {
+                "title": "Campaigns",
+                "createLabel": "Создать новый Campaign",
+                "createOrEditLabel": "Создать или отредактировать Campaign",
+                "search": "Найти Campaign"
+            },
+            "created": "Новый Campaign создан с идентификатором {{ param }}",
+            "updated": "Campaign обновлен с идентификатором {{ param }}",
+            "deleted": "Campaign удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Campaign {{ id }}?"
+            },
+            "detail": {
+                "title": "Campaign"
+            },
+            "customText": "Custom Text",
+            "cardType": "Card Type",
+            "date": "Date",
+            "type": "Type",
+            "status": "Status",
+            "user": "User",
+            "promotion": "Promotion"
+        }
+    }
+}

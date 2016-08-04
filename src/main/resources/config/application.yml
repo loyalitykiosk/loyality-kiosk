@@ -32,11 +32,22 @@ security:
     basic:
         enabled: false
 
+sms:
+    authid:MAZTHLNJQZNGQ2MJJMM2
+    authtoken:MDg5Y2NkMDA2NWEzNGU3MmEzMjgxNGFmZjcxYjQy
+    version:v1
+    from:15042175190
+
 # ===================================================================
 # JHipster specific properties
 # ===================================================================
 
 jhipster:
+    sms:
+        id: MAZTHLNJQZNGQ2MJJMM2
+        token: MDg5Y2NkMDA2NWEzNGU3MmEzMjgxNGFmZjcxYjQy
+        version: v1
+        from: Kiosk
     async:
         corePoolSize: 2
         maxPoolSize: 50

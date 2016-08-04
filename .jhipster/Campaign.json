@@ -1,0 +1,55 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "customerName"
+        },
+        {
+            "relationshipName": "promotion",
+            "otherEntityName": "promotion",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "customText",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cardType",
+            "fieldType": "CardType",
+            "fieldValues": "BRONZE,SILVER,GOLD,PLATINUM"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "CampaignType",
+            "fieldValues": "PROMOTION,CUSTOM",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "CampaignStatus",
+            "fieldValues": "NEW,SENDING,DELIVERED",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160730130952",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "campaign",
+    "pagination": "pager"
+}
