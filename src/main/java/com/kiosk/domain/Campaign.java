@@ -26,7 +26,8 @@ public class Campaign implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "custom_text")
+    @Size(max = 140)
+    @Column(name = "custom_text", length = 140)
     private String customText;
 
     @Enumerated(EnumType.STRING)
@@ -46,6 +47,12 @@ public class Campaign implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private CampaignStatus status;
+
+    @Column(name = "status_date")
+    private LocalDate statusDate;
+
+    @Column(name = "status_description")
+    private String statusDescription;
 
     @ManyToOne
     private User user;
@@ -101,6 +108,22 @@ public class Campaign implements Serializable {
         this.status = status;
     }
 
+    public LocalDate getStatusDate() {
+        return statusDate;
+    }
+
+    public void setStatusDate(LocalDate statusDate) {
+        this.statusDate = statusDate;
+    }
+
+    public String getStatusDescription() {
+        return statusDescription;
+    }
+
+    public void setStatusDescription(String statusDescription) {
+        this.statusDescription = statusDescription;
+    }
+
     public User getUser() {
         return user;
     }
@@ -146,6 +169,8 @@ public class Campaign implements Serializable {
             ", date='" + date + "'" +
             ", type='" + type + "'" +
             ", status='" + status + "'" +
+            ", statusDate='" + statusDate + "'" +
+            ", statusDescription='" + statusDescription + "'" +
             '}';
     }
 }

@@ -3,24 +3,27 @@
         "campaign" : {
             "home": {
                 "title": "Campaigns",
-                "createLabel": "Создать новый Campaign",
-                "createOrEditLabel": "Создать или отредактировать Campaign",
-                "search": "Найти Campaign"
+                "createPromoLabel": "New Promotion Campaign",
+                "createCustomLabel": "New Custom Campaign",
+                "createOrEditLabel": "Create or edit a Campaign",
+                "search": "Search for Campaign"
             },
-            "created": "Новый Campaign создан с идентификатором {{ param }}",
-            "updated": "Campaign обновлен с идентификатором {{ param }}",
-            "deleted": "Campaign удален с идентификатором {{ param }}",
+            "created": "A new Campaign is created with identifier {{ param }}",
+            "updated": "A Campaign is updated with identifier {{ param }}",
+            "deleted": "A Campaign is deleted with identifier {{ param }}",
             "delete": {
-                "question": "Вы уверены что хотите удалить Campaign {{ id }}?"
+                "question": "Are you sure you want to delete Campaign {{ id }}?"
             },
             "detail": {
                 "title": "Campaign"
             },
-            "customText": "Custom Text",
-            "cardType": "Card Type",
-            "date": "Date",
-            "type": "Type",
+            "customText": "Message",
+            "cardType": "Target group",
+            "date": "When to send",
+            "type": "Type of Campaign",
             "status": "Status",
+            "statusDate": "Last status update",
+            "statusDescription": "Description of status",
             "user": "User",
             "promotion": "Promotion"
         }

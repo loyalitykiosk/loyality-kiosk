@@ -3,8 +3,7 @@
         "campaign" : {
             "home": {
                 "title": "Campaigns",
-                "createPromoLabel": "New Promotion Campaign",
-                "createCustomLabel": "New Custom Campaign",
+                "createLabel": "New Sms Campaign",
                 "createOrEditLabel": "Create or edit a Campaign",
                 "search": "Search for Campaign"
             },
@@ -22,6 +21,8 @@
             "date": "When to send",
             "type": "Type of Campaign",
             "status": "Status",
+            "statusDate": "Last status update",
+            "statusDescription": "Description of status",
             "user": "User",
             "promotion": "Promotion"
         }

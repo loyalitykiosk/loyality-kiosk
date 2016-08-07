@@ -28,6 +28,16 @@
             <span translate="{{'kioskApp.CampaignStatus.' + vm.campaign.status}}">{{vm.campaign.status}}</span>
         </dd>
         <hr>
+        <dt><span translate="kioskApp.campaign.statusDate">Status Date</span></dt>
+        <dd>
+            <span>{{vm.campaign.statusDate | date:'mediumDate'}}</span>
+        </dd>
+        <hr>
+        <dt><span translate="kioskApp.campaign.statusDescription">Status Description</span></dt>
+        <dd>
+            <span>{{vm.campaign.statusDescription}}</span>
+        </dd>
+        <hr>
         <dt><span translate="kioskApp.campaign.user">User</span></dt>
         <dd>
             {{vm.campaign.user.customerName}}

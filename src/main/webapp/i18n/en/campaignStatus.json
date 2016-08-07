@@ -4,7 +4,8 @@
             "null": "",
             "NEW": "NEW",
             "SENDING": "SENDING",
-            "DELIVERED": "DELIVERED"
+            "DELIVERED": "DELIVERED",
+            "ERROR": "ERROR"
         }
     }
 }

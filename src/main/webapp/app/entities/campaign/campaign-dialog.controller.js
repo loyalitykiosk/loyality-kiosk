@@ -12,6 +12,7 @@
         vm.campaign = entity;
         vm.users = User.query();
         vm.promotions = Promotion.query();
+        vm.isValid = isFormValid;
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -46,5 +47,15 @@
         vm.openCalendar = function(date) {
             vm.datePickerOpenStatus[date] = true;
         };
+
+
+        function isFormValid() {
+            if (vm.campaign.type == 'PROMOTION'){
+                return vm.campaign.date != null && vm.campaign.promotion !=null;
+            }
+            if (vm.campaign.type == 'CUSTOM'){
+                return vm.campaign.date != null && vm.campaign.cardType !=null && vm.campaign.customText != null;
+            }
+        }
     }
 })();

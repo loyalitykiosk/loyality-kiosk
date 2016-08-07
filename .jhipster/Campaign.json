@@ -16,7 +16,11 @@
     "fields": [
         {
             "fieldName": "customText",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "140"
         },
         {
             "fieldName": "cardType",
@@ -45,6 +49,14 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "statusDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "statusDescription",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20160730130952",

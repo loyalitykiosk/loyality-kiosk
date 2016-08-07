@@ -22,6 +22,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -49,23 +50,36 @@ public class SmsServiceImpl implements SmsService {
 
     @Override
     public void sendSms(List<String> numbers, String text) {
+        sendMessage(numbers,text);
+    }
+
+    private MessageResponse sendMessage(List<String> numbers, String text){
         final RestAPI plivoApi = new RestAPI(jHipsterProperties.getSms().getId(), jHipsterProperties.getSms().getToken(), jHipsterProperties.getSms().getVersion());
+        MessageResponse result = null;
         LOG.info("Send sms message with text {} to next numbers:{}",text, numbers);
         if (StringUtils.isEmpty(text)|| numbers.isEmpty()){
-            LOG.warn("Skip. Numbers or mesage is empty. Numbers: {}, Message: {}", numbers, text);
-            return;
+            LOG.warn("Skip. Numbers or message is empty. Numbers: {}, Message: {}", numbers, text);
+            result = new MessageResponse();
+            result.error = String.format("Skiped. Numbers or message is empty. Numbers: %s, Message: %s", numbers, text);
+            return result;
         }
         LinkedHashMap<String, String> parameters = new LinkedHashMap<>();
         parameters.put("src", jHipsterProperties.getSms().getFrom());
         parameters.put("dst", calculateDestinations(numbers)); // Receiver's phone number with country code
         parameters.put("text", text);
         try {
-            MessageResponse response = plivoApi.sendMessage(parameters);
-            LOG.info("Sms message sent with nex result: {}", response);
+            result = plivoApi.sendMessage(parameters);
+            LOG.info("Sms message sent with nex result: {}", result);
         } catch (PlivoException e) {
             LOG.error("Failed to send sms message", e);
+            result = new MessageResponse();
+            result.error ="Failed to send sms message" + e.getMessage();
         }
+        return result;
     }
+
+
+
     // List of numbers into  number<number<number format
     private String calculateDestinations(List<String> numbers) {
         return numbers.stream().collect(Collectors.joining("<"));
@@ -77,16 +91,29 @@ public class SmsServiceImpl implements SmsService {
         LOG.info("Promotion campaign scheduled");
         List<Campaign> newCampaigns = campaignRepository.findByCampaignTypeAndStatus(CampaignType.PROMOTION, CampaignStatus.NEW);
         for (Campaign campaign : newCampaigns){
+            boolean skip = false;
             User user = campaign.getUser();
             List<Card> cards = cardRepository.findByUser(user.getId());
             if (user.getUserSettings().getSmsBalance() < cards.size()){
                 LOG.info("Skip campaign {} due to not enough sms balance of user", campaign.getId());
-                continue;
+                skip = true;
+                campaign.setStatus(CampaignStatus.ERROR);
+                campaign.setStatusDescription("Skip campaign {} due to not enough sms balance of user");
             }
-            List<String> numbers = cards.stream().map(Card::getSmsNumber).collect(Collectors.toList());
-            String text = campaign.getPromotion().getDescription();
-            sendSms(numbers, text);
-            campaign.setStatus(CampaignStatus.DELIVERED);
+            if (!skip){
+                List<String> numbers = cards.stream().map(Card::getSmsNumber).collect(Collectors.toList());
+                String text = campaign.getPromotion().getSmsText();
+                MessageResponse response = sendMessage(numbers, text);
+                if (response.error != null){
+                    campaign.setStatus(CampaignStatus.ERROR);
+                    campaign.setStatusDescription(response.error);
+                }else{
+                    campaign.setStatus(CampaignStatus.DELIVERED);
+                    campaign.setStatusDescription(response.message);
+                }
+                minusSmsBalance(user, cards.size());
+            }
+            campaign.setStatusDate(LocalDate.now());
             campaignRepository.save(campaign);
         }
     }
@@ -97,17 +124,29 @@ public class SmsServiceImpl implements SmsService {
         LOG.info("Custom campaign scheduled");
         List<Campaign> newCampaigns = campaignRepository.findByCampaignTypeAndStatus(CampaignType.CUSTOM, CampaignStatus.NEW);
         for (Campaign campaign : newCampaigns){
+            boolean skip = false;
             User user = campaign.getUser();
             List<Card> cards = cardRepository.findByUserAndType(user.getId(), campaign.getCardType());
             if (user.getUserSettings().getSmsBalance() < cards.size()){
                 LOG.info("Skip campaign {} due to not enough sms balance of user", campaign.getId());
-                continue;
+                campaign.setStatus(CampaignStatus.ERROR);
+                campaign.setStatusDescription("Skip campaign {} due to not enough sms balance of user");
+                skip = true;
             }
-            List<String> numbers = cards.stream().map(Card::getSmsNumber).collect(Collectors.toList());
-            String text = campaign.getCustomText();
-            sendSms(numbers, text);
-            minusSmsBalance(user, cards.size());
-            campaign.setStatus(CampaignStatus.DELIVERED);
+            if (!skip) {
+                List<String> numbers = cards.stream().map(Card::getSmsNumber).collect(Collectors.toList());
+                String text = campaign.getCustomText();
+                MessageResponse response = sendMessage(numbers, text);
+                if (response.error != null){
+                    campaign.setStatus(CampaignStatus.ERROR);
+                    campaign.setStatusDescription(response.error);
+                }else{
+                    campaign.setStatus(CampaignStatus.DELIVERED);
+                    campaign.setStatusDescription(response.message);
+                }
+                minusSmsBalance(user, cards.size());
+            }
+            campaign.setStatusDate(LocalDate.now());
             campaignRepository.save(campaign);
         }
     }

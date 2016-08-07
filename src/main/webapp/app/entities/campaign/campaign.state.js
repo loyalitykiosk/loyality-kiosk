@@ -81,41 +81,9 @@
                 }]
             }
         })
-        .state('campaign.newcustom', {
-            parent: 'campaign',
-            url: '/new/custom',
-            data: {
-                authorities: ['ROLE_USER']
-            },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
-                    templateUrl: 'app/entities/campaign/campaign-dialog.html',
-                    controller: 'CampaignDialogController',
-                    controllerAs: 'vm',
-                    backdrop: 'static',
-                    size: 'lg',
-                    resolve: {
-                        entity: function () {
-                            return {
-                                customText: null,
-                                cardType: null,
-                                date: null,
-                                type: 'CUSTOM',
-                                status: null,
-                                id: null,
-                                promotion: {}
-                            };
-                        }
-                    }
-                }).result.then(function() {
-                    $state.go('campaign', null, { reload: true });
-                }, function() {
-                    $state.go('campaign');
-                });
-            }]
-        }).state('campaign.newpromo', {
+        .state('campaign.new', {
                 parent: 'campaign',
-                url: '/new/promotion',
+                url: '/new',
                 data: {
                     authorities: ['ROLE_USER']
                 },
