@@ -24,31 +24,31 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="description" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="date_start" type="date">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="date_end" type="date">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="prize_name" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            
-            <column name="prize_description" type="varchar(255)">
+
+            <column name="sms_text" type="varchar(140)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="user_id" type="bigint"/>
             <column name="winner_id" type="bigint"/>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
-        
+
     </changeSet>
 </databaseChangeLog>

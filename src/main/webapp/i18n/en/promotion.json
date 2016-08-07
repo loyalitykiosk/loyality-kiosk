@@ -21,7 +21,7 @@
             "dateStart": "Date Start",
             "dateEnd": "Date End",
             "prizeName": "Prize",
-            "prizeDescription": "Prize Description",
+            "smsText": "Sms Details",
             "user": "Customer",
             "winner": "Winner"
         }

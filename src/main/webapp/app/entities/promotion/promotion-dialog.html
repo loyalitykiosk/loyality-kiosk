@@ -60,10 +60,17 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label" translate="kioskApp.promotion.prizeDescription" for="field_prizeDescription">Prize Description</label>
-            <textarea rows="5" type="textarea" class="form-control" name="prizeDescription" id="field_prizeDescription"
-                    ng-model="vm.promotion.prizeDescription"
-                     ></textarea>
+            <label class="control-label" translate="kioskApp.promotion.smsText" for="field_smsText">Sms Text</label>
+            <textarea rows="5" type="textarea" class="form-control" name="smsText" id="field_smsText"
+                      ng-model="vm.promotion.smsText"
+                      ng-maxlength="140"
+            ></textarea>
+            <div ng-show="editForm.smsText.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.smsText.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="140">
+                    This field cannot be longer than 140 characters.
+                </p>
+            </div>
         </div>
         <div class="form-group">
             <label translate="kioskApp.promotion.winner" for="field_winner">Winner</label>

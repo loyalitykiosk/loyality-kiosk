@@ -38,8 +38,12 @@
             ]
         },
         {
-            "fieldName": "prizeDescription",
-            "fieldType": "String"
+            "fieldName": "smsText",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "140"
         }
     ],
     "changelogDate": "20160519131749",

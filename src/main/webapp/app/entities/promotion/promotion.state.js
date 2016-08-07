@@ -96,7 +96,7 @@
                                 dateStart: null,
                                 dateEnd: null,
                                 prizeName: null,
-                                prizeDescription: null,
+                                smsText: null,
                                 id: null
                             };
                         }

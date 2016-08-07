@@ -30,9 +30,8 @@ public class PromotionDTO implements Serializable {
     @NotNull
     private String prizeName;
 
-
-    private String prizeDescription;
-
+    @Size(max = 140)
+    private String smsText;
 
     private Long userId;
 
@@ -84,12 +83,12 @@ public class PromotionDTO implements Serializable {
     public void setPrizeName(String prizeName) {
         this.prizeName = prizeName;
     }
-    public String getPrizeDescription() {
-        return prizeDescription;
+   public String getSmsText() {
+        return smsText;
     }
 
-    public void setPrizeDescription(String prizeDescription) {
-        this.prizeDescription = prizeDescription;
+    public void setSmsText(String smsText) {
+        this.smsText = smsText;
     }
 
     public Long getUserId() {
@@ -154,7 +153,7 @@ public class PromotionDTO implements Serializable {
             ", dateStart='" + dateStart + "'" +
             ", dateEnd='" + dateEnd + "'" +
             ", prizeName='" + prizeName + "'" +
-            ", prizeDescription='" + prizeDescription + "'" +
+            ", smsText='" + smsText + "'" +
             '}';
     }
 }

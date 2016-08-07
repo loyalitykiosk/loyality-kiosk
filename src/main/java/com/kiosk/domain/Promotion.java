@@ -36,8 +36,9 @@ public class Promotion implements Serializable {
     @Column(name = "prize_name", nullable = false)
     private String prizeName;
 
-    @Column(name = "prize_description")
-    private String prizeDescription;
+    @Size(max = 140)
+    @Column(name = "sms_text", length = 140)
+    private String smsText;
 
     @ManyToOne
     private User user;
@@ -93,12 +94,12 @@ public class Promotion implements Serializable {
         this.prizeName = prizeName;
     }
 
-    public String getPrizeDescription() {
-        return prizeDescription;
+    public String getSmsText() {
+        return smsText;
     }
 
-    public void setPrizeDescription(String prizeDescription) {
-        this.prizeDescription = prizeDescription;
+    public void setSmsText(String smsText) {
+        this.smsText = smsText;
     }
 
     public User getUser() {
@@ -146,7 +147,7 @@ public class Promotion implements Serializable {
             ", dateStart='" + dateStart + "'" +
             ", dateEnd='" + dateEnd + "'" +
             ", prizeName='" + prizeName + "'" +
-            ", prizeDescription='" + prizeDescription + "'" +
+            ", smsText='" + smsText + "'" +
             '}';
     }
 }
