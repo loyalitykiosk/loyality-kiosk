@@ -25,7 +25,14 @@
             "email": "Email",
             "status": "Status",
             "type": "Type",
-            "balance": "Balance"
+            "balance": "Balance",
+            "messages": {
+                "validate": {
+                    "smsNumber": {
+                        "pattern": "Sms number should match e-164 number format(Ex: 12223334455) with USA country code."
+                    }
+                }
+            }
         }
     }
 }

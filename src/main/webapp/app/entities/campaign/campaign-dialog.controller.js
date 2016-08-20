@@ -13,6 +13,7 @@
         vm.users = User.query();
         vm.promotions = Promotion.query();
         vm.isValid = isFormValid;
+        vm.smsNumber = 0;
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -51,11 +52,27 @@
 
         function isFormValid() {
             if (vm.campaign.type == 'PROMOTION'){
-                return vm.campaign.date != null && vm.campaign.promotion !=null;
+                return vm.campaign.date != null && vm.campaign.promotion !=null && vm.smsNumber>0;
             }
             if (vm.campaign.type == 'CUSTOM'){
-                return vm.campaign.date != null && vm.campaign.cardType !=null && vm.campaign.customText != null;
+                return vm.campaign.date != null && vm.campaign.cardType !=null && vm.campaign.customText != null && vm.smsNumber>0;
             }
         }
+
+
+        function countSms() {
+            Campaign.validate(vm.campaign,
+            function (result){
+                vm.smsNumber = result.value;
+            },
+            function () {
+                vm.smsNumber = 0;
+            }
+            );
+        }
+
+        $scope.$watch('vm.campaign.type',countSms, true);
+        $scope.$watch('vm.campaign.cardType',countSms, true);
+        $scope.$watch('vm.campaign.promotion',countSms, true);
     }
 })();

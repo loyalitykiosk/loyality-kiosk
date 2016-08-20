@@ -35,6 +35,16 @@
                     dateToSend.date = DateUtils.convertLocalDateToServer(data.date);
                     return angular.toJson(dateToSend);
                 }
+            },
+            'validate': {
+                method: 'POST',
+                url : 'api/campaigns/count',
+                transformRequest: function (data) {
+                    // data.date = DateUtils.convertLocalDateToServer(data.date);
+                    var dateToSend = angular.copy(data);
+                    dateToSend.date = DateUtils.convertLocalDateToServer(data.date);
+                    return angular.toJson(dateToSend);
+                }
             }
         });
     }

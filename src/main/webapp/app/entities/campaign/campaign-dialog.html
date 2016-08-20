@@ -4,7 +4,7 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myCampaignLabel" translate="kioskApp.campaign.home.createOrEditLabel">Create or edit a Campaign</h4>
+        <h4 class="modal-title" id="myCampaignLabel" translate="kioskApp.campaign.home.createLabel">Create Campaign</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
@@ -12,6 +12,10 @@
             <label for="id" translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.campaign.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="kioskApp.campaign.smsNumber" for="sms_number">Sms number</label>
+            <input type="text" class="form-control" id="sms_number" name="sms_number" ng-model="vm.smsNumber" readonly />
         </div>
         <div class="form-group">
             <label class="control-label" translate="kioskApp.campaign.type" for="field_type">Type</label>

@@ -5,10 +5,12 @@ import com.kiosk.domain.Campaign;
 import com.kiosk.domain.enumeration.CampaignStatus;
 import com.kiosk.domain.enumeration.CampaignType;
 import com.kiosk.repository.CampaignRepository;
+import com.kiosk.repository.CardRepository;
 import com.kiosk.repository.UserRepository;
 import com.kiosk.security.SecurityUtils;
 import com.kiosk.web.rest.util.HeaderUtil;
 import com.kiosk.web.rest.util.PaginationUtil;
+import javafx.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -39,6 +41,9 @@ public class CampaignResource {
     private CampaignRepository campaignRepository;
 
     @Inject
+    private CardRepository cardRepository;
+
+    @Inject
     private UserRepository userRepository;
 
     /**
@@ -66,6 +71,42 @@ public class CampaignResource {
         return ResponseEntity.created(new URI("/api/campaigns/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("campaign", result.getId().toString()))
             .body(result);
+    }
+
+    /**
+     * POST  /campaigns : Create a new campaign.
+     *
+     * @param campaign the campaign to create
+     * @return the ResponseEntity with status 201 (Created) and with body the new campaign, or with status 400 (Bad Request) if the campaign has already an ID
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @RequestMapping(value = "/campaigns/count",
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public Pair<String, Integer> countCampaign(@RequestBody Campaign campaign) {
+        log.debug("REST request to save Campaign : {}", campaign);
+        Integer result = userRepository.currentUser().getUserSettings().getSmsBalance();
+        if (campaign.getType() == CampaignType.CUSTOM){
+            result -= countSmsForCustomCampaign(campaign);
+        }else if (campaign.getType() == CampaignType.PROMOTION){
+            result -= countSmsForPromotiomCampaign(campaign);
+        }
+        return new Pair<>("smsNumber",result);
+    }
+
+    private Integer countSmsForPromotiomCampaign(Campaign campaign) {
+        if (campaign.getPromotion() == null){
+            return 0;
+        }
+        return cardRepository.findByUserIsCurrentUser().size();
+    }
+
+    private Integer countSmsForCustomCampaign(Campaign campaign) {
+        if (campaign.getType() == null){
+            return 0;
+        }
+        return cardRepository.findByUserIsCurrentUserAndType(campaign.getCardType()).size();
     }
 
     /**

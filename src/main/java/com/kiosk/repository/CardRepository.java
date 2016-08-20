@@ -18,6 +18,9 @@ public interface CardRepository extends JpaRepository<Card,Long> {
     @Query("select card from Card card where card.user.login = ?#{principal.username}")
     List<Card> findByUserIsCurrentUser();
 
+    @Query("select card from Card card where card.user.login = ?#{principal.username} and card.type = :type")
+    List<Card> findByUserIsCurrentUserAndType(@Param("type") CardType type);
+
     @Query("select card from Card card where card.user.id = :userId")
     List<Card> findByUser(@Param("userId") Long userId);
 

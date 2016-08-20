@@ -57,12 +57,16 @@
         <div class="form-group">
             <label class="control-label" translate="kioskApp.card.smsNumber" for="field_smsNumber">Sms Number</label>
             <input type="text" class="form-control" name="smsNumber" id="field_smsNumber"
-                    ng-model="vm.card.smsNumber"
+                    ng-model="vm.card.smsNumber" ng-pattern="/^[1,7]\d{10,14}$/"
                     required />
             <div ng-show="editForm.smsNumber.$invalid">
                 <p class="help-block"
                     ng-show="editForm.smsNumber.$error.required" translate="entity.validation.required">
                     This field is required.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.smsNumber.$error.pattern" translate="kioskApp.card.messages.validate.smsNumber.pattern">
+                    Sms number should match e-164 number format(Ex: 12223334455) and USA country code.
                 </p>
             </div>
         </div>

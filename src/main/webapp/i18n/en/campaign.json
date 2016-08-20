@@ -4,7 +4,7 @@
             "home": {
                 "title": "Campaigns",
                 "createLabel": "New Sms Campaign",
-                "createOrEditLabel": "Create or edit a Campaign",
+                "createOrEditLabel": "New SMS Campaign",
                 "search": "Search for Campaign"
             },
             "created": "A new Campaign is created with identifier {{ param }}",
@@ -24,7 +24,8 @@
             "statusDate": "Last status update",
             "statusDescription": "Description of status",
             "user": "User",
-            "promotion": "Promotion"
+            "promotion": "Promotion",
+            "smsNumber" : "SMS Balance after creation this campaign"
         }
     }
 }
