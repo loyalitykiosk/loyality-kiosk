@@ -89,6 +89,9 @@
             <column name="user_settings_id" type="bigint">
                 <constraints unique="true"/>
             </column>
+            <column name="phone" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
         </createTable>
 
         <createIndex indexName="idx_user_login"

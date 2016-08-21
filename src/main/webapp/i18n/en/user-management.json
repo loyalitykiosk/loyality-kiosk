@@ -22,6 +22,7 @@
         "customerName":"Company name",
         "customerDetails":"Additional details",
         "email": "Email",
+        "phone" :"Phone Number",
         "activated": "Activated",
         "deactivated": "Deactivated",
         "profiles": "Profiles",
@@ -30,6 +31,14 @@
         "createdDate": "Created date",
         "lastModifiedBy": "Modified by",
         "lastModifiedDate": "Modified date",
-        "subscription": "Subscription Plan"
+        "subscription": "Subscription Plan",
+        "messages": {
+            "validate": {
+                "phone": {
+                    "pattern": "Sms number should match e-164 number format(Ex: 12223334455) with USA country code."
+                }
+            }
+        }
+
     }
 }

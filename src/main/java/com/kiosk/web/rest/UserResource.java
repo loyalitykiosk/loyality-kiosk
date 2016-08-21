@@ -9,6 +9,7 @@ import com.kiosk.repository.UserRepository;
 import com.kiosk.security.AuthoritiesConstants;
 import com.kiosk.security.SecurityUtils;
 import com.kiosk.service.MailService;
+import com.kiosk.service.SmsService;
 import com.kiosk.service.UserService;
 import com.kiosk.web.rest.dto.ManagedUserDTO;
 import com.kiosk.web.rest.util.HeaderUtil;
@@ -71,7 +72,6 @@ public class UserResource {
 
     @Inject
     private MailService mailService;
-
 
     @Inject
     private AuthorityRepository authorityRepository;

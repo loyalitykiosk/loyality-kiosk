@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cglib.core.CollectionUtils;
+import org.springframework.context.MessageSource;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 /**
@@ -47,6 +49,10 @@ public class SmsServiceImpl implements SmsService {
 
     @Inject
     private UserRepository userRepository;
+
+    @Inject
+    private MessageSource messageSource;
+
 
     @Override
     public void sendSms(List<String> numbers, String text) {
@@ -85,6 +91,11 @@ public class SmsServiceImpl implements SmsService {
         return numbers.stream().collect(Collectors.joining("<"));
     }
 
+    @Override
+    public void sendCreationMessage(User newUser, String password) {
+        String text = messageSource.getMessage("email.activation.text",new Object[]{newUser.getLogin(), password}, Locale.ENGLISH);
+        sendMessage(Arrays.asList(newUser.getPhone()),text);
+    }
 
     @Scheduled(cron = "0 */1 * * * *")
     public void sendPromotionCampaigns(){

@@ -133,6 +133,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "checkin_timeout", nullable = false)
     private Long checkinTimeout;
 
+    @NotNull
+    @Column(name = "phone", nullable = false)
+    private String phone;
+
     @ManyToOne
     private Subscription subscription;
 
@@ -322,6 +326,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setCheckinTimeout(Long checkinTimeout) {
         this.checkinTimeout = checkinTimeout;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public Subscription getSubscription() {

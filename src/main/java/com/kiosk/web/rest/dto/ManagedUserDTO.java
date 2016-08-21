@@ -42,12 +42,12 @@ public class ManagedUserDTO extends UserDTO {
     }
 
     public ManagedUserDTO(Long id, String login, String password, String firstName, String lastName,
-                          String email, boolean activated, String langKey, String customerDetails, String customerName,
+                          String email,String phone, boolean activated, String langKey, String customerDetails, String customerName,
                           Long platinumPoints, Long goldPoints, Long silverPoints, Long bronzePoints,
                           Long silverBarier, Long goldBarier, Long platinumBarier, Long checkinTimeout,
                           Long subscriptionId,String subscriptionName,
                           Set<String> authorities, ZonedDateTime createdDate, String lastModifiedBy, ZonedDateTime lastModifiedDate) {
-        super(login, firstName, lastName, email, activated, langKey, customerName, customerDetails, platinumPoints, goldPoints, silverPoints, bronzePoints, silverBarier
+        super(login, firstName, lastName, email, phone ,activated, langKey, customerName, customerDetails, platinumPoints, goldPoints, silverPoints, bronzePoints, silverBarier
             , goldBarier, platinumBarier, checkinTimeout,subscriptionId, subscriptionName, authorities);
         this.id = id;
         this.createdDate = createdDate;

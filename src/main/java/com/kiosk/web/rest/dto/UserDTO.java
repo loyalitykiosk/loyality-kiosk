@@ -28,6 +28,9 @@ public class UserDTO {
     @Size(min = 5, max = 100)
     private String email;
 
+    @NotNull
+    private String phone;
+
     private boolean activated = false;
 
     @Size(min = 2, max = 5)
@@ -73,14 +76,14 @@ public class UserDTO {
     }
 
     public UserDTO(User user) {
-        this(user.getLogin(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getActivated(), user.getLangKey(),
+        this(user.getLogin(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPhone() ,user.getActivated(), user.getLangKey(),
             user.getCustomerName(), user.getCustomerDetails(), user.getPlatinumPoints(), user.getGoldPoints(), user.getSilverPoints(),
             user.getBronzePoints(), user.getSilverBarier(), user.getGoldBarier(), user.getPlatinumBarier(), user.getCheckinTimeout(),
             user.getSubscription().getId(), user.getSubscription().getName(),user.getAuthorities().stream().map(Authority::getName)
                 .collect(Collectors.toSet()));
     }
 
-    public UserDTO(String login, String firstName, String lastName, String email, boolean activated,
+    public UserDTO(String login, String firstName, String lastName, String email,String phone, boolean activated,
                    String langKey,String customerName, String customerDetails, Long platinumPoints,
                    Long goldPoints, Long silverPoints, Long bronzePoints,Long silverBarier,
                    Long goldBarier,Long platinumBarier,Long checkinTimeout,Long subscriptionId,String subscriptionName, Set<String> authorities) {
@@ -89,6 +92,7 @@ public class UserDTO {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.phone = phone;
         this.activated = activated;
         this.langKey = langKey;
         this.authorities = authorities;
@@ -120,6 +124,10 @@ public class UserDTO {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public boolean isActivated() {

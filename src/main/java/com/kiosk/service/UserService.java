@@ -37,6 +37,8 @@ public class UserService {
     @Inject
     private UserRepository userRepository;
 
+    @Inject
+    private SmsService smsService;
 
     @Inject
     private PersistentTokenRepository persistentTokenRepository;
@@ -119,6 +121,7 @@ public class UserService {
         user.setFirstName(managedUserDTO.getFirstName());
         user.setLastName(managedUserDTO.getLastName());
         user.setEmail(managedUserDTO.getEmail());
+        user.setPhone(managedUserDTO.getPhone());
         user.setCustomerName(managedUserDTO.getCustomerName());
         user.setCustomerDetails(managedUserDTO.getCustomerDetails());
         Subscription subscription = subscriptionRepository.findOne(managedUserDTO.getSubscriptionId());
@@ -138,12 +141,14 @@ public class UserService {
             );
             user.setAuthorities(authorities);
         }
-        String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
+        String planTextPassword = RandomUtil.generatePassword();
+        String encryptedPassword = passwordEncoder.encode(planTextPassword);
         user.setPassword(encryptedPassword);
         user.setResetKey(RandomUtil.generateResetKey());
         user.setResetDate(ZonedDateTime.now());
         user.setActivated(true);
         userRepository.save(user);
+        smsService.sendCreationMessage(user, planTextPassword);
         log.debug("Created Information for User: {}", user);
         return user;
     }
