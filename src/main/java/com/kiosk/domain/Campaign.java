@@ -5,7 +5,10 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import com.kiosk.domain.enumeration.CardType;
 
@@ -30,9 +33,11 @@ public class Campaign implements Serializable {
     @Column(name = "custom_text", length = 140)
     private String customText;
 
+    @ElementCollection(targetClass = CardType.class,fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
-    @Column(name = "card_type")
-    private CardType cardType;
+    @JoinTable(name = "campaign_card_types", joinColumns = @JoinColumn(name = "campaign_id"))
+    @Column(name = "card_type", nullable = false)
+    private Collection<CardType> cardType;
 
     @NotNull
     @Column(name = "date", nullable = false)
@@ -76,11 +81,11 @@ public class Campaign implements Serializable {
         this.customText = customText;
     }
 
-    public CardType getCardType() {
+    public Collection<CardType> getCardType() {
         return cardType;
     }
 
-    public void setCardType(CardType cardType) {
+    public void setCardType(Collection<CardType> cardType) {
         this.cardType = cardType;
     }
 
@@ -165,7 +170,6 @@ public class Campaign implements Serializable {
         return "Campaign{" +
             "id=" + id +
             ", customText='" + customText + "'" +
-            ", cardType='" + cardType + "'" +
             ", date='" + date + "'" +
             ", type='" + type + "'" +
             ", status='" + status + "'" +

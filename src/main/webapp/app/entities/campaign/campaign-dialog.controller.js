@@ -5,15 +5,19 @@
         .module('kioskApp')
         .controller('CampaignDialogController', CampaignDialogController);
 
-    CampaignDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Campaign', 'User', 'Promotion'];
+    CampaignDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Campaign', 'User', 'Promotion','Principal'];
 
-    function CampaignDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Campaign, User, Promotion) {
+    function CampaignDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Campaign, User, Promotion, Principal) {
         var vm = this;
         vm.campaign = entity;
         vm.users = User.query();
         vm.promotions = Promotion.query();
         vm.isValid = isFormValid;
         vm.smsNumber = 0;
+        vm.smsBalance = 0;
+        Principal.identity(true).then(function(account) {
+            vm.smsBalance = account.smsBalance;
+        });
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -52,7 +56,7 @@
 
         function isFormValid() {
             if (vm.campaign.type == 'PROMOTION'){
-                return vm.campaign.date != null && vm.campaign.promotion !=null && vm.smsNumber>0;
+                return vm.campaign.date != null && vm.campaign.cardType !=null && vm.campaign.promotion !=null && vm.smsNumber>0;
             }
             if (vm.campaign.type == 'CUSTOM'){
                 return vm.campaign.date != null && vm.campaign.cardType !=null && vm.campaign.customText != null && vm.smsNumber>0;
@@ -71,8 +75,6 @@
             );
         }
 
-        $scope.$watch('vm.campaign.type',countSms, true);
-        $scope.$watch('vm.campaign.cardType',countSms, true);
-        $scope.$watch('vm.campaign.promotion',countSms, true);
+        $scope.$watchGroup(['vm.campaign.cardType'],countSms, true);
     }
 })();

@@ -32,10 +32,14 @@
         "lastModifiedBy": "Modified by",
         "lastModifiedDate": "Modified date",
         "subscription": "Subscription Plan",
+        "smsBalance": "Sms Balance",
         "messages": {
             "validate": {
                 "phone": {
                     "pattern": "Sms number should match e-164 number format(Ex: 12223334455) with USA country code."
+                },
+                "login": {
+                    "pattern": "Login should contain only lowercase characters and numbers"
                 }
             }
         }

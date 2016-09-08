@@ -29,7 +29,7 @@
             <tbody>
                 <tr ng-repeat="campaign in vm.campaigns track by campaign.id">
                     <td><a ui-sref="campaign-detail({id:campaign.id})">{{campaign.id}}</a></td>
-                    <td translate="{{'kioskApp.CardType.' + campaign.cardType}}">{{campaign.cardType}}</td>
+                    <td>{{campaign.cardType}}</td>
                     <td translate="{{'kioskApp.CampaignType.' + campaign.type}}">{{campaign.type}}</td>
                     <td translate="{{'kioskApp.CampaignStatus.' + campaign.status}}">{{campaign.status}}</td>
                     <td>

@@ -17,4 +17,7 @@ public interface KioskRepository extends JpaRepository<Kiosk,Long> {
 
     @Query("select kiosk from Kiosk kiosk where kiosk.license = :license and kiosk.customer.login = ?#{principal.username}")
     Kiosk findByLicense(@Param("license") String license);
+
+    @Query("select kiosk from Kiosk kiosk where kiosk.id = :id and kiosk.customer.login = ?#{principal.username}")
+    Kiosk findOneOfCurrentUser(@Param("id")Long id);
 }

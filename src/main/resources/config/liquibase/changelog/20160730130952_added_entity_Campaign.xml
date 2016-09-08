@@ -25,10 +25,6 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="card_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="date" type="date">
                 <constraints nullable="false" />
             </column>
@@ -54,6 +50,24 @@
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
 
+        <createTable tableName="campaign_card_types">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="campaign_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="card_type" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="campaign_id"
+                                 baseTableName="campaign_card_types"
+                                 constraintName="fk_card_type_campaign"
+                                 referencedColumnNames="id"
+                                 referencedTableName="campaign"/>
 
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="campaign"

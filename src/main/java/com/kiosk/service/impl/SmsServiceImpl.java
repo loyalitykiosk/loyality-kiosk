@@ -93,8 +93,14 @@ public class SmsServiceImpl implements SmsService {
 
     @Override
     public void sendCreationMessage(User newUser, String password) {
-        String text = messageSource.getMessage("email.activation.text",new Object[]{newUser.getLogin(), password}, Locale.ENGLISH);
+        String text = messageSource.getMessage("email.activation.text",new Object[]{newUser.getCustomerName(),newUser.getLogin(), password}, Locale.ENGLISH);
         sendMessage(Arrays.asList(newUser.getPhone()),text);
+    }
+
+    @Override
+    public void sendCardCreation(Card card) {
+        String text = messageSource.getMessage("card.activation.text",new Object[]{card.getUser().getCustomerName()}, Locale.ENGLISH);
+        sendMessage(Arrays.asList(card.getSmsNumber()),text);
     }
 
     @Scheduled(cron = "0 */1 * * * *")
@@ -104,7 +110,7 @@ public class SmsServiceImpl implements SmsService {
         for (Campaign campaign : newCampaigns){
             boolean skip = false;
             User user = campaign.getUser();
-            List<Card> cards = cardRepository.findByUser(user.getId());
+            List<Card> cards = cardRepository.findByUserAndType(user.getId(), campaign.getCardType());
             if (user.getUserSettings().getSmsBalance() < cards.size()){
                 LOG.info("Skip campaign {} due to not enough sms balance of user", campaign.getId());
                 skip = true;

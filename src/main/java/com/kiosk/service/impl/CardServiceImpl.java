@@ -10,6 +10,7 @@ import com.kiosk.security.SecurityUtils;
 import com.kiosk.service.CardService;
 import com.kiosk.domain.Card;
 import com.kiosk.repository.CardRepository;
+import com.kiosk.service.SmsService;
 import com.kiosk.service.UserService;
 import com.kiosk.web.rest.dto.CardDTO;
 import com.kiosk.web.rest.dto.CheckInDTO;
@@ -52,6 +53,9 @@ public class CardServiceImpl implements CardService{
     @Inject
     private CardMapper cardMapper;
 
+    @Inject
+    private SmsService smsService;
+
     /**
      * Save a card.
      *
@@ -63,6 +67,9 @@ public class CardServiceImpl implements CardService{
         Card card = cardMapper.cardDTOToCard(cardDTO);
         card.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
         card = cardRepository.save(card);
+        if (cardDTO.getId() == null){
+            smsService.sendCardCreation(card);
+        }
         CardDTO result = cardMapper.cardToCardDTO(card);
         return result;
     }
@@ -101,6 +108,14 @@ public class CardServiceImpl implements CardService{
         return cardDTO;
     }
 
+    @Override
+    public CardDTO findOneOfCurrentUser(Long id) {
+        log.debug("Request to get Card : {}", id);
+        Card card = cardRepository.findOneOfCurrentUser(id);
+        CardDTO cardDTO = cardMapper.cardToCardDTO(card);
+        return cardDTO;
+    }
+
     /**
      *  Delete the  card by id.
      *
@@ -115,6 +130,16 @@ public class CardServiceImpl implements CardService{
     public CardDTO findByNumber(String number) {
         log.debug("Request to get Card by its number : {}", number);
         Card card = cardRepository.findByNumber(number);
+        if (card != null){
+            return  cardMapper.cardToCardDTO(card);
+        }
+        return  null;
+    }
+
+    @Override
+    public CardDTO findByNumberOfCurrentUser(String number) {
+        log.debug("Request to get Card by its number : {}", number);
+        Card card = cardRepository.findByNumberOfCurrentUser(number);
         if (card != null){
             return  cardMapper.cardToCardDTO(card);
         }

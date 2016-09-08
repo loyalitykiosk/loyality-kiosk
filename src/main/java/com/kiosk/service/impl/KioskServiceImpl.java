@@ -91,6 +91,14 @@ public class KioskServiceImpl implements KioskService{
         return kioskDTO;
     }
 
+    @Override
+    public KioskDTO findOneOfCurrentUser(Long id) {
+        log.debug("Request to get Kiosk : {}", id);
+        Kiosk kiosk = kioskRepository.findOneOfCurrentUser(id);
+        KioskDTO kioskDTO = kioskMapper.kioskToKioskDTO(kiosk);
+        return kioskDTO;
+    }
+
     /**
      *  Delete the  kiosk by id.
      *

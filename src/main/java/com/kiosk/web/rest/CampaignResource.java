@@ -87,23 +87,12 @@ public class CampaignResource {
     public Pair<String, Integer> countCampaign(@RequestBody Campaign campaign) {
         log.debug("REST request to save Campaign : {}", campaign);
         Integer result = userRepository.currentUser().getUserSettings().getSmsBalance();
-        if (campaign.getType() == CampaignType.CUSTOM){
-            result -= countSmsForCustomCampaign(campaign);
-        }else if (campaign.getType() == CampaignType.PROMOTION){
-            result -= countSmsForPromotiomCampaign(campaign);
-        }
+        result -= countSmsForCustomCampaign(campaign);
         return new Pair<>("smsNumber",result);
     }
 
-    private Integer countSmsForPromotiomCampaign(Campaign campaign) {
-        if (campaign.getPromotion() == null){
-            return 0;
-        }
-        return cardRepository.findByUserIsCurrentUser().size();
-    }
-
     private Integer countSmsForCustomCampaign(Campaign campaign) {
-        if (campaign.getType() == null){
+        if (campaign.getCardType() == null || campaign.getCardType().isEmpty()){
             return 0;
         }
         return cardRepository.findByUserIsCurrentUserAndType(campaign.getCardType()).size();
@@ -123,7 +112,7 @@ public class CampaignResource {
     public ResponseEntity<List<Campaign>> getAllCampaigns(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Campaigns");
-        Page<Campaign> page = campaignRepository.findAll(pageable);
+        Page<Campaign> page = campaignRepository.findByUserIsCurrentUser(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/campaigns");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

@@ -11,7 +11,11 @@
         <div class="form-group">
             <label class="control-label" translate="userManagement.login">Login</label>
             <input type="text" class="form-control" name="login"
-                   ng-model="vm.user.login" ng-required="vm.user.id == null" ng-maxlength="50">
+                   ng-model="vm.user.login"
+                   ng-required="vm.user.id == null"
+                   ng-maxlength="50"
+                   ng-pattern="/^[a-z0-9]*$/"
+            >
 
             <div ng-show="editForm.login.$invalid">
                 <p class="help-block"
@@ -23,6 +27,10 @@
                    ng-show="editForm.login.$error.maxlength" translate="entity.validation.maxlength"
                    translate-value-max="50">
                     This field cannot be longer than 50 characters.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.login.$error.pattern" translate="userManagement.messages.validate.login.pattern">
+                    "Login should contain only lowercase characters and numbers
                 </p>
             </div>
         </div>

@@ -27,11 +27,13 @@
         <dd>{{vm.user.lastModifiedDate | date:'dd/MM/yy HH:mm'}}</dd>
         <dt><span translate="userManagement.subscription">Subscription Plan</span></dt>
         <dd>{{vm.user.subscriptionName}}</dd>
+        <dt><span translate="userManagement.smsBalance">Sms Balance</span></dt>
+        <dd>{{vm.user.smsBalance}}</dd>
         <hr>
         <dt><span translate="userManagement.profiles">Profiles</span></dt>
         <dd>
             <ul class="list-unstyled">
-                <li ng-repeat="authority in user.authorities"><span>{{authority}}</span></li>
+                <li ng-repeat="authority in vm.user.authorities"><span>{{authority}}</span></li>
             </ul>
         </dd>
     </dl>

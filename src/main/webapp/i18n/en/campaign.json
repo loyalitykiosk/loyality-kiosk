@@ -25,7 +25,8 @@
             "statusDescription": "Description of status",
             "user": "User",
             "promotion": "Promotion",
-            "smsNumber" : "SMS Balance after creation this campaign"
+            "smsNumber" : "SMS Balance after creation this campaign",
+            "smsBalance" : "Current SMS Balance"
         }
     }
 }

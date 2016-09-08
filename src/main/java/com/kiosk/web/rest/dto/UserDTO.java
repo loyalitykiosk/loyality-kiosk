@@ -72,6 +72,8 @@ public class UserDTO {
 
     private String subscriptionName;
 
+    private Integer smsBalance;
+
     public UserDTO() {
     }
 
@@ -79,15 +81,14 @@ public class UserDTO {
         this(user.getLogin(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPhone() ,user.getActivated(), user.getLangKey(),
             user.getCustomerName(), user.getCustomerDetails(), user.getPlatinumPoints(), user.getGoldPoints(), user.getSilverPoints(),
             user.getBronzePoints(), user.getSilverBarier(), user.getGoldBarier(), user.getPlatinumBarier(), user.getCheckinTimeout(),
-            user.getSubscription().getId(), user.getSubscription().getName(),user.getAuthorities().stream().map(Authority::getName)
+            user.getSubscription().getId(), user.getSubscription().getName(),user.getUserSettings().getSmsBalance(),user.getAuthorities().stream().map(Authority::getName)
                 .collect(Collectors.toSet()));
     }
 
     public UserDTO(String login, String firstName, String lastName, String email,String phone, boolean activated,
                    String langKey,String customerName, String customerDetails, Long platinumPoints,
                    Long goldPoints, Long silverPoints, Long bronzePoints,Long silverBarier,
-                   Long goldBarier,Long platinumBarier,Long checkinTimeout,Long subscriptionId,String subscriptionName, Set<String> authorities) {
-
+                   Long goldBarier,Long platinumBarier,Long checkinTimeout,Long subscriptionId,String subscriptionName,Integer smsBalance, Set<String> authorities) {
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -108,6 +109,7 @@ public class UserDTO {
         this.checkinTimeout = checkinTimeout;
         this.subscriptionId = subscriptionId;
         this.subscriptionName = subscriptionName;
+        this.smsBalance = smsBalance;
     }
 
     public String getLogin() {
@@ -224,7 +226,13 @@ public class UserDTO {
         this.subscriptionName = subscriptionName;
     }
 
+    public Integer getSmsBalance() {
+        return smsBalance;
+    }
 
+    public void setSmsBalance(Integer smsBalance) {
+        this.smsBalance = smsBalance;
+    }
 
     @Override
     public String toString() {

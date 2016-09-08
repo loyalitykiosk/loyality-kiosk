@@ -54,4 +54,6 @@ public interface KioskService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    KioskDTO findOneOfCurrentUser(Long id);
 }

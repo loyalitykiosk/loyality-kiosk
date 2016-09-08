@@ -34,6 +34,7 @@ describe('Controller Tests', function() {
 
                 activated: true,
                 email: "john.doe@mail.com",
+                phone : "1111111111",
                 langKey: "en",
                 login: "john",
                 customerName : "John Customer",

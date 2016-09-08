@@ -51,6 +51,14 @@ public interface CardService {
     CardDTO findOne(Long id);
 
     /**
+     *  Get the "id" card.
+     *
+     *  @param id the id of the entity
+     *  @return the entity
+     */
+    CardDTO findOneOfCurrentUser(Long id);
+
+    /**
      *  Delete the "id" card.
      *
      *  @param id the id of the entity
@@ -64,6 +72,14 @@ public interface CardService {
      *  @return the entity or null
      */
     CardDTO findByNumber(String number);
+
+    /**
+     *  Get the curent user's card by its number.
+     *
+     *  @param number the number of the entity
+     *  @return the entity or null
+     */
+    CardDTO findByNumberOfCurrentUser(String number);
 
     /**
      *  Get the card by its number.

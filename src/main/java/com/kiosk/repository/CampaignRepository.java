@@ -4,6 +4,8 @@ import com.kiosk.domain.Campaign;
 
 import com.kiosk.domain.enumeration.CampaignStatus;
 import com.kiosk.domain.enumeration.CampaignType;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 
@@ -14,6 +16,9 @@ import java.util.Optional;
  * Spring Data JPA repository for the Campaign entity.
  */
 public interface CampaignRepository extends JpaRepository<Campaign,Long> {
+
+    @Query("select campaign from Campaign campaign where campaign.user.login = ?#{principal.username}")
+    Page<Campaign> findByUserIsCurrentUser(Pageable pageable);
 
     @Query("select campaign from Campaign campaign where campaign.user.login = ?#{principal.username}")
     List<Campaign> findByUserIsCurrentUser();

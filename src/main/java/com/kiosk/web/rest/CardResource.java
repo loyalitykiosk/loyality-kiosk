@@ -3,6 +3,7 @@ package com.kiosk.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.kiosk.domain.Card;
 import com.kiosk.service.CardService;
+import com.kiosk.service.SmsService;
 import com.kiosk.web.rest.util.HeaderUtil;
 import com.kiosk.web.rest.util.PaginationUtil;
 import com.kiosk.web.rest.dto.CardDTO;
@@ -127,7 +128,7 @@ public class CardResource {
     @Timed
     public ResponseEntity<CardDTO> getCard(@PathVariable Long id) {
         log.debug("REST request to get Card : {}", id);
-        CardDTO cardDTO = cardService.findOne(id);
+        CardDTO cardDTO = cardService.findOneOfCurrentUser(id);
         return Optional.ofNullable(cardDTO)
             .map(result -> new ResponseEntity<>(
                 result,

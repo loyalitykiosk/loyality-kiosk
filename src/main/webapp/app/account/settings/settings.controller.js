@@ -27,6 +27,7 @@
                 lastName: account.lastName,
                 login: account.login,
                 customerName : account.customerName,
+                phone : account.phone,
                 platinumPoints : account.platinumPoints,
                 goldPoints : account.goldPoints,
                 silverPoints : account.silverPoints,

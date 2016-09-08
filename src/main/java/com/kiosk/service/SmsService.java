@@ -1,5 +1,6 @@
 package com.kiosk.service;
 
+import com.kiosk.domain.Card;
 import com.kiosk.domain.User;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface SmsService {
     void sendCustomCampaigns();
 
     void sendCreationMessage(User user, String password);
+
+    void sendCardCreation(Card card);
 }

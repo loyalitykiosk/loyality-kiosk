@@ -130,7 +130,12 @@ public class KioskResource {
     @Timed
     public ResponseEntity<KioskDTO> getKiosk(@PathVariable Long id) {
         log.debug("REST request to get Kiosk : {}", id);
-        KioskDTO kioskDTO = kioskService.findOne(id);
+        KioskDTO kioskDTO = null;
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            kioskDTO = kioskService.findOne(id);
+        }else {
+            kioskDTO = kioskService.findOneOfCurrentUser(id);
+        }
         return Optional.ofNullable(kioskDTO)
             .map(result -> new ResponseEntity<>(
                 result,
