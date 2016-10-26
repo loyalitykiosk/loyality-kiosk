@@ -16,6 +16,9 @@ public interface KioskRepository extends JpaRepository<Kiosk,Long> {
     Page<Kiosk> findByCustomerIsCurrentUser(Pageable pageable);
 
     @Query("select kiosk from Kiosk kiosk where kiosk.license = :license and kiosk.customer.login = ?#{principal.username}")
+    Kiosk findByLicenseAndCurrentUser(@Param("license") String license);
+
+    @Query("select kiosk from Kiosk kiosk where kiosk.license = :license")
     Kiosk findByLicense(@Param("license") String license);
 
     @Query("select kiosk from Kiosk kiosk where kiosk.id = :id and kiosk.customer.login = ?#{principal.username}")

@@ -15,10 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.inject.Inject;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing Kiosk.
@@ -74,7 +70,7 @@ public class KioskServiceImpl implements KioskService{
 
     @Override
     public KioskDTO findByLicense(String license) {
-        return kioskMapper.kioskToKioskDTO(kioskRepository.findByLicense(license));
+        return kioskMapper.kioskToKioskDTO(kioskRepository.findByLicenseAndCurrentUser(license));
     }
 
     /**

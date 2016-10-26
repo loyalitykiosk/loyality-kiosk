@@ -151,7 +151,7 @@ public class CardServiceImpl implements CardService{
     public CardDTO  checkIn(CheckInDTO checkInDTO) {
         Card card = cardRepository.findByNumber(checkInDTO.getCardNumber());
         if (null == card) return null;
-        Kiosk kiosk = kioskRepository.findByLicense(checkInDTO.getKioskLicense());
+        Kiosk kiosk = kioskRepository.findByLicenseAndCurrentUser(checkInDTO.getKioskLicense());
         if (null == kiosk) return null;
         final User current = userRepository.currentUser();
         CardTransaction lastTransaction = cardTransactionRepository.findFirstByCardIdAndKioskIdOrderByTimestampDesc(card.getId(),kiosk.getId());

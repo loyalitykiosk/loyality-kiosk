@@ -1,6 +1,8 @@
 package com.kiosk.config;
 
 import com.kiosk.security.*;
+import com.kiosk.security.license.LicenseAuthenticationFilter;
+import com.kiosk.security.license.LicenseAuthenticationProvider;
 import com.kiosk.web.filter.CsrfCookieGeneratorFilter;
 import com.kiosk.config.JHipsterProperties;
 
@@ -19,6 +21,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.data.repository.query.SecurityEvaluationContextExtension;
 
 import org.springframework.security.web.authentication.RememberMeServices;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CsrfFilter;
 
 import javax.inject.Inject;
@@ -48,6 +52,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Inject
     private RememberMeServices rememberMeServices;
+
+    @Inject
+    private LicenseAuthenticationProvider licenseAuthenticationProvider;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -102,20 +109,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .deleteCookies("JSESSIONID", "CSRF-TOKEN")
             .permitAll()
         .and()
+            .authenticationProvider(licenseAuthenticationProvider)
+            .addFilterBefore(new LicenseAuthenticationFilter(),UsernamePasswordAuthenticationFilter.class)
             .headers()
             .frameOptions()
             .disable()
         .and()
             .authorizeRequests()
-            .antMatchers("/public-api/*").permitAll()
             .antMatchers("/api/register").permitAll()
             .antMatchers("/api/activate").permitAll()
             .antMatchers("/api/authenticate").permitAll()
+            .antMatchers("/kiosk-api/authenticate").permitAll()
             .antMatchers("/api/account/reset_password/init").permitAll()
             .antMatchers("/api/account/reset_password/finish").permitAll()
             .antMatchers("/api/logs/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/api/audits/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/api/**").authenticated()
+            .antMatchers("/kiosk-api/**").authenticated()
             .antMatchers("/metrics/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/health/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/trace/**").hasAuthority(AuthoritiesConstants.ADMIN)

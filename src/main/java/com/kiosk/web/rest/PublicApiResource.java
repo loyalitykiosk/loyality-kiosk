@@ -23,7 +23,7 @@ import java.util.List;
  * REST controller for managing Public API.
  */
 @RestController
-@RequestMapping("/public-api")
+@RequestMapping("/kiosk-api")
 public class PublicApiResource {
 
     private final Logger log = LoggerFactory.getLogger(PublicApiResource.class);
@@ -43,8 +43,14 @@ public class PublicApiResource {
     @Inject
     private CardTransactionMapper cardTransactionMapper;
 
+    @RequestMapping(value = "/authenticate",
+        method = RequestMethod.POST)
+    public void authenticate() {
+        log.debug("authenticate with License");
+    }
 
-    @RequestMapping(value = "/activate",
+
+        @RequestMapping(value = "/activate",
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<KioskDTO> activateKiosk(@RequestParam String kioskLicense) {
