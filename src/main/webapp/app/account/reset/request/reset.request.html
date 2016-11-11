@@ -39,6 +39,21 @@
                         </p>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="control-label" for="phone" translate="global.form.phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="{{'global.form.phone.placeholder' | translate}}"
+                           ng-model="vm.resetAccount.phone" ng-pattern="/^[1,7]\d{10,14}$/" required>
+                    <div ng-show="form.phone.$dirty && form.phone.$invalid" >
+                        <p class="help-block"
+                           ng-show="form.phone.$error.required" translate="global.messages.validate.phone.required">
+                            Your phone is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.phone.$error.pattern" translate="global.messages.validate.phone.invalid">
+                            Phone number should match e-164 number format(Ex: 12223334455) and USA country code.
+                        </p>
+                    </div>
+                </div>
                 <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" translate="reset.request.form.button">Reset</button>
             </form>
 

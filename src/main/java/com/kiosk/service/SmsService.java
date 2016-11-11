@@ -19,4 +19,6 @@ public interface SmsService {
     void sendCreationMessage(User user, String password);
 
     void sendCardCreation(Card card);
+
+    void sendPasswordResetMessage(User user, String baseUrl);
 }

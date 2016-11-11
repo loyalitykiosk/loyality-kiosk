@@ -149,7 +149,7 @@ public class CardServiceImpl implements CardService{
     @Override
     @Transactional
     public CardDTO  checkIn(CheckInDTO checkInDTO) {
-        Card card = cardRepository.findByNumber(checkInDTO.getCardNumber());
+        Card card = cardRepository.findByNumberOfCurrentUser(checkInDTO.getCardNumber());
         if (null == card) return null;
         Kiosk kiosk = kioskRepository.findByLicenseAndCurrentUser(checkInDTO.getKioskLicense());
         if (null == kiosk) return null;

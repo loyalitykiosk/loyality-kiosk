@@ -1,15 +1,16 @@
 package com.kiosk.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import com.kiosk.domain.Authority;
 import com.kiosk.domain.PersistentToken;
 import com.kiosk.domain.User;
 import com.kiosk.repository.PersistentTokenRepository;
 import com.kiosk.repository.UserRepository;
 import com.kiosk.security.SecurityUtils;
 import com.kiosk.service.MailService;
+import com.kiosk.service.SmsService;
 import com.kiosk.service.UserService;
 import com.kiosk.web.rest.dto.KeyAndPasswordDTO;
+import com.kiosk.web.rest.dto.MailAndPhoneDTO;
 import com.kiosk.web.rest.dto.ManagedUserDTO;
 import com.kiosk.web.rest.dto.UserDTO;
 import com.kiosk.web.rest.util.HeaderUtil;
@@ -50,6 +51,9 @@ public class AccountResource {
 
     @Inject
     private MailService mailService;
+
+    @Inject
+    private SmsService smsService;
 
     /**
      * POST  /register : register the user.
@@ -225,6 +229,31 @@ public class AccountResource {
         });
     }
 
+//    /**
+//     * POST   /account/reset_password/init : Send an e-mail to reset the password of the user
+//     *
+//     * @param mail    the mail of the user
+//     * @param request the HTTP request
+//     * @return the ResponseEntity with status 200 (OK) if the e-mail was sent, or status 400 (Bad Request) if the e-mail address is not registred
+//     */
+//    @RequestMapping(value = "/account/reset_password/init",
+//        method = RequestMethod.POST,
+//        produces = MediaType.TEXT_PLAIN_VALUE)
+//    @Timed
+//    public ResponseEntity<?> requestPasswordReset(@RequestBody String mail, HttpServletRequest request) {
+//        return userService.requestPasswordReset(mail)
+//            .map(user -> {
+//                String baseUrl = request.getScheme() +
+//                    "://" +
+//                    request.getServerName() +
+//                    ":" +
+//                    request.getServerPort() +
+//                    request.getContextPath();
+//                mailService.sendPasswordResetMail(user, baseUrl);
+//                return new ResponseEntity<>("e-mail was sent", HttpStatus.OK);
+//            }).orElse(new ResponseEntity<>("e-mail address not registered", HttpStatus.BAD_REQUEST));
+//    }
+
     /**
      * POST   /account/reset_password/init : Send an e-mail to reset the password of the user
      *
@@ -236,8 +265,10 @@ public class AccountResource {
         method = RequestMethod.POST,
         produces = MediaType.TEXT_PLAIN_VALUE)
     @Timed
-    public ResponseEntity<?> requestPasswordReset(@RequestBody String mail, HttpServletRequest request) {
-        return userService.requestPasswordReset(mail)
+    public ResponseEntity<?> requestPasswordReset(@RequestBody MailAndPhoneDTO mailAndPhone, HttpServletRequest request ) {
+        String mail = mailAndPhone.getMail();
+        String phone = mailAndPhone.getPhone();
+        return userService.requestPasswordReset(mail,phone)
             .map(user -> {
                 String baseUrl = request.getScheme() +
                     "://" +
@@ -245,10 +276,12 @@ public class AccountResource {
                     ":" +
                     request.getServerPort() +
                     request.getContextPath();
-                mailService.sendPasswordResetMail(user, baseUrl);
+                smsService.sendPasswordResetMessage(user,baseUrl);
                 return new ResponseEntity<>("e-mail was sent", HttpStatus.OK);
             }).orElse(new ResponseEntity<>("e-mail address not registered", HttpStatus.BAD_REQUEST));
     }
+
+
 
     /**
      * POST   /account/reset_password/finish : Finish to reset the password of the user

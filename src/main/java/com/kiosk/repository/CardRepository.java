@@ -40,4 +40,8 @@ public interface CardRepository extends JpaRepository<Card,Long> {
 
     @Query("select card from Card card where card.id = :id and card.user.login = ?#{principal.username}")
     Card findOneOfCurrentUser(@Param("id")Long id);
+
+    @Query("delete from Card card where card.user.id = :userId")
+    @Modifying
+    void deleteUserCards(@Param("userId") Long userId);
 }

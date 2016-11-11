@@ -46,7 +46,9 @@
             "confirmpassword": "New password confirmation",
             "confirmpassword.placeholder": "Confirm the new password",
             "email": "E-mail",
-            "email.placeholder": "Your e-mail"
+            "email.placeholder": "Your e-mail",
+            "phone": "Phone",
+            "phone.placeholder": "Your phone number"
         },
         "messages": {
             "info": {
@@ -73,6 +75,10 @@
                     "invalid": "Your e-mail is invalid.",
                     "minlength": "Your e-mail is required to be at least 5 characters.",
                     "maxlength": "Your e-mail cannot be longer than 50 characters."
+                },
+                "phone": {
+                    "required": "Your phone is required.",
+                    "invalid": "Phone number should match e-164 number format(Ex: 12223334455) and USA country code."
                 }
             }
         },

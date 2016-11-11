@@ -1,10 +1,7 @@
 package com.kiosk.service;
 
 import com.kiosk.domain.*;
-import com.kiosk.repository.AuthorityRepository;
-import com.kiosk.repository.PersistentTokenRepository;
-import com.kiosk.repository.SubscriptionRepository;
-import com.kiosk.repository.UserRepository;
+import com.kiosk.repository.*;
 import com.kiosk.security.SecurityUtils;
 import com.kiosk.service.util.RandomUtil;
 import com.kiosk.web.rest.dto.ManagedUserDTO;
@@ -49,6 +46,20 @@ public class UserService {
     @Inject
     private SubscriptionRepository subscriptionRepository;
 
+    @Inject
+    private CardRepository cardRepository;
+
+    @Inject
+    private CampaignRepository campaignRepository;
+
+    @Inject
+    private KioskRepository kioskRepository;
+
+    @Inject
+    private PromotionRepository promotionRepository;
+
+
+
     public Optional<User> activateRegistration(String key) {
         log.debug("Activating user for activation key {}", key);
         return userRepository.findOneByActivationKey(key)
@@ -81,6 +92,17 @@ public class UserService {
 
     public Optional<User> requestPasswordReset(String mail) {
         return userRepository.findOneByEmail(mail)
+            .filter(User::getActivated)
+            .map(user -> {
+                user.setResetKey(RandomUtil.generateResetKey());
+                user.setResetDate(ZonedDateTime.now());
+                userRepository.save(user);
+                return user;
+            });
+    }
+
+    public Optional<User> requestPasswordReset(String mail, String phone) {
+        return userRepository.findOneByEmailAndPhone(mail, phone)
             .filter(User::getActivated)
             .map(user -> {
                 user.setResetKey(RandomUtil.generateResetKey());
@@ -174,10 +196,40 @@ public class UserService {
         });
     }
 
+    //TODO remove user's kiosks, cards, campaigns
+
     public void deleteUserInformation(String login) {
         userRepository.findOneByLogin(login).ifPresent(u -> {
+            deleteUsersCards(u);
+            deleteUsersCampaigns(u);
+            deleteUsersKiosks(u);
+            deleteUsersPromotions(u);
             userRepository.delete(u);
             log.debug("Deleted User: {}", u);
+        });
+    }
+
+    private void deleteUsersPromotions(User u) {
+        promotionRepository.findByUser(u.getId()).forEach(promotion -> {
+            promotionRepository.delete(promotion.getId());
+        });
+    }
+
+    private void deleteUsersKiosks(User u) {
+        kioskRepository.findByUser(u.getId()).forEach(kiosk -> {
+            kioskRepository.delete(kiosk.getId());
+        });
+    }
+
+    private void deleteUsersCampaigns(User u) {
+        campaignRepository.findByUser(u.getId()).forEach(campaign -> {
+            campaignRepository.delete(campaign.getId());
+        });
+    }
+
+    private void deleteUsersCards(User user) {
+        cardRepository.findByUser(user.getId()).forEach(card -> {
+            cardRepository.delete(card.getId());
         });
     }
 

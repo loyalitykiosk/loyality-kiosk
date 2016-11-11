@@ -7,7 +7,9 @@
 						<div class="logo-wrp">
 							<h1 class="logo budmoJiggler">CASINO KIOSK</h1><sup>&trade;</sup>
 						</div>
-							<p class="slogan">There will be slogan</p>
+                        <div ng-switch="vm.isAuthenticated()">
+                            <p class="logo budmoJiggler">{{ vm.account.customerName }}</p>
+                        </div>
 					</div>
 				</div>
 			</div>

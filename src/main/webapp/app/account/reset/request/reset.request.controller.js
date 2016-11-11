@@ -23,7 +23,7 @@
             vm.error = null;
             vm.errorEmailNotExists = null;
 
-            Auth.resetPasswordInit(vm.resetAccount.email).then(function () {
+            Auth.resetPasswordInit({mail:vm.resetAccount.email, phone:vm.resetAccount.phone}).then(function () {
                 vm.success = 'OK';
             }).catch(function (response) {
                 vm.success = null;

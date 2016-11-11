@@ -76,7 +76,7 @@ public class PublicApiResource {
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CardDTO> getCard(@RequestParam String number) {
-        CardDTO result = cardService.findByNumber(number);
+        CardDTO result = cardService.findByNumberOfCurrentUser(number);
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

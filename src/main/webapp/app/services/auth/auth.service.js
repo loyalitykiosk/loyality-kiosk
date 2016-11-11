@@ -148,10 +148,10 @@
             }).$promise;
         }
 
-        function resetPasswordInit (mail, callback) {
+        function resetPasswordInit (mailAndPhone, callback) {
             var cb = callback || angular.noop;
 
-            return PasswordResetInit.save(mail, function() {
+            return PasswordResetInit.save(mailAndPhone, function() {
                 return cb();
             }, function (err) {
                 return cb(err);

@@ -40,10 +40,10 @@ public class Promotion implements Serializable {
     @Column(name = "sms_text", length = 140)
     private String smsText;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     private Card winner;
 
     public Long getId() {

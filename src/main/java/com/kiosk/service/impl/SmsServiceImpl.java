@@ -103,6 +103,12 @@ public class SmsServiceImpl implements SmsService {
         sendMessage(Arrays.asList(card.getSmsNumber()),text);
     }
 
+    @Override
+    public void sendPasswordResetMessage(User user, String baseUrl) {
+        String text = messageSource.getMessage("user.password.reset.text",new Object[]{baseUrl,user.getResetKey()}, Locale.ENGLISH);
+        sendMessage(Arrays.asList(user.getPhone()),text);
+    }
+
     @Scheduled(cron = "0 */1 * * * *")
     public void sendPromotionCampaigns(){
         LOG.info("Promotion campaign scheduled");

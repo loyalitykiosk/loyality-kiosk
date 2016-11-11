@@ -2,6 +2,8 @@ package com.kiosk.domain;
 
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -15,6 +17,8 @@ import com.kiosk.domain.enumeration.CardType;
 import com.kiosk.domain.enumeration.CampaignType;
 
 import com.kiosk.domain.enumeration.CampaignStatus;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 
 /**
  * A Campaign.
